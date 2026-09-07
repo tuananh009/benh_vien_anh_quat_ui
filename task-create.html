@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Giao việc · Trung tâm điều hành số Bệnh viện Anh Quất</title>
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body data-screen="task-create" data-role="manager" data-unread="3">
+<div class="app">
+  <div data-shell="topbar"></div>
+  <div class="shell">
+    <div data-shell="sidebar"></div>
+    <main class="main">
+      <div class="page" style="max-width:960px">
+
+        <a class="text-meta" href="tasks.html">← Quay lại danh sách nhiệm vụ</a>
+        <div class="page__head" style="margin-top:16px">
+          <div class="page__head-text">
+            <h1 class="page-title">Giao việc</h1>
+            <p class="text-meta">Nhiệm vụ mới sẽ được gửi thông báo Zalo tới người thực hiện ngay khi tạo.</p>
+          </div>
+        </div>
+
+        <form onsubmit="return false">
+          <div class="card">
+            <h2 class="card__title">Nội dung công việc</h2>
+
+            <div class="field">
+              <label class="field__label" for="task-title">
+                Nội dung / đầu ra <span class="field__required">*</span>
+              </label>
+              <textarea class="textarea" id="task-title"
+                        placeholder="Ví dụ: Hoàn thiện hồ sơ bệnh án 12 ca ra viện trong ngày"></textarea>
+              <p class="field__hint">Viết rõ kết quả cần đạt, không viết chung chung.</p>
+            </div>
+
+            <div class="grid grid--2">
+              <div class="field">
+                <label class="field__label" for="task-unit">Đơn vị <span class="field__required">*</span></label>
+                <select class="select" id="task-unit">
+                  <option selected>Khoa Nội – Nhi – Da liễu – HSCC</option>
+                  <option>Khoa Khám bệnh</option>
+                  <option>Khoa Ngoại – Sản – PT – GMHS</option>
+                  <option>Phòng Tổ chức – Hành chính</option>
+                  <option>Phòng Công nghệ thông tin</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label class="field__label" for="task-priority">Mức độ ưu tiên <span class="field__required">*</span></label>
+                <select class="select" id="task-priority">
+                  <option>P1 – Khẩn, xử lý ngay</option>
+                  <option selected>P2 – Cao</option>
+                  <option>P3 – Bình thường</option>
+                  <option>P4 – Thấp</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <h2 class="card__title">Người liên quan</h2>
+
+            <div class="field">
+              <label class="field__label">Người thực hiện <span class="field__required">*</span></label>
+              <div class="row">
+                <span class="chip chip--brand">ĐD Nguyễn Thị Lan · Khoa Nội ✕</span>
+                <button class="btn btn--secondary btn--small" type="button"
+                        data-action="open-overlay" data-target="people-picker">+ Chọn người</button>
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="field__label">Người phối hợp</label>
+              <div class="row">
+                <span class="chip">ĐD Trần Văn B · Khoa Nội ✕</span>
+                <button class="btn btn--secondary btn--small" type="button"
+                        data-action="open-overlay" data-target="people-picker">+ Chọn người</button>
+              </div>
+            </div>
+
+            <div class="field" style="margin-bottom:0">
+              <label class="field__label" for="task-reviewer">Người kiểm tra <span class="field__required">*</span></label>
+              <select class="select" id="task-reviewer">
+                <option selected>ĐD trưởng Bùi Thị Tố Hoa · Khoa Nội</option>
+                <option>BS TK Nguyễn Văn Sơn · Khoa Nội</option>
+                <option>PGĐ Nguyễn Anh Tuấn · Ban Giám đốc</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="card">
+            <h2 class="card__title">Thời hạn</h2>
+
+            <div class="field">
+              <label class="field__label" for="task-deadline">Hạn hoàn thành <span class="field__required">*</span></label>
+              <input class="input" id="task-deadline" type="datetime-local" value="2026-08-30T17:00">
+              <p class="field__hint">Giờ mặc định 17:00. Bệnh viện chạy 24/7 — hạn tính theo giờ liên tục, không có "ngày làm việc".</p>
+              <div class="row" style="margin-top:8px">
+                <button class="btn btn--small btn--secondary" type="button">Hôm nay</button>
+                <button class="btn btn--small btn--secondary" type="button">Ngày mai</button>
+                <button class="btn btn--small btn--secondary" type="button">Cuối tuần này</button>
+              </div>
+            </div>
+
+            <div class="field" style="margin-bottom:0">
+              <label class="field__label" for="task-parent">Thuộc nhiệm vụ cha</label>
+              <select class="select" id="task-parent">
+                <option selected>— Không thuộc nhiệm vụ nào —</option>
+                <option>NOI-0012 · Kiểm kê thuốc quý III</option>
+                <option>NOI-0008 · Chuẩn bị kiểm tra chất lượng bệnh viện</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="card">
+            <h2 class="card__title">Hướng dẫn và nghiệm thu</h2>
+
+            <div class="field">
+              <label class="field__label" for="task-steps">Cách làm</label>
+              <textarea class="textarea" id="task-steps" placeholder="Mỗi dòng một bước — sẽ hiện thành danh sách tích cho người thực hiện"></textarea>
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="task-criteria">Tiêu chí hoàn thành</label>
+              <input class="input" id="task-criteria" type="text"
+                     value="Đủ – đúng – đúng hạn – có minh chứng – đạt chất lượng">
+            </div>
+
+            <div class="grid grid--2">
+              <div class="field">
+                <label class="field__label" for="task-area">Khu vực / buồng / máy</label>
+                <input class="input" id="task-area" type="text" placeholder="Ví dụ: Buồng 4 · Máy thở số 2">
+              </div>
+              <div class="field">
+                <label class="field__label" for="task-evidence">Yêu cầu minh chứng</label>
+                <select class="select" id="task-evidence">
+                  <option selected>Bắt buộc có minh chứng</option>
+                  <option>Không bắt buộc</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="row" style="justify-content:flex-end;margin-top:24px">
+            <a class="btn btn--quiet" href="tasks.html">Huỷ</a>
+            <button class="btn btn--secondary" type="button"
+                    data-action="toast" data-toast="Đã lưu nháp" data-toast-kind="info">Lưu nháp</button>
+            <button class="btn btn--primary btn--large" type="submit"
+                    data-action="demo-submit" data-busy-label="Đang tạo…"
+                    data-toast="Đã tạo nhiệm vụ và gửi thông báo Zalo"
+                    data-next="tasks.html">Giao việc</button>
+          </div>
+        </form>
+
+      </div>
+    </main>
+  </div>
+  <div data-shell="bottomnav"></div>
+</div>
+
+<!-- ChonNguoi — the most reused component in the system, see 00-Quy-uoc section 2.3 -->
+<div class="overlay" id="people-picker">
+  <div class="panel" role="dialog" aria-modal="true" aria-labelledby="picker-title">
+    <div class="panel__head">
+      <h2 class="dialog__title" id="picker-title">Chọn người thực hiện</h2>
+      <button class="icon-btn" type="button" data-action="close-overlay" aria-label="Đóng">✕</button>
+    </div>
+    <div class="panel__body">
+      <div class="field">
+        <label class="sr-only" for="picker-search">Tìm người</label>
+        <input class="input" id="picker-search" type="search" placeholder="🔍 Gõ không dấu cũng tìm được: dieu duong">
+      </div>
+
+      <label class="checkbox"><input type="checkbox"><span>Chọn tất cả (4 người)</span></label>
+
+      <div class="stack" style="margin-top:12px">
+        <label class="card" style="display:flex;gap:12px;align-items:center;cursor:pointer">
+          <input type="checkbox" checked style="width:20px;height:20px">
+          <span style="flex:1;min-width:0">
+            <span style="font-weight:500">ĐD Nguyễn Thị Lan</span>
+            <span class="text-meta" style="display:block">Khoa Nội · 6 ca trực trong tháng</span>
+          </span>
+        </label>
+
+        <label class="card" style="display:flex;gap:12px;align-items:center;cursor:pointer">
+          <input type="checkbox" style="width:20px;height:20px">
+          <span style="flex:1;min-width:0">
+            <span style="font-weight:500">ĐD Trần Văn B</span>
+            <span class="text-meta" style="display:block">Khoa Nội · 8 ca trực trong tháng</span>
+          </span>
+        </label>
+
+        <!-- Someone on approved leave is dimmed with a note, never hidden — the user may still pick them -->
+        <label class="card" style="display:flex;gap:12px;align-items:center;cursor:pointer;opacity:.6">
+          <input type="checkbox" style="width:20px;height:20px">
+          <span style="flex:1;min-width:0">
+            <span style="font-weight:500">ĐD Lê Thị C</span>
+            <span class="text-meta" style="display:block">Khoa Nội · 🌴 nghỉ phép 28–30/08</span>
+          </span>
+        </label>
+
+        <label class="card" style="display:flex;gap:12px;align-items:center;cursor:pointer;opacity:.6">
+          <input type="checkbox" style="width:20px;height:20px">
+          <span style="flex:1;min-width:0">
+            <span style="font-weight:500">YS Phạm Văn D</span>
+            <span class="text-meta" style="display:block">Khoa Nội · ⚠️ không phải bác sĩ</span>
+          </span>
+        </label>
+      </div>
+    </div>
+    <div class="panel__foot">
+      <button class="btn btn--quiet" type="button" data-action="close-overlay">Huỷ</button>
+      <button class="btn btn--primary" type="button" data-action="close-overlay">Chọn 1 người</button>
+    </div>
+  </div>
+</div>
+
+<script src="assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bảng điều khiển đơn vị · Trung tâm điều hành số Bệnh viện Anh Quất</title>
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body data-screen="unit-dashboard" data-role="manager" data-unread="5">
+<div class="app">
+  <div data-shell="topbar"></div>
+  <div class="shell">
+    <div data-shell="sidebar"></div>
+    <main class="main">
+      <div class="page">
+
+        <div class="page__head">
+          <div class="page__head-text">
+            <h1 class="page-title">Khoa Nội – Nhi – Da liễu – HSCC</h1>
+            <p class="text-meta">Thứ Tư 26/08/2026 · Cơ sở 2</p>
+          </div>
+          <div class="page__actions">
+            <a class="btn btn--secondary" href="tasks.html">Xem toàn bộ việc đơn vị →</a>
+          </div>
+        </div>
+
+        <div class="proto-note">
+          <span>💡</span>
+          <div><strong>Quản lý theo ngoại lệ</strong> — màn hình chỉ hiện việc bất thường.
+            Việc đang chạy đúng tiến độ không xuất hiện, và <strong>khối rỗng ẩn hoàn toàn</strong>.
+            Ngày yên tĩnh chỉ còn 2–3 khối, đó là dấu hiệu tốt chứ không phải màn hình lỗi.</div>
+        </div>
+
+        <!-- Column order on desktop is left 1-2-3 then right 4-5-6-7; stacking on a phone
+             yields exactly the fixed priority order 1 → 8. -->
+        <div class="grid grid--2">
+          <div>
+            <!-- 1 -->
+            <section class="group">
+              <button class="group__head" type="button" data-action="toggle-group">
+                <span class="group__dot group__dot--overdue"></span> Cấp 1 chưa xác nhận (1)
+                <span class="group__caret" aria-hidden="true">▾</span>
+              </button>
+              <div class="group__body">
+                <div class="card">
+                  <div style="font-weight:500">Hoàn thành kiểm kê thuốc quý III</div>
+                  <div class="badge-row" style="margin-top:8px">
+                    <span class="badge badge--p2">P2</span>
+                    <span class="text-meta">PGĐ Nguyễn Anh Tuấn · Hạn 30/08 · nhận 2 giờ trước</span>
+                  </div>
+                  <div class="row" style="margin-top:16px">
+                    <button class="btn btn--primary btn--small" type="button"
+                            data-action="toast" data-toast="Đã xác nhận nhận nhiệm vụ NOI-0012">Xác nhận nhận</button>
+                    <button class="btn btn--small btn--secondary" type="button"
+                            data-action="toast" data-toast="Đã gửi câu hỏi tới PGĐ Nguyễn Anh Tuấn" data-toast-kind="info">Hỏi lại</button>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- 2 -->
+            <section class="group">
+              <button class="group__head" type="button" data-action="toggle-group">
+                <span class="group__dot group__dot--today"></span> Chưa chia việc (2)
+                <span class="group__caret" aria-hidden="true">▾</span>
+              </button>
+              <div class="group__body">
+                <div class="card">
+                  <div style="font-weight:500">Kiểm kê thuốc quý III</div>
+                  <div class="badge-row" style="margin-top:8px">
+                    <span class="badge badge--p2">P2</span>
+                    <span class="text-meta">Hạn 30/08 · 0 nhiệm vụ con</span>
+                  </div>
+                  <a class="btn btn--primary btn--block" style="margin-top:16px" href="task-split.html">Chia việc</a>
+                </div>
+                <div class="card">
+                  <div style="font-weight:500">Rà soát quy trình bàn giao ca</div>
+                  <div class="badge-row" style="margin-top:8px">
+                    <span class="badge badge--p2">P2</span>
+                    <span class="text-meta">Hạn 28/08 · 0 nhiệm vụ con</span>
+                  </div>
+                  <a class="btn btn--primary btn--block" style="margin-top:16px" href="task-split.html">Chia việc</a>
+                </div>
+              </div>
+            </section>
+
+            <!-- 3 — above "overdue" on purpose: this one is blocking somebody else -->
+            <section class="group">
+              <button class="group__head" type="button" data-action="toggle-group">
+                <span class="group__dot group__dot--today"></span> Chờ tôi kiểm tra (3)
+                <span class="group__caret" aria-hidden="true">▾</span>
+              </button>
+              <div class="group__body">
+                <div class="card">
+                  <div class="badge-row"><span class="badge badge--p3">P3</span></div>
+                  <div style="margin-top:8px;font-weight:500">Kiểm kê tủ trực A</div>
+                  <div class="text-meta">ĐD Nguyễn Thị A · 📎 HS-2026-08-1142</div>
+                  <div class="row" style="margin-top:16px">
+                    <button class="btn btn--primary btn--small" type="button"
+                            data-action="toast" data-toast="Đã xác nhận đạt">Xác nhận đạt</button>
+                    <button class="btn btn--small btn--danger" type="button"
+                            data-action="toast" data-toast="Đã trả lại kèm lý do" data-toast-kind="error">Trả lại</button>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="badge-row"><span class="badge badge--p3">P3</span></div>
+                  <div style="margin-top:8px;font-weight:500">Đối chiếu thẻ kho tủ B</div>
+                  <div class="text-meta">ĐD Trần Văn B · 📎 HS-2026-08-1150</div>
+                  <div class="row" style="margin-top:16px">
+                    <button class="btn btn--primary btn--small" type="button"
+                            data-action="toast" data-toast="Đã xác nhận đạt">Xác nhận đạt</button>
+                    <button class="btn btn--small btn--danger" type="button"
+                            data-action="toast" data-toast="Đã trả lại kèm lý do" data-toast-kind="error">Trả lại</button>
+                  </div>
+                </div>
+                <p class="text-meta"><a href="tasks.html">xem tất cả →</a></p>
+              </div>
+            </section>
+          </div>
+
+          <div>
+            <!-- 4 -->
+            <section class="group">
+              <button class="group__head" type="button" data-action="toggle-group">
+                <span class="group__dot group__dot--overdue"></span> Quá hạn trong đơn vị (4)
+                <span class="group__caret" aria-hidden="true">▾</span>
+              </button>
+              <div class="group__body">
+                <div class="card">
+                  <div class="badge-row">
+                    <span class="badge badge--p2">P2</span>
+                    <span class="badge badge--overdue">trễ 1 ngày</span>
+                  </div>
+                  <div style="margin-top:8px;font-weight:500">Hoàn thiện hồ sơ bệnh án 12 ca ra viện</div>
+                  <div class="text-meta">ĐD Nguyễn Thị Lan</div>
+                  <div class="row" style="margin-top:16px">
+                    <button class="btn btn--small btn--secondary" type="button"
+                            data-action="open-overlay" data-target="extend-task">Gia hạn</button>
+                    <button class="btn btn--small btn--secondary" type="button"
+                            data-action="toast" data-toast="Mở bảng chọn người thực hiện mới" data-toast-kind="info">Đổi người</button>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="badge-row">
+                    <span class="badge badge--p3">P3</span>
+                    <span class="badge badge--overdue">trễ 3 giờ</span>
+                  </div>
+                  <div style="margin-top:8px;font-weight:500">Đối chiếu thẻ kho</div>
+                  <div class="text-meta">YS Phạm Văn D</div>
+                  <div class="row" style="margin-top:16px">
+                    <button class="btn btn--small btn--secondary" type="button"
+                            data-action="open-overlay" data-target="extend-task">Gia hạn</button>
+                    <button class="btn btn--small btn--secondary" type="button"
+                            data-action="toast" data-toast="Mở bảng chọn người thực hiện mới" data-toast-kind="info">Đổi người</button>
+                  </div>
+                </div>
+                <p class="text-meta"><a href="tasks.html">xem tất cả →</a></p>
+              </div>
+            </section>
+
+            <!-- 5 -->
+            <section class="group">
+              <button class="group__head" type="button" data-action="toggle-group">
+                <span class="group__dot group__dot--soon"></span> Chưa ai xác nhận nhận (3)
+                <span class="group__caret" aria-hidden="true">▾</span>
+              </button>
+              <div class="group__body">
+                <div class="card">
+                  <div class="badge-row"><span class="badge badge--p3">P3</span></div>
+                  <div style="margin-top:8px;font-weight:500">Bàn giao ca trực</div>
+                  <div class="text-meta">ĐD Hoàng Văn E · đã 6 giờ chưa xác nhận</div>
+                  <div class="row" style="margin-top:16px">
+                    <button class="btn btn--small btn--secondary" type="button"
+                            data-action="toast" data-toast="Đã nhắc ĐD Hoàng Văn E" data-toast-kind="info">Nhắc</button>
+                    <button class="btn btn--small btn--secondary" type="button"
+                            data-action="toast" data-toast="Mở bảng chọn người thực hiện mới" data-toast-kind="info">Đổi người</button>
+                  </div>
+                </div>
+                <p class="text-meta"><a href="tasks.html">xem tất cả →</a></p>
+              </div>
+            </section>
+
+            <!-- 6 -->
+            <section class="group">
+              <button class="group__head" type="button" data-action="toggle-group">
+                <span class="group__dot group__dot--soon"></span> Báo khó khăn chưa xử lý (1)
+                <span class="group__caret" aria-hidden="true">▾</span>
+              </button>
+              <div class="group__body">
+                <div class="card" style="background:var(--warning-bg);border-color:#FED7AA">
+                  <div class="badge-row"><span class="badge badge--p3">P3</span></div>
+                  <div style="margin-top:8px;font-weight:500">Báo cáo sử dụng giường bệnh</div>
+                  <p style="margin:8px 0 0;font-style:italic">“Đang chờ số liệu Khoa Ngoại từ 24/08”</p>
+                  <div class="text-meta">ĐD Nguyễn Thị Lan · 25/08 09:12</div>
+                  <button class="btn btn--primary btn--small" style="margin-top:16px" type="button"
+                          data-action="toast" data-toast="Mở ô trả lời báo khó khăn" data-toast-kind="info">Trả lời</button>
+                </div>
+              </div>
+            </section>
+
+            <!-- 7 -->
+            <section class="group">
+              <button class="group__head" type="button" data-action="toggle-group">
+                <span class="group__dot group__dot--later"></span> Sắp đến hạn hôm nay (3)
+                <span class="group__caret" aria-hidden="true">▾</span>
+              </button>
+              <div class="group__body">
+                <div class="card">
+                  <div class="stack">
+                    <a class="row row--between" href="task-detail.html" style="color:inherit">
+                      <span><strong>14:00</strong> <span class="badge badge--p1">P1</span> Kiểm tra máy thở</span>
+                    </a>
+                    <a class="row row--between" href="task-detail.html" style="color:inherit">
+                      <span><strong>17:00</strong> <span class="badge badge--p3">P3</span> Bàn giao ca trực</span>
+                    </a>
+                    <a class="row row--between" href="task-detail.html" style="color:inherit">
+                      <span><strong>17:00</strong> <span class="badge badge--p3">P3</span> Đối chiếu thuốc tủ trực</span>
+                    </a>
+                  </div>
+                  <p class="text-meta" style="margin:12px 0 0"><a href="tasks.html">xem tất cả →</a></p>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+
+        <!-- 8 — full width, only relevant near the end of a shift -->
+        <section class="group">
+          <button class="group__head" type="button" data-action="toggle-group">
+            <span class="group__dot group__dot--later"></span> Việc tồn cuối ca — ca chiều kết thúc 14:30 (2)
+            <span class="group__caret" aria-hidden="true">▾</span>
+          </button>
+          <div class="group__body">
+            <div class="card" style="border-color:var(--danger);background:var(--danger-bg)">
+              <div class="row row--between">
+                <div style="min-width:0">
+                  <div class="badge-row"><span class="badge badge--p3">P3</span></div>
+                  <div style="margin-top:8px;font-weight:500">Theo dõi người bệnh sau mổ G07</div>
+                  <div class="text-meta" style="color:var(--danger)">ĐD Trần Văn B · 🔴 chưa có người nhận tiếp</div>
+                </div>
+                <a class="btn btn--primary btn--small" href="shift-handover.html">Bàn giao</a>
+              </div>
+            </div>
+            <div class="card">
+              <div class="row row--between">
+                <div style="min-width:0">
+                  <div class="badge-row"><span class="badge badge--p3">P3</span></div>
+                  <div style="margin-top:8px;font-weight:500">Chuẩn bị hồ sơ ra viện P305</div>
+                  <div class="text-meta">ĐD Nguyễn Thị Lan → đã bàn giao cho ĐD Hoàng Văn E</div>
+                </div>
+                <span class="badge badge--done">Đã bàn giao</span>
+              </div>
+            </div>
+            <p class="text-meta"><a href="shift-handover.html">Mở màn hình việc tồn cuối ca →</a></p>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+  <div data-shell="bottomnav"></div>
+</div>
+
+<div class="overlay" id="extend-task">
+  <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="extend-title">
+    <div class="dialog__head">
+      <h2 class="dialog__title" id="extend-title">Gia hạn nhiệm vụ</h2>
+      <button class="icon-btn" type="button" data-action="close-overlay" aria-label="Đóng">✕</button>
+    </div>
+    <div class="dialog__body">
+      <!-- The original deadline is kept forever, the extension only moves the current one -->
+      <p class="text-meta">Hạn gốc <strong>23/08/2026 17:00</strong> không thay đổi — hệ thống chỉ ghi thêm hạn mới.</p>
+      <div class="field">
+        <label class="field__label" for="extend-to">Hạn mới <span class="field__required">*</span></label>
+        <input class="input" id="extend-to" type="datetime-local" value="2026-08-27T17:00">
+      </div>
+      <div class="field" style="margin-bottom:0">
+        <label class="field__label" for="extend-reason">Lý do gia hạn <span class="field__required">*</span></label>
+        <textarea class="textarea" id="extend-reason" placeholder="Ví dụ: chờ số liệu Khoa Ngoại"></textarea>
+      </div>
+    </div>
+    <div class="dialog__foot">
+      <button class="btn btn--quiet" type="button" data-action="close-overlay">Huỷ</button>
+      <button class="btn btn--primary" type="button" data-action="demo-submit"
+              data-busy-label="Đang lưu…" data-toast="Đã gia hạn tới 27/08 17:00">Gia hạn</button>
+    </div>
+  </div>
+</div>
+
+<script src="assets/app.js"></script>
+</body>
+</html>

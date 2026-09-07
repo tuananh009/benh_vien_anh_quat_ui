@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kích hoạt tài khoản · Trung tâm điều hành số Bệnh viện Anh Quất</title>
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body>
+<main class="auth">
+  <div class="auth__card">
+    <svg class="auth__logo" viewBox="0 0 80 80" aria-hidden="true">
+      <rect width="80" height="80" rx="20" fill="#ED3E0F"/>
+      <path d="M40 20a10 10 0 0 1 10 10v6h4a4 4 0 0 1 4 4v18a4 4 0 0 1-4 4H26a4 4 0 0 1-4-4V40a4 4 0 0 1 4-4h4v-6a10 10 0 0 1 10-10zm0 6a4 4 0 0 0-4 4v6h8v-6a4 4 0 0 0-4-4z" fill="#fff"/>
+    </svg>
+
+    <div class="auth__brand">
+      <div class="auth__brand-name">Kích hoạt tài khoản</div>
+      <p class="text-meta" style="margin-top:8px">Xin chào chị Nguyễn Thị Lan<br>Tên đăng nhập: <strong>nguyenthilan</strong></p>
+    </div>
+
+    <form onsubmit="return false">
+      <div class="field">
+        <label class="field__label" for="new-password">Đặt mật khẩu</label>
+        <div class="input-with-affix">
+          <input class="input" id="new-password" type="password" autocomplete="new-password" autofocus>
+          <button class="input-affix" type="button" data-action="toggle-password"
+                  data-target="new-password" aria-label="Hiện mật khẩu">👁</button>
+        </div>
+        <p class="field__hint">Tối thiểu 8 ký tự</p>
+      </div>
+
+      <div class="field">
+        <label class="field__label" for="confirm-password">Nhập lại mật khẩu</label>
+        <input class="input" id="confirm-password" type="password" autocomplete="new-password">
+      </div>
+
+      <button class="btn btn--primary btn--large btn--block" type="submit"
+              data-action="demo-submit" data-busy-label="Đang đặt mật khẩu…"
+              data-next="my-tasks.html" data-toast="Đã kích hoạt tài khoản">Đặt mật khẩu và tiếp tục</button>
+    </form>
+
+    <p class="field__hint" style="text-align:center;margin-top:16px">
+      Tối thiểu 8 ký tự · không cần ký tự đặc biệt hay chữ hoa
+    </p>
+  </div>
+</main>
+<script src="assets/app.js"></script>
+</body>
+</html>

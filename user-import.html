@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nhập tài khoản từ Excel · Trung tâm điều hành số Bệnh viện Anh Quất</title>
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body data-screen="user-import" data-role="admin" data-unread="3">
+<div class="app">
+  <div data-shell="topbar"></div>
+  <div class="shell">
+    <div data-shell="sidebar"></div>
+    <main class="main">
+      <div class="page">
+
+        <div class="desktop-required">
+          <div class="state">
+            <div class="state__icon">💻</div>
+            <div class="state__title">Màn hình này cần máy tính</div>
+            <p class="state__text">Nhập hàng loạt cần đối chiếu bảng nhiều cột. Vui lòng mở trên máy tính.</p>
+            <a class="btn btn--secondary" href="my-tasks.html">Về Việc của tôi</a>
+          </div>
+        </div>
+
+        <div>
+          <a class="text-meta" href="index.html">← Người dùng</a>
+          <div class="page__head" style="margin-top:16px">
+            <div class="page__head-text">
+              <h1 class="page-title">Nhập tài khoản hàng loạt từ Excel</h1>
+            </div>
+          </div>
+
+          <div class="stepper" data-tabs="import">
+            <button class="stepper__step is-done" type="button" data-action="tab" data-tab="template">
+              <span class="stepper__num">1</span> Tải tệp mẫu</button>
+            <button class="stepper__step is-done" type="button" data-action="tab" data-tab="upload">
+              <span class="stepper__num">2</span> Tải lên</button>
+            <button class="stepper__step is-active" type="button" data-action="tab" data-tab="preview">
+              <span class="stepper__num">3</span> Xem trước</button>
+            <button class="stepper__step" type="button" data-action="tab" data-tab="result">
+              <span class="stepper__num">4</span> Kết quả</button>
+          </div>
+
+          <!-- ---------- Bước 1 ---------- -->
+          <div class="tab-panel" data-tab-panel="import" data-tab-name="template" hidden>
+            <div class="card">
+              <div class="state">
+                <div class="state__icon">📄</div>
+                <div class="state__title">Tải tệp mẫu Excel</div>
+                <p class="state__text">Tệp mẫu có sẵn các cột: Mã nhân viên · Họ và tên · Cơ sở · Đơn vị ·
+                  Chức danh · Người quản lý (mã NV) · Email · Số điện thoại · Vai trò.</p>
+                <div class="row" style="justify-content:center">
+                  <button class="btn btn--secondary" type="button"
+                          data-action="toast" data-toast="Đang tải tệp mẫu MauNhapNhanSu.xlsx" data-toast-kind="info">Tải tệp mẫu (.xlsx)</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ---------- Bước 2 ---------- -->
+          <div class="tab-panel" data-tab-panel="import" data-tab-name="upload" hidden>
+            <div class="card">
+              <div class="state">
+                <div class="state__icon">📤</div>
+                <div class="state__title">Chọn tệp Excel đã điền</div>
+                <p class="state__text">Chấp nhận .xlsx, tối đa 5 MB, tối đa 500 dòng một lần nhập.</p>
+                <div class="field" style="max-width:420px;margin:0 auto">
+                  <label class="sr-only" for="import-file">Tệp Excel</label>
+                  <input class="input" id="import-file" type="file" accept=".xlsx">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ---------- Bước 3 — the important one ---------- -->
+          <div class="tab-panel" data-tab-panel="import" data-tab-name="preview">
+            <div class="row" style="margin-bottom:16px">
+              <span class="badge badge--done">✅ 102 dòng hợp lệ</span>
+              <span class="badge badge--rejected">❌ 3 dòng lỗi</span>
+              <span class="text-meta">Tệp: DanhSachNhanSu_T8.xlsx · 105 dòng</span>
+            </div>
+
+            <div class="table-wrap">
+              <table class="table table-as-cards">
+                <thead>
+                  <tr><th>Dòng</th><th>Mã NV</th><th>Họ tên</th><th>Đơn vị</th><th>Chức danh</th><th>Trạng thái</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td data-label="Dòng">12</td>
+                    <td data-label="Mã NV">AQ-CS2-012</td>
+                    <td data-label="Họ tên">Ngô Thị Hiền</td>
+                    <td data-label="Đơn vị" style="color:var(--danger)">
+                      ❌ Nhà thuóc<br><span class="text-meta">Ý anh/chị là “Nhà thuốc”?</span>
+                    </td>
+                    <td data-label="Chức danh">Dược sĩ nhà thuốc</td>
+                    <td data-label="Trạng thái"><span class="badge badge--rejected">Bỏ qua</span></td>
+                  </tr>
+                  <tr>
+                    <td data-label="Dòng">47</td>
+                    <td data-label="Mã NV">AQ-CS2-047</td>
+                    <td data-label="Họ tên">Trần Văn B</td>
+                    <td data-label="Đơn vị">Khoa Nội</td>
+                    <td data-label="Chức danh" style="color:var(--danger)">
+                      ❌ Bác sỹ<br><span class="text-meta">Ý anh/chị là “Bác sĩ”?</span>
+                    </td>
+                    <td data-label="Trạng thái"><span class="badge badge--rejected">Bỏ qua</span></td>
+                  </tr>
+                  <tr>
+                    <td data-label="Dòng">88</td>
+                    <td data-label="Mã NV" style="color:var(--danger)">
+                      ❌ AQ-CS2-012<br><span class="text-meta">Mã trùng dòng 12</span>
+                    </td>
+                    <td data-label="Họ tên">Lê Thị C</td>
+                    <td data-label="Đơn vị">Khoa Khám bệnh</td>
+                    <td data-label="Chức danh">Điều dưỡng</td>
+                    <td data-label="Trạng thái"><span class="badge badge--rejected">Bỏ qua</span></td>
+                  </tr>
+                  <tr>
+                    <td data-label="Dòng">89</td>
+                    <td data-label="Mã NV">AQ-CS2-089</td>
+                    <td data-label="Họ tên">Vũ Minh Đức</td>
+                    <td data-label="Đơn vị">Khoa Ngoại</td>
+                    <td data-label="Chức danh">Bác sĩ</td>
+                    <td data-label="Trạng thái"><span class="badge badge--done">Sẽ tạo</span></td>
+                  </tr>
+                  <tr>
+                    <td data-label="Dòng">90</td>
+                    <td data-label="Mã NV">AQ-CS2-090</td>
+                    <td data-label="Họ tên">Hoàng Thị Ừng</td>
+                    <td data-label="Đơn vị">Khoa Nội</td>
+                    <td data-label="Chức danh">Điều dưỡng</td>
+                    <td data-label="Trạng thái">
+                      <span class="badge badge--done">Sẽ tạo</span>
+                      <span class="badge badge--pending-review">Email sai, bỏ qua email</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p class="text-meta" style="margin-top:12px">Toàn bộ lỗi được hiện cùng lúc, không dừng ở lỗi đầu tiên.</p>
+
+            <div class="row" style="justify-content:flex-end;margin-top:24px">
+              <a class="btn btn--quiet" href="index.html">Huỷ</a>
+              <button class="btn btn--primary btn--large" type="button" data-action="demo-submit"
+                      data-busy-label="Đang tạo tài khoản…"
+                      data-toast="Đã tạo 102 tài khoản và gửi link kích hoạt">Tạo 102 dòng hợp lệ, bỏ qua 3 dòng lỗi</button>
+            </div>
+          </div>
+
+          <!-- ---------- Bước 4 ---------- -->
+          <div class="tab-panel" data-tab-panel="import" data-tab-name="result" hidden>
+            <div class="card">
+              <div class="state">
+                <div class="state__icon">✅</div>
+                <div class="state__title">Đã tạo 102 tài khoản</div>
+                <p class="state__text">
+                  98 người đã nhận link kích hoạt qua Zalo · 3 người qua email ·
+                  1 người cần đọc mã kích hoạt trực tiếp.
+                </p>
+                <div class="row" style="justify-content:center">
+                  <button class="btn btn--secondary" type="button"
+                          data-action="toast" data-toast="Đang tải KetQuaNhapNhanSu.xlsx" data-toast-kind="info">Tải tệp kết quả (.xlsx)</button>
+                  <a class="btn btn--primary" href="index.html">Về danh sách người dùng</a>
+                </div>
+                <p class="text-meta" style="margin-top:24px">
+                  Tệp kết quả gồm mã NV · họ tên · tên đăng nhập · trạng thái gửi link · mã kích hoạt
+                  (chỉ với người không có Zalo và email). Tệp <strong>không chứa mật khẩu</strong>.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+  <div data-shell="bottomnav"></div>
+</div>
+<script src="assets/app.js"></script>
+</body>
+</html>

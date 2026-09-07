@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nhiệm vụ · Trung tâm điều hành số Bệnh viện Anh Quất</title>
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body data-screen="tasks" data-role="manager" data-unread="3">
+<div class="app">
+  <div data-shell="topbar"></div>
+  <div class="shell">
+    <div data-shell="sidebar"></div>
+    <main class="main">
+      <div class="page">
+
+        <div class="page__head">
+          <div class="page__head-text">
+            <h1 class="page-title">Nhiệm vụ</h1>
+            <p class="text-meta">5 kết quả</p>
+          </div>
+          <div class="page__actions">
+            <button class="btn btn--secondary" type="button"
+                    data-action="demo-submit" data-busy-label="Đang xuất…"
+                    data-toast="Đã xuất Excel theo bộ lọc đang áp dụng">Xuất Excel</button>
+            <a class="btn btn--primary" href="task-create.html">+ Tạo mới</a>
+          </div>
+        </div>
+
+        <div class="toolbar">
+          <div class="toolbar__search">
+            <label class="sr-only" for="task-search">Tìm nhiệm vụ</label>
+            <input class="input" id="task-search" type="search"
+                   placeholder="Tìm mã, nội dung, người thực hiện (không dấu cũng được)">
+          </div>
+          <button class="btn btn--secondary" type="button"
+                  data-action="open-overlay" data-target="task-filters">Lọc (2)</button>
+          <span class="chip chip--brand">Đơn vị: Khoa Nội ✕</span>
+          <span class="chip chip--brand">Quá hạn ✕</span>
+          <button class="btn btn--quiet btn--small" type="button"
+                  data-action="toast" data-toast="Đã xoá bộ lọc" data-toast-kind="info">Xoá tất cả</button>
+        </div>
+
+        <!-- Switching tab keeps the filters and the search term (A-TASK-05) -->
+        <div class="tabs" data-tabs="views">
+          <button class="tab is-active" type="button" data-action="tab" data-tab="list">Danh sách</button>
+          <button class="tab" type="button" data-action="tab" data-tab="deadline">Theo hạn</button>
+          <button class="tab" type="button" data-action="tab" data-tab="unit">Theo đơn vị</button>
+          <button class="tab" type="button" data-action="tab" data-tab="progress">Bảng tiến độ</button>
+          <button class="tab" type="button" data-action="tab" data-tab="calendar">Lịch tháng</button>
+        </div>
+
+        <!-- ---------- Danh sách ---------- -->
+        <div class="tab-panel" data-tab-panel="views" data-tab-name="list">
+          <div class="table-wrap">
+            <table class="table table-as-cards">
+              <thead>
+                <tr>
+                  <th>Mã ▾</th><th>Nội dung</th><th>Người thực hiện</th>
+                  <th>Đơn vị</th><th>Mức độ</th><th>Hạn ▾</th><th>Trạng thái</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td data-label="Mã"><a href="task-detail.html">NOI-0142</a></td>
+                  <td data-label="Nội dung">Hoàn thiện hồ sơ bệnh án 12 ca ra viện</td>
+                  <td data-label="Người thực hiện">ĐD Nguyễn Thị Lan</td>
+                  <td data-label="Đơn vị">Khoa Nội</td>
+                  <td data-label="Mức độ"><span class="badge badge--p2">P2</span></td>
+                  <td data-label="Hạn">23/08 17:00</td>
+                  <td data-label="Trạng thái">
+                    <span class="badge badge--in-progress">Đang làm</span><br>
+                    <span class="badge badge--overdue" style="margin-top:4px">QUÁ HẠN 1 ngày</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td data-label="Mã"><a href="task-detail.html">HSCC-0091</a></td>
+                  <td data-label="Nội dung">Kiểm tra máy thở buồng 4</td>
+                  <td data-label="Người thực hiện">ĐD Nguyễn Thị Lan</td>
+                  <td data-label="Đơn vị">Khoa Nội</td>
+                  <td data-label="Mức độ"><span class="badge badge--p1">P1</span></td>
+                  <td data-label="Hạn">24/08 10:00</td>
+                  <td data-label="Trạng thái"><span class="badge badge--not-accepted">Chưa nhận</span></td>
+                </tr>
+                <tr>
+                  <td data-label="Mã"><a href="task-detail.html">KB-0087</a></td>
+                  <td data-label="Nội dung">Chuẩn bị phòng khám sáng thứ Hai</td>
+                  <td data-label="Người thực hiện">ĐD Trần Văn B</td>
+                  <td data-label="Đơn vị">Khoa Khám bệnh</td>
+                  <td data-label="Mức độ"><span class="badge badge--p3">P3</span></td>
+                  <td data-label="Hạn">25/08 07:00</td>
+                  <td data-label="Trạng thái"><span class="badge badge--in-progress">Đang làm</span></td>
+                </tr>
+                <tr>
+                  <td data-label="Mã"><a href="task-detail.html">NOI-0150</a></td>
+                  <td data-label="Nội dung">Bàn giao ca trực</td>
+                  <td data-label="Người thực hiện">ĐD Phạm Văn D</td>
+                  <td data-label="Đơn vị">Khoa Nội</td>
+                  <td data-label="Mức độ"><span class="badge badge--p3">P3</span></td>
+                  <td data-label="Hạn">24/08 17:00</td>
+                  <td data-label="Trạng thái"><span class="badge badge--pending-review">Chờ kiểm tra</span></td>
+                </tr>
+                <tr>
+                  <td data-label="Mã"><a href="task-detail.html">TCHC-0022</a></td>
+                  <td data-label="Nội dung">Rà soát hồ sơ nhân sự quý III</td>
+                  <td data-label="Người thực hiện">CV Lê Thị C</td>
+                  <td data-label="Đơn vị">P. Tổ chức – HC</td>
+                  <td data-label="Mức độ"><span class="badge badge--p4">P4</span></td>
+                  <td data-label="Hạn">30/08 17:00</td>
+                  <td data-label="Trạng thái"><span class="badge badge--done">Hoàn thành</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="pagination">
+            <span>50 dòng/trang</span>
+            <button type="button" aria-label="Trang trước">‹</button>
+            <button type="button" class="is-active">1</button>
+            <button type="button">2</button>
+            <button type="button">3</button>
+            <button type="button" aria-label="Trang sau">›</button>
+          </div>
+        </div>
+
+        <!-- ---------- Theo hạn ---------- -->
+        <div class="tab-panel" data-tab-panel="views" data-tab-name="deadline" hidden>
+          <section class="group">
+            <button class="group__head" type="button" data-action="toggle-group">
+              <span class="group__dot group__dot--overdue"></span> Quá hạn (1)
+              <span class="group__caret" aria-hidden="true">▾</span>
+            </button>
+            <div class="group__body">
+              <a class="task-card task-card--compact" href="task-detail.html">
+                <div class="badge-row">
+                  <span class="badge badge--p2">P2</span>
+                  <span class="badge badge--overdue">QUÁ HẠN 1 ngày</span>
+                </div>
+                <h3 class="task-card__title">NOI-0142 · Hoàn thiện hồ sơ bệnh án 12 ca ra viện</h3>
+                <div class="task-card__meta">ĐD Nguyễn Thị Lan · Hạn 23/08 17:00</div>
+              </a>
+            </div>
+          </section>
+
+          <section class="group">
+            <button class="group__head" type="button" data-action="toggle-group">
+              <span class="group__dot group__dot--today"></span> Hôm nay (2)
+              <span class="group__caret" aria-hidden="true">▾</span>
+            </button>
+            <div class="group__body">
+              <a class="task-card task-card--compact" href="task-detail.html">
+                <div class="badge-row">
+                  <span class="badge badge--p1">P1</span>
+                  <span class="badge badge--not-accepted">Chưa nhận</span>
+                </div>
+                <h3 class="task-card__title">HSCC-0091 · Kiểm tra máy thở buồng 4</h3>
+                <div class="task-card__meta">ĐD Nguyễn Thị Lan · Hạn 24/08 10:00</div>
+              </a>
+              <a class="task-card task-card--compact" href="task-detail.html">
+                <div class="badge-row">
+                  <span class="badge badge--p3">P3</span>
+                  <span class="badge badge--pending-review">Chờ kiểm tra</span>
+                </div>
+                <h3 class="task-card__title">NOI-0150 · Bàn giao ca trực</h3>
+                <div class="task-card__meta">ĐD Phạm Văn D · Hạn 24/08 17:00</div>
+              </a>
+            </div>
+          </section>
+
+          <section class="group">
+            <button class="group__head" type="button" data-action="toggle-group">
+              <span class="group__dot group__dot--soon"></span> 3 ngày tới (1)
+              <span class="group__caret" aria-hidden="true">▾</span>
+            </button>
+            <div class="group__body">
+              <a class="task-card task-card--compact" href="task-detail.html">
+                <div class="badge-row">
+                  <span class="badge badge--p3">P3</span>
+                  <span class="badge badge--in-progress">Đang làm</span>
+                </div>
+                <h3 class="task-card__title">KB-0087 · Chuẩn bị phòng khám sáng thứ Hai</h3>
+                <div class="task-card__meta">ĐD Trần Văn B · Hạn 25/08 07:00</div>
+              </a>
+            </div>
+          </section>
+        </div>
+
+        <!-- ---------- Theo đơn vị ---------- -->
+        <div class="tab-panel" data-tab-panel="views" data-tab-name="unit" hidden>
+          <div class="grid grid--3">
+            <div class="card">
+              <h3 class="card__title">Khoa Nội</h3>
+              <p class="text-meta">3 nhiệm vụ · 1 quá hạn</p>
+              <div class="stack" style="margin-top:12px">
+                <div class="row row--between"><span>Đang làm</span><strong>1</strong></div>
+                <div class="row row--between"><span>Chưa nhận</span><strong>1</strong></div>
+                <div class="row row--between"><span>Chờ kiểm tra</span><strong>1</strong></div>
+              </div>
+            </div>
+            <div class="card">
+              <h3 class="card__title">Khoa Khám bệnh</h3>
+              <p class="text-meta">1 nhiệm vụ · 0 quá hạn</p>
+              <div class="stack" style="margin-top:12px">
+                <div class="row row--between"><span>Đang làm</span><strong>1</strong></div>
+              </div>
+            </div>
+            <div class="card">
+              <h3 class="card__title">P. Tổ chức – Hành chính</h3>
+              <p class="text-meta">1 nhiệm vụ · 0 quá hạn</p>
+              <div class="stack" style="margin-top:12px">
+                <div class="row row--between"><span>Hoàn thành</span><strong>1</strong></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ---------- Bảng tiến độ ---------- -->
+        <div class="tab-panel" data-tab-panel="views" data-tab-name="progress" hidden>
+          <div class="grid grid--4">
+            <div class="card">
+              <h3 class="card__title">Chưa nhận (1)</h3>
+              <a class="task-card task-card--compact" href="task-detail.html" style="margin-top:12px">
+                <div class="badge-row"><span class="badge badge--p1">P1</span></div>
+                <h4 class="task-card__title">Kiểm tra máy thở buồng 4</h4>
+              </a>
+            </div>
+            <div class="card">
+              <h3 class="card__title">Đang làm (2)</h3>
+              <a class="task-card task-card--compact" href="task-detail.html" style="margin-top:12px">
+                <div class="badge-row">
+                  <span class="badge badge--p2">P2</span>
+                  <span class="badge badge--overdue">QUÁ HẠN</span>
+                </div>
+                <h4 class="task-card__title">Hoàn thiện hồ sơ bệnh án 12 ca ra viện</h4>
+              </a>
+              <a class="task-card task-card--compact" href="task-detail.html" style="margin-top:12px">
+                <div class="badge-row"><span class="badge badge--p3">P3</span></div>
+                <h4 class="task-card__title">Chuẩn bị phòng khám sáng thứ Hai</h4>
+              </a>
+            </div>
+            <div class="card">
+              <h3 class="card__title">Chờ kiểm tra (1)</h3>
+              <a class="task-card task-card--compact" href="task-detail.html" style="margin-top:12px">
+                <div class="badge-row"><span class="badge badge--p3">P3</span></div>
+                <h4 class="task-card__title">Bàn giao ca trực</h4>
+              </a>
+            </div>
+            <div class="card">
+              <h3 class="card__title">Hoàn thành (1)</h3>
+              <a class="task-card task-card--compact" href="task-detail.html" style="margin-top:12px">
+                <div class="badge-row"><span class="badge badge--p4">P4</span></div>
+                <h4 class="task-card__title">Rà soát hồ sơ nhân sự quý III</h4>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- ---------- Lịch tháng ---------- -->
+        <div class="tab-panel" data-tab-panel="views" data-tab-name="calendar" hidden>
+          <div class="card">
+            <div class="row row--between" style="margin-bottom:16px">
+              <button class="btn btn--small" type="button" aria-label="Tháng trước">‹</button>
+              <strong>Tháng 08/2026</strong>
+              <button class="btn btn--small" type="button" aria-label="Tháng sau">›</button>
+            </div>
+            <div class="table-wrap">
+              <table class="table">
+                <thead>
+                  <tr><th>T2</th><th>T3</th><th>T4</th><th>T5</th><th>T6</th><th>T7</th><th>CN</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>17</td><td>18</td><td>19</td><td>20</td><td>21</td><td>22</td>
+                    <td>23<br><span class="badge badge--overdue">1</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>24</strong><br><span class="badge badge--p1">1</span> <span class="badge badge--p3">1</span></td>
+                    <td>25<br><span class="badge badge--p3">1</span></td>
+                    <td>26</td><td>27</td><td>28</td><td>29</td>
+                    <td>30<br><span class="badge badge--p4">1</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="text-meta" style="margin-top:12px">Số trong ô là số nhiệm vụ đến hạn ngày đó, tô theo mức ưu tiên cao nhất.</p>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+  <div data-shell="bottomnav"></div>
+</div>
+
+<!-- Filter panel: a drop-down bar on desktop, a bottom sheet on a phone -->
+<div class="overlay" id="task-filters">
+  <div class="panel" role="dialog" aria-modal="true" aria-labelledby="filters-title">
+    <div class="panel__head">
+      <h2 class="dialog__title" id="filters-title">Lọc nhiệm vụ</h2>
+      <button class="icon-btn" type="button" data-action="close-overlay" aria-label="Đóng">✕</button>
+    </div>
+    <div class="panel__body">
+      <div class="field">
+        <label class="field__label" for="filter-unit">Đơn vị</label>
+        <select class="select" id="filter-unit">
+          <option>Tất cả đơn vị</option>
+          <option selected>Khoa Nội – Nhi – Da liễu – HSCC</option>
+          <option>Khoa Khám bệnh</option>
+          <option>Khoa Ngoại – Sản – PT – GMHS</option>
+          <option>Phòng Tổ chức – Hành chính</option>
+        </select>
+      </div>
+      <div class="field">
+        <label class="field__label" for="filter-status">Trạng thái</label>
+        <select class="select" id="filter-status">
+          <option>Tất cả trạng thái</option>
+          <option>Chưa nhận</option>
+          <option>Đã nhận</option>
+          <option>Đang làm</option>
+          <option>Chờ kiểm tra</option>
+          <option>Hoàn thành</option>
+          <option>Không đạt</option>
+        </select>
+      </div>
+      <div class="field">
+        <label class="field__label" for="filter-priority">Mức độ</label>
+        <select class="select" id="filter-priority">
+          <option>Tất cả mức độ</option>
+          <option>P1 – Khẩn</option>
+          <option>P2 – Cao</option>
+          <option>P3 – Bình thường</option>
+          <option>P4 – Thấp</option>
+        </select>
+      </div>
+      <label class="checkbox"><input type="checkbox" checked><span>Chỉ việc quá hạn</span></label>
+      <div class="field" style="margin-top:16px">
+        <label class="field__label" for="filter-from">Hạn từ ngày</label>
+        <input class="input" id="filter-from" type="date" value="2026-08-01">
+      </div>
+      <div class="field">
+        <label class="field__label" for="filter-to">Đến ngày</label>
+        <input class="input" id="filter-to" type="date" value="2026-08-31">
+      </div>
+    </div>
+    <div class="panel__foot">
+      <button class="btn btn--quiet" type="button" data-action="close-overlay">Xoá tất cả</button>
+      <button class="btn btn--primary" type="button" data-action="close-overlay">Áp dụng</button>
+    </div>
+  </div>
+</div>
+
+<script src="assets/app.js"></script>
+</body>
+</html>

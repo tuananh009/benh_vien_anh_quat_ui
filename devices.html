@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thiết bị của tôi · Trung tâm điều hành số Bệnh viện Anh Quất</title>
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body data-screen="devices" data-role="cbnv" data-unread="3">
+<div class="app">
+  <div data-shell="topbar"></div>
+  <div class="shell">
+    <div data-shell="sidebar"></div>
+    <main class="main">
+      <div class="page" style="max-width:720px">
+
+        <div class="page__head">
+          <div class="page__head-text">
+            <a class="text-meta" href="my-tasks.html">← Cài đặt</a>
+            <h1 class="page-title">Thiết bị của tôi</h1>
+            <p class="text-meta">Các thiết bị đã xác thực, không hỏi lại mã trong 30 ngày.
+              Thu hồi thiết bị lạ nếu không phải anh/chị đăng nhập.</p>
+          </div>
+        </div>
+
+        <div class="stack">
+          <div class="card">
+            <div class="row row--between">
+              <div>
+                <div style="font-weight:500">📱 iPhone · Safari</div>
+                <div class="text-meta">Bắc Ninh · 2 giờ trước</div>
+                <div class="text-meta" style="color:var(--brand-blue-dark)">Thiết bị này</div>
+              </div>
+              <button class="btn btn--small" type="button" disabled>Thiết bị hiện tại</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="row row--between">
+              <div>
+                <div style="font-weight:500">💻 Windows · Chrome</div>
+                <div class="text-meta">Bắc Ninh · 3 ngày trước</div>
+              </div>
+              <button class="btn btn--small btn--danger" type="button"
+                      data-action="toast" data-toast="Đã thu hồi thiết bị Windows · Chrome">Thu hồi</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="row row--between">
+              <div>
+                <div style="font-weight:500">📱 Android · Chrome</div>
+                <div class="text-meta">Hà Nội · 12 ngày trước</div>
+              </div>
+              <button class="btn btn--small btn--danger" type="button"
+                      data-action="toast" data-toast="Đã thu hồi thiết bị Android · Chrome">Thu hồi</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="stack" style="margin-top:24px">
+          <a class="btn btn--secondary" href="change-password.html">Đổi mật khẩu</a>
+          <a class="btn btn--quiet" href="login.html">Đăng xuất</a>
+        </div>
+
+      </div>
+    </main>
+  </div>
+  <div data-shell="bottomnav"></div>
+</div>
+<script src="assets/app.js"></script>
+</body>
+</html>

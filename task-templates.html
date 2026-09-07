@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Danh mục công việc chuẩn · Bệnh viện Anh Quất</title>
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body data-screen="task-templates" data-role="admin" data-unread="3">
+<div class="app">
+  <div data-shell="topbar"></div>
+  <div class="shell">
+    <div data-shell="sidebar"></div>
+    <main class="main">
+      <div class="page">
+
+        <div class="desktop-required">
+          <div class="state">
+            <div class="state__icon">💻</div>
+            <div class="state__title">Màn hình này cần máy tính</div>
+            <p class="state__text">Danh mục công việc chuẩn có bảng nhiều cột. Vui lòng mở trên máy tính.</p>
+            <a class="btn btn--secondary" href="my-tasks.html">Về Việc của tôi</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="page__head">
+            <div class="page__head-text">
+              <h1 class="page-title">Danh mục công việc chuẩn</h1>
+              <p class="text-meta">Không có danh mục thì đầu mối phải gõ lại nội dung mỗi ngày — và họ sẽ bỏ dùng phần mềm.</p>
+            </div>
+            <div class="page__actions">
+              <a class="btn btn--secondary" href="user-import.html">Nhập Excel</a>
+              <button class="btn btn--primary" type="button"
+                      data-action="open-overlay" data-target="template-form">+ Thêm mẫu</button>
+            </div>
+          </div>
+
+          <div class="toolbar">
+            <div class="toolbar__search">
+              <label class="sr-only" for="template-search">Tìm mẫu công việc</label>
+              <input class="input" id="template-search" type="search"
+                     placeholder="Tìm mã hoặc tên mẫu (không dấu cũng được)">
+            </div>
+            <label class="sr-only" for="template-unit">Lọc theo đơn vị</label>
+            <select class="select" id="template-unit" style="width:auto;min-width:200px">
+              <option>Tất cả đơn vị</option>
+              <option>Dùng chung mọi đơn vị</option>
+              <option>Khoa Nội – Nhi – Da liễu – HSCC</option>
+              <option>Khoa Khám bệnh</option>
+            </select>
+            <span class="toolbar__count">4 / 86 mẫu</span>
+          </div>
+
+          <div class="table-wrap">
+            <table class="table table-as-cards">
+              <thead>
+                <tr>
+                  <th>Mã</th><th>Tên mẫu</th><th>Đơn vị</th><th>Chức danh</th>
+                  <th>Tần suất</th><th>SLA (giờ)</th><th>Mức độ</th>
+                  <th>Đang dùng bởi</th><th>Trạng thái</th><th>Thao tác</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td data-label="Mã">NOI-KKTT</td>
+                  <td data-label="Tên mẫu">Kiểm kê thuốc theo tủ trực</td>
+                  <td data-label="Đơn vị">Khoa Nội</td>
+                  <td data-label="Chức danh">Điều dưỡng</td>
+                  <td data-label="Tần suất">Hằng quý</td>
+                  <td data-label="SLA (giờ)" class="table__num">8</td>
+                  <td data-label="Mức độ"><span class="badge badge--p3">P3</span></td>
+                  <td data-label="Đang dùng bởi" class="table__num">42 nhiệm vụ</td>
+                  <td data-label="Trạng thái"><span class="badge badge--done">Đang dùng</span></td>
+                  <td data-label="Thao tác">
+                    <button class="btn btn--small btn--secondary" type="button"
+                            data-action="open-overlay" data-target="template-form">Sửa</button>
+                    <button class="btn btn--small" type="button"
+                            data-action="toast" data-toast="Đã nhân bản mẫu NOI-KKTT" data-toast-kind="info">Nhân bản</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td data-label="Mã">CHUNG-BGCT</td>
+                  <td data-label="Tên mẫu">Bàn giao ca trực</td>
+                  <td data-label="Đơn vị">Dùng chung</td>
+                  <td data-label="Chức danh">Mọi chức danh</td>
+                  <td data-label="Tần suất">Hằng ngày</td>
+                  <td data-label="SLA (giờ)" class="table__num">1</td>
+                  <td data-label="Mức độ"><span class="badge badge--p3">P3</span></td>
+                  <td data-label="Đang dùng bởi" class="table__num">1.284 nhiệm vụ</td>
+                  <td data-label="Trạng thái">
+                    <span class="badge badge--done">Đang dùng</span>
+                    <span class="badge badge--not-accepted">🔒 Đã khoá</span>
+                  </td>
+                  <td data-label="Thao tác">
+                    <button class="btn btn--small btn--secondary" type="button"
+                            data-action="open-overlay" data-target="new-version">Tạo phiên bản mới</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td data-label="Mã">NOI-DCTK</td>
+                  <td data-label="Tên mẫu">Đối chiếu thẻ kho</td>
+                  <td data-label="Đơn vị">Khoa Nội</td>
+                  <td data-label="Chức danh">Y sĩ · Điều dưỡng</td>
+                  <td data-label="Tần suất">Thứ 2 hằng tuần</td>
+                  <td data-label="SLA (giờ)" class="table__num">4</td>
+                  <td data-label="Mức độ"><span class="badge badge--p3">P3</span></td>
+                  <td data-label="Đang dùng bởi" class="table__num">18 nhiệm vụ</td>
+                  <td data-label="Trạng thái"><span class="badge badge--done">Đang dùng</span></td>
+                  <td data-label="Thao tác">
+                    <button class="btn btn--small btn--secondary" type="button"
+                            data-action="open-overlay" data-target="template-form">Sửa</button>
+                    <button class="btn btn--small" type="button"
+                            data-action="toast" data-toast="Đã nhân bản mẫu NOI-DCTK" data-toast-kind="info">Nhân bản</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td data-label="Mã">KB-CBPK</td>
+                  <td data-label="Tên mẫu">Chuẩn bị phòng khám đầu giờ</td>
+                  <td data-label="Đơn vị">Khoa Khám bệnh</td>
+                  <td data-label="Chức danh">Điều dưỡng</td>
+                  <td data-label="Tần suất">Hằng ngày</td>
+                  <td data-label="SLA (giờ)" class="table__num">2</td>
+                  <td data-label="Mức độ"><span class="badge badge--p3">P3</span></td>
+                  <td data-label="Đang dùng bởi" class="table__num">0 nhiệm vụ</td>
+                  <td data-label="Trạng thái"><span class="badge badge--not-accepted">Ngừng dùng</span></td>
+                  <td data-label="Thao tác">
+                    <button class="btn btn--small btn--secondary" type="button"
+                            data-action="open-overlay" data-target="template-form">Sửa</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p class="text-meta" style="margin-top:16px">
+            SLA tính bằng <strong>giờ liên tục</strong>, không phải “N ngày làm việc” — bệnh viện chạy 24/7.
+            Giao lúc 22:00 Chủ Nhật với SLA 4 giờ thì hạn là 02:00 thứ Hai.
+            Sửa mẫu <strong>không ảnh hưởng nhiệm vụ đã tạo</strong>.
+          </p>
+        </div>
+
+      </div>
+    </main>
+  </div>
+  <div data-shell="bottomnav"></div>
+</div>
+
+<div class="overlay" id="template-form">
+  <div class="panel" role="dialog" aria-modal="true" aria-labelledby="template-form-title">
+    <div class="panel__head">
+      <h2 class="dialog__title" id="template-form-title">Sửa mẫu công việc</h2>
+      <button class="icon-btn" type="button" data-action="close-overlay" aria-label="Đóng">✕</button>
+    </div>
+    <div class="panel__body">
+      <div class="field">
+        <label class="field__label" for="tpl-code">Mã <span class="field__required">*</span></label>
+        <input class="input" id="tpl-code" type="text" value="NOI-KKTT">
+        <p class="field__hint">Chỉ nhận A–Z, 0–9, dấu gạch. Không dùng dấu tiếng Việt.</p>
+      </div>
+      <div class="field">
+        <label class="field__label" for="tpl-name">Tên mẫu <span class="field__required">*</span></label>
+        <input class="input" id="tpl-name" type="text" value="Kiểm kê thuốc theo tủ trực">
+      </div>
+      <div class="field">
+        <label class="field__label" for="tpl-output">Nội dung / đầu ra <span class="field__required">*</span></label>
+        <textarea class="textarea" id="tpl-output">Kiểm kê toàn bộ thuốc trong tủ trực được phân công, đối chiếu với thẻ kho, lập biên bản chênh lệch nếu có.</textarea>
+        <p class="field__hint">Động từ + sản phẩm phải đạt.</p>
+      </div>
+      <div class="grid grid--2">
+        <div class="field">
+          <label class="field__label" for="tpl-unit">Đơn vị áp dụng</label>
+          <select class="select" id="tpl-unit">
+            <option>Dùng chung mọi đơn vị</option>
+            <option selected>Khoa Nội – Nhi – Da liễu – HSCC</option>
+            <option>Khoa Khám bệnh</option>
+          </select>
+        </div>
+        <div class="field">
+          <label class="field__label" for="tpl-job">Chức danh áp dụng</label>
+          <select class="select" id="tpl-job">
+            <option>Mọi chức danh</option>
+            <option selected>Điều dưỡng</option>
+            <option>Y sĩ</option>
+          </select>
+        </div>
+      </div>
+      <div class="grid grid--2">
+        <div class="field">
+          <label class="field__label" for="tpl-sla">SLA (giờ) <span class="field__required">*</span></label>
+          <input class="input" id="tpl-sla" type="number" inputmode="numeric" value="8" min="1">
+          <p class="field__hint">Giờ liên tục kể từ lúc giao.</p>
+        </div>
+        <div class="field">
+          <label class="field__label" for="tpl-priority">Mức độ mặc định</label>
+          <select class="select" id="tpl-priority">
+            <option>P1 – Khẩn, xử lý ngay</option>
+            <option>P2 – Cao</option>
+            <option selected>P3 – Bình thường</option>
+            <option>P4 – Thấp</option>
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <label class="field__label" for="tpl-frequency">Tần suất</label>
+        <input class="input" id="tpl-frequency" type="text" value="Hằng quý">
+      </div>
+      <div class="field">
+        <label class="field__label" for="tpl-checklist">Cách làm <span class="text-muted">(3–7 điểm kiểm soát, mỗi dòng một bước)</span></label>
+        <textarea class="textarea" id="tpl-checklist" style="min-height:120px">Đếm thực tế từng loại thuốc trong tủ
+Đối chiếu với thẻ kho và sổ theo dõi
+Kiểm tra hạn dùng, tách thuốc cận hạn
+Lập biên bản chênh lệch nếu có</textarea>
+      </div>
+      <div class="field">
+        <label class="field__label" for="tpl-evidence">Minh chứng yêu cầu</label>
+        <input class="input" id="tpl-evidence" type="text" value="Ảnh biên bản kiểm kê có chữ ký">
+      </div>
+      <div class="field" style="margin-bottom:0">
+        <label class="field__label" for="tpl-criteria">Tiêu chí hoàn thành</label>
+        <input class="input" id="tpl-criteria" type="text" value="Đủ – đúng – đúng hạn – có minh chứng">
+      </div>
+    </div>
+    <div class="panel__foot">
+      <button class="btn btn--quiet" type="button" data-action="close-overlay">Huỷ</button>
+      <button class="btn btn--primary" type="button" data-action="demo-submit"
+              data-busy-label="Đang lưu…" data-toast="Đã lưu mẫu NOI-KKTT">Lưu</button>
+    </div>
+  </div>
+</div>
+
+<div class="overlay" id="new-version">
+  <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="new-version-title">
+    <div class="dialog__head">
+      <h2 class="dialog__title" id="new-version-title">Mẫu đang bị khoá</h2>
+      <button class="icon-btn" type="button" data-action="close-overlay" aria-label="Đóng">✕</button>
+    </div>
+    <div class="dialog__body">
+      <p>Mẫu <strong>CHUNG-BGCT · Bàn giao ca trực</strong> đang được 1.284 nhiệm vụ sử dụng nên
+        không sửa trực tiếp được.</p>
+      <p>Tạo <strong>phiên bản mới</strong> để thay đổi. Phiên bản mới có hiệu lực với nhiệm vụ giao từ
+        thời điểm tạo trở đi; nhiệm vụ đã tạo giữ nguyên nội dung cũ.</p>
+    </div>
+    <div class="dialog__foot">
+      <button class="btn btn--quiet" type="button" data-action="close-overlay">Huỷ</button>
+      <button class="btn btn--primary" type="button" data-action="demo-submit"
+              data-busy-label="Đang tạo…" data-toast="Đã tạo phiên bản 2 của CHUNG-BGCT">Tạo phiên bản mới</button>
+    </div>
+  </div>
+</div>
+
+<script src="assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cơ cấu tổ chức · Trung tâm điều hành số Bệnh viện Anh Quất</title>
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body data-screen="org-units" data-role="admin" data-unread="3">
+<div class="app">
+  <div data-shell="topbar"></div>
+  <div class="shell">
+    <div data-shell="sidebar"></div>
+    <main class="main">
+      <div class="page">
+
+        <div class="desktop-required">
+          <div class="state">
+            <div class="state__icon">💻</div>
+            <div class="state__title">Màn hình này cần máy tính</div>
+            <p class="state__text">Cây đơn vị dùng kéo thả, cần màn hình rộng. Vui lòng mở trên máy tính.</p>
+            <a class="btn btn--secondary" href="my-tasks.html">Về Việc của tôi</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="page__head">
+            <div class="page__head-text">
+              <h1 class="page-title">Cơ cấu tổ chức</h1>
+              <p class="text-meta">Cơ sở 2 · 21 đơn vị · cây 4 cấp</p>
+            </div>
+            <div class="page__actions">
+              <button class="btn btn--primary" type="button"
+                      data-action="toast" data-toast="Mở biểu mẫu thêm đơn vị" data-toast-kind="info">+ Thêm đơn vị</button>
+            </div>
+          </div>
+
+          <div class="tabs" data-tabs="org">
+            <button class="tab is-active" type="button" data-action="tab" data-tab="units">Đơn vị</button>
+            <button class="tab" type="button" data-action="tab" data-tab="jobs">Chức danh</button>
+          </div>
+
+          <div class="tab-panel" data-tab-panel="org" data-tab-name="units">
+            <div class="grid grid--main-aside">
+              <div class="card">
+                <ul class="tree">
+                  <li>
+                    <div class="tree__node"><span class="tree__code">CTY-BGD</span> Ban Giám đốc Công ty</div>
+                    <ul>
+                      <li>
+                        <div class="tree__node"><span class="tree__code">BV-BGD</span> Ban Giám đốc Bệnh viện
+                          <span class="tree__count">2 người</span></div>
+                        <ul>
+                          <li>
+                            <div class="tree__node"><span class="tree__code">KB</span> Khoa Khám bệnh
+                              <span class="tree__count">18 người</span></div>
+                          </li>
+                          <li>
+                            <div class="tree__node is-selected">
+                              <span class="tree__code">NOI</span> Khoa Nội – Nhi – Da liễu – HSCC
+                              <span class="tree__count">14 người</span></div>
+                            <ul>
+                              <li>
+                                <div class="tree__node"><span class="tree__code">NOI-TNT</span> Đơn nguyên Thận nhân tạo
+                                  <span class="tree__count">5 người</span></div>
+                              </li>
+                            </ul>
+                          </li>
+                          <li>
+                            <div class="tree__node"><span class="tree__code">NGOAI</span> Khoa Ngoại – Sản – PT – GMHS
+                              <span class="tree__count">16 người</span></div>
+                          </li>
+                          <li>
+                            <div class="tree__node"><span class="tree__code">TCHC</span> Phòng Tổ chức – Hành chính
+                              <span class="tree__count">2 người</span></div>
+                            <ul>
+                              <li><div class="tree__node"><span class="tree__code">TCHC-BV</span> Bộ phận Bảo vệ
+                                <span class="tree__count">4 người</span></div></li>
+                              <li><div class="tree__node"><span class="tree__code">TCHC-VS</span> Bộ phận Vệ sinh
+                                <span class="tree__count">2 người</span></div></li>
+                              <li><div class="tree__node"><span class="tree__code">TCHC-LX</span> Bộ phận Lái xe
+                                <span class="tree__count">1 người</span></div></li>
+                            </ul>
+                          </li>
+                          <li>
+                            <div class="tree__node"><span class="tree__code">CNTT</span> Phòng Công nghệ thông tin
+                              <span class="tree__count">3 người</span></div>
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+                <p class="text-meta" style="margin-top:16px">Kéo thả để đổi đơn vị cha và thứ tự hiển thị.
+                  Hệ thống chặn tạo vòng lặp trong cây.</p>
+              </div>
+
+              <aside class="card">
+                <h2 class="card__title">Chi tiết đơn vị</h2>
+
+                <div class="field">
+                  <label class="field__label" for="unit-code">Mã <span class="field__required">*</span></label>
+                  <input class="input" id="unit-code" type="text" value="NOI">
+                  <p class="field__hint">Chỉ nhận A–Z, 0–9, dấu gạch. Không dùng dấu tiếng Việt.</p>
+                </div>
+
+                <div class="field">
+                  <label class="field__label" for="unit-name">Tên đầy đủ <span class="field__required">*</span></label>
+                  <input class="input" id="unit-name" type="text" value="Khoa Nội – Nhi – Da liễu – Hồi sức cấp cứu">
+                </div>
+
+                <div class="field">
+                  <label class="field__label" for="unit-short">Tên ngắn</label>
+                  <input class="input" id="unit-short" type="text" value="Khoa Nội">
+                </div>
+
+                <div class="field">
+                  <label class="field__label" for="unit-level">Cấp</label>
+                  <input class="input" id="unit-level" type="text" value="2 – Khoa/Phòng" disabled>
+                </div>
+
+                <div class="field">
+                  <label class="field__label" for="unit-block">Khối</label>
+                  <select class="select" id="unit-block">
+                    <option selected>Lâm sàng</option>
+                    <option>Cận lâm sàng</option>
+                    <option>Chức năng</option>
+                    <option>Hậu cần</option>
+                  </select>
+                </div>
+
+                <div class="field">
+                  <label class="field__label" for="unit-parent">Đơn vị cha</label>
+                  <select class="select" id="unit-parent">
+                    <option selected>Ban Giám đốc Bệnh viện</option>
+                    <option>Ban Giám đốc Công ty</option>
+                  </select>
+                </div>
+
+                <label class="checkbox"><input type="checkbox" checked><span>Đang hoạt động</span></label>
+
+                <div class="row" style="justify-content:flex-end;margin-top:16px">
+                  <button class="btn btn--quiet" type="button">Huỷ</button>
+                  <button class="btn btn--primary" type="button" data-action="demo-submit"
+                          data-busy-label="Đang lưu…" data-toast="Đã lưu đơn vị NOI">Lưu</button>
+                </div>
+
+                <p class="text-meta" style="margin-top:16px">Đơn vị đã có dữ liệu không xoá được,
+                  chỉ có thể ngừng hoạt động.</p>
+              </aside>
+            </div>
+          </div>
+
+          <div class="tab-panel" data-tab-panel="org" data-tab-name="jobs" hidden>
+            <div class="table-wrap">
+              <table class="table table-as-cards">
+                <thead>
+                  <tr><th>Mã</th><th>Tên chức danh</th><th>Là quản lý</th><th>Là điều phối</th>
+                    <th>Số mẫu phiếu áp dụng</th><th>Thao tác</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td data-label="Mã">BSDK</td><td data-label="Tên chức danh">Bác sĩ đa khoa</td>
+                    <td data-label="Là quản lý">⬜</td><td data-label="Là điều phối">⬜</td>
+                    <td data-label="Số mẫu phiếu">3</td>
+                    <td data-label="Thao tác"><button class="btn btn--small btn--secondary" type="button">Sửa</button></td>
+                  </tr>
+                  <tr>
+                    <td data-label="Mã">TK</td><td data-label="Tên chức danh">Trưởng khoa</td>
+                    <td data-label="Là quản lý">✅</td><td data-label="Là điều phối">✅</td>
+                    <td data-label="Số mẫu phiếu">2</td>
+                    <td data-label="Thao tác"><button class="btn btn--small btn--secondary" type="button">Sửa</button></td>
+                  </tr>
+                  <tr>
+                    <td data-label="Mã">DD</td><td data-label="Tên chức danh">Điều dưỡng</td>
+                    <td data-label="Là quản lý">⬜</td><td data-label="Là điều phối">⬜</td>
+                    <td data-label="Số mẫu phiếu">4</td>
+                    <td data-label="Thao tác"><button class="btn btn--small btn--secondary" type="button">Sửa</button></td>
+                  </tr>
+                  <tr>
+                    <td data-label="Mã">DDT</td><td data-label="Tên chức danh">Điều dưỡng trưởng</td>
+                    <td data-label="Là quản lý">✅</td><td data-label="Là điều phối">✅</td>
+                    <td data-label="Số mẫu phiếu" style="color:var(--danger)">0 — chưa có mẫu phiếu</td>
+                    <td data-label="Thao tác"><button class="btn btn--small btn--secondary" type="button">Sửa</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+  <div data-shell="bottomnav"></div>
+</div>
+<script src="assets/app.js"></script>
+</body>
+</html>

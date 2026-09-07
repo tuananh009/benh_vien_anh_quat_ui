@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Đăng nhập · Trung tâm điều hành số Bệnh viện Anh Quất</title>
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body>
+<main class="auth">
+  <div class="auth__card">
+    <svg class="auth__logo" viewBox="0 0 80 80" aria-hidden="true">
+      <rect width="80" height="80" rx="20" fill="#ED3E0F"/>
+      <circle cx="40" cy="40" r="24" fill="none" stroke="#fff" stroke-width="4" opacity=".55"/>
+      <path d="M34 22h12v12h12v12H46v12H34V46H22V34h12z" fill="#fff"/>
+    </svg>
+
+    <div class="auth__brand">
+      <div class="auth__brand-eyebrow">Trung tâm điều hành số</div>
+      <div class="auth__brand-name">Bệnh viện Đa khoa Anh Quất</div>
+    </div>
+
+    <form onsubmit="return false">
+      <div class="field">
+        <label class="field__label" for="username">Tên đăng nhập</label>
+        <input class="input" id="username" name="username" type="text"
+               placeholder="nguyenvana" autocomplete="username" autocapitalize="off"
+               autocorrect="off" spellcheck="false" autofocus>
+      </div>
+
+      <div class="field">
+        <label class="field__label" for="password">Mật khẩu</label>
+        <div class="input-with-affix">
+          <input class="input" id="password" name="password" type="password"
+                 value="matkhau1" autocomplete="current-password">
+          <button class="input-affix" type="button" data-action="toggle-password"
+                  data-target="password" aria-label="Hiện mật khẩu">👁</button>
+        </div>
+      </div>
+
+      <label class="checkbox">
+        <input type="checkbox" checked>
+        <span>Ghi nhớ đăng nhập</span>
+      </label>
+
+      <button class="btn btn--primary btn--large btn--block" type="submit"
+              data-action="demo-submit" data-busy-label="Đang đăng nhập…"
+              data-next="two-factor.html" style="margin-top:16px">Đăng nhập</button>
+    </form>
+
+    <div class="auth__footer">
+      <a href="#" data-action="open-overlay" data-target="forgot-password">Quên mật khẩu?</a>
+    </div>
+  </div>
+</main>
+
+<!-- Forgot password: the system never resets a password itself, it only tells the user who to call -->
+<div class="overlay" id="forgot-password">
+  <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="forgot-title">
+    <div class="dialog__head">
+      <h2 class="dialog__title" id="forgot-title">Quên mật khẩu?</h2>
+      <button class="icon-btn" type="button" data-action="close-overlay" aria-label="Đóng">✕</button>
+    </div>
+    <div class="dialog__body">
+      <p>Hệ thống không tự đặt lại mật khẩu qua email hoặc tin nhắn.</p>
+      <p>Vui lòng liên hệ để được cấp lại:</p>
+      <div class="card card--flat" style="background:var(--bg-alt)">
+        <div style="font-size:18px;font-weight:600">📞 0932 061 999</div>
+        <div class="text-meta">Phòng Tổ chức – Hành chính<br>hoặc Phòng Công nghệ thông tin</div>
+      </div>
+    </div>
+    <div class="dialog__foot">
+      <button class="btn btn--primary" type="button" data-action="close-overlay">Đã hiểu</button>
+    </div>
+  </div>
+</div>
+
+<script src="assets/app.js"></script>
+</body>
+</html>

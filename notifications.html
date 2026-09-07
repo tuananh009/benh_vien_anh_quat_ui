@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thông báo · Trung tâm điều hành số Bệnh viện Anh Quất</title>
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body data-screen="notifications" data-role="cbnv" data-unread="3">
+<div class="app">
+  <div data-shell="topbar"></div>
+  <div class="shell">
+    <div data-shell="sidebar"></div>
+    <main class="main">
+      <div class="page" style="max-width:720px">
+
+        <div class="page__head">
+          <div class="page__head-text">
+            <h1 class="page-title">Thông báo</h1>
+          </div>
+          <div class="page__actions">
+            <button class="btn btn--quiet" type="button"
+                    data-action="toast" data-toast="Đã đánh dấu tất cả là đã đọc">Đánh dấu đã đọc</button>
+          </div>
+        </div>
+
+        <div class="tabs" data-tabs="notif">
+          <button class="tab is-active" type="button" data-action="tab" data-tab="all">Tất cả</button>
+          <button class="tab" type="button" data-action="tab" data-tab="unread">Chưa đọc (3)</button>
+        </div>
+
+        <div class="tab-panel" data-tab-panel="notif" data-tab-name="all">
+          <div class="card" style="padding:0;overflow:hidden">
+            <a class="notif notif--unread" href="task-detail.html">
+              <span class="notif__title">Nhiệm vụ mới: Kiểm tra máy thở buồng 4</span>
+              <span class="notif__meta">PGĐ Nguyễn Anh Tuấn · 5 phút</span>
+            </a>
+            <a class="notif notif--unread" href="task-detail.html">
+              <span class="notif__title">Việc bị trả lại: Báo cáo giường bệnh</span>
+              <span class="notif__meta">ĐD trưởng Bùi Thị Tố Hoa · 1 giờ</span>
+            </a>
+            <a class="notif" href="screens.html#chua-dung">
+              <span class="notif__title">Đổi trực đã được duyệt</span>
+              <span class="notif__meta">Hệ thống · 2 giờ trước</span>
+            </a>
+            <a class="notif" href="task-detail.html">
+              <span class="notif__title">Có bình luận mới trên NOI-0142</span>
+              <span class="notif__meta">ĐD Trần Văn B · Hôm qua</span>
+            </a>
+            <a class="notif notif--unread" href="task-detail.html">
+              <span class="notif__title">Nhiệm vụ đã quá hạn: Hoàn thiện hồ sơ 12 ca ra viện</span>
+              <span class="notif__meta">Hệ thống · Hôm qua</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="tab-panel" data-tab-panel="notif" data-tab-name="unread" hidden>
+          <div class="card" style="padding:0;overflow:hidden">
+            <a class="notif notif--unread" href="task-detail.html">
+              <span class="notif__title">Nhiệm vụ mới: Kiểm tra máy thở buồng 4</span>
+              <span class="notif__meta">PGĐ Nguyễn Anh Tuấn · 5 phút</span>
+            </a>
+            <a class="notif notif--unread" href="task-detail.html">
+              <span class="notif__title">Việc bị trả lại: Báo cáo giường bệnh</span>
+              <span class="notif__meta">ĐD trưởng Bùi Thị Tố Hoa · 1 giờ</span>
+            </a>
+            <a class="notif notif--unread" href="task-detail.html">
+              <span class="notif__title">Nhiệm vụ đã quá hạn: Hoàn thiện hồ sơ 12 ca ra viện</span>
+              <span class="notif__meta">Hệ thống · Hôm qua</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+  <div data-shell="bottomnav"></div>
+</div>
+<script src="assets/app.js"></script>
+</body>
+</html>

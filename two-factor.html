@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Xác nhận thiết bị · Trung tâm điều hành số Bệnh viện Anh Quất</title>
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body>
+<main class="auth">
+  <div class="auth__card">
+    <svg class="auth__logo" viewBox="0 0 80 80" aria-hidden="true">
+      <rect width="80" height="80" rx="20" fill="#ED3E0F"/>
+      <path d="M40 20a10 10 0 0 1 10 10v6h4a4 4 0 0 1 4 4v18a4 4 0 0 1-4 4H26a4 4 0 0 1-4-4V40a4 4 0 0 1 4-4h4v-6a10 10 0 0 1 10-10zm0 6a4 4 0 0 0-4 4v6h8v-6a4 4 0 0 0-4-4z" fill="#fff"/>
+    </svg>
+
+    <div class="auth__brand">
+      <div class="auth__brand-name">Xác nhận thiết bị</div>
+      <p class="text-meta" style="margin-top:8px">Chúng tôi vừa gửi mã 6 số tới Zalo của anh/chị.</p>
+    </div>
+
+    <form onsubmit="return false">
+      <div class="code-input" style="margin-bottom:16px">
+        <input type="text" inputmode="numeric" maxlength="1" aria-label="Số thứ nhất" autofocus>
+        <input type="text" inputmode="numeric" maxlength="1" aria-label="Số thứ hai">
+        <input type="text" inputmode="numeric" maxlength="1" aria-label="Số thứ ba">
+        <input type="text" inputmode="numeric" maxlength="1" aria-label="Số thứ tư">
+        <input type="text" inputmode="numeric" maxlength="1" aria-label="Số thứ năm">
+        <input type="text" inputmode="numeric" maxlength="1" aria-label="Số thứ sáu">
+      </div>
+
+      <p class="text-meta" style="text-align:center">Mã hết hạn sau <strong>04:47</strong></p>
+
+      <label class="checkbox" style="justify-content:center">
+        <input type="checkbox" checked>
+        <span>Ghi nhớ thiết bị này 30 ngày</span>
+      </label>
+
+      <button class="btn btn--primary btn--large btn--block" type="submit"
+              data-action="demo-submit" data-busy-label="Đang xác nhận…"
+              data-next="my-tasks.html" style="margin-top:16px">Xác nhận</button>
+    </form>
+
+    <div class="auth__footer">
+      <p class="text-meta">Không nhận được mã? <a href="#" data-action="toast" data-toast="Đã gửi lại mã qua Zalo">Gửi lại (47s)</a></p>
+      <p class="text-meta">Chưa liên kết Zalo? Gọi <strong>0932 061 999</strong></p>
+    </div>
+  </div>
+</main>
+<script src="assets/app.js"></script>
+</body>
+</html>

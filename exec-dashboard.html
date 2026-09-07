@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bảng điều khiển Ban Giám đốc · Bệnh viện Anh Quất</title>
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body data-screen="exec-dashboard" data-role="board" data-unread="5">
+<div class="app">
+  <div data-shell="topbar"></div>
+  <div class="shell">
+    <div data-shell="sidebar"></div>
+    <main class="main">
+      <div class="page">
+
+        <div class="page__head">
+          <div class="page__head-text">
+            <h1 class="page-title">Toàn viện</h1>
+            <p class="text-meta">Thứ Tư 26/08/2026 · Cơ sở 1 và Cơ sở 2</p>
+          </div>
+        </div>
+
+        <div class="proto-note">
+          <span>💡</span>
+          <div>Màn hình này <strong>không có</strong> tổng số nhiệm vụ, tỷ lệ hoàn thành chung,
+            biểu đồ tròn hay bảng xếp hạng cá nhân — những con số đó không dẫn tới hành động nào.
+            Chỉ hiện chỗ đang có vấn đề, đủ để gọi cho đúng người.</div>
+        </div>
+
+        <div class="grid grid--3" style="margin-bottom:24px">
+          <div class="metric metric--danger">
+            <div class="metric__value">3</div>
+            <div class="metric__label">🔴 P1 đang mở</div>
+          </div>
+          <div class="metric metric--warning">
+            <div class="metric__value">12</div>
+            <div class="metric__label">🟠 Quá hạn toàn viện</div>
+          </div>
+          <div class="metric">
+            <div class="metric__value">4</div>
+            <div class="metric__label">🟡 Nhiệm vụ cha chưa phân công</div>
+          </div>
+        </div>
+
+        <div class="grid grid--main-aside">
+          <div>
+            <!-- P1 is never collapsed: patient safety, emergencies, essential equipment -->
+            <h2 class="section-title" style="margin-bottom:12px">🔴 P1 đang mở (3)</h2>
+            <div class="stack" style="margin-bottom:24px">
+              <a class="task-card" href="task-detail.html">
+                <div class="badge-row">
+                  <span class="badge badge--p1">P1</span>
+                  <span class="badge badge--overdue">Quá hạn 1g20</span>
+                </div>
+                <h3 class="task-card__title">Máy thở buồng HSCC 2 hỏng</h3>
+                <div class="task-card__meta">Khoa Nội · BS Trần Văn B</div>
+                <!-- The board needs to know the alert already reached someone with authority -->
+                <div class="task-card__meta" style="margin-top:4px">⬆ Đã báo PGĐ chuyên môn lúc 08:15</div>
+              </a>
+
+              <a class="task-card" href="task-detail.html">
+                <div class="badge-row">
+                  <span class="badge badge--p1">P1</span>
+                  <span class="badge badge--in-progress">Đang làm</span>
+                </div>
+                <h3 class="task-card__title">Sự cố mất điện khu B</h3>
+                <div class="task-card__meta">Phòng Tổ chức – Hành chính · Tổ trưởng Bảo vệ</div>
+                <div class="task-card__meta" style="margin-top:4px">Còn 40 phút tới hạn</div>
+              </a>
+
+              <a class="task-card" href="task-detail.html">
+                <div class="badge-row">
+                  <span class="badge badge--p1">P1</span>
+                  <span class="badge badge--accepted">Đã nhận</span>
+                </div>
+                <h3 class="task-card__title">Thiếu máu nhóm O cấp cứu</h3>
+                <div class="task-card__meta">Khoa Xét nghiệm · KTV trưởng Đỗ Văn M</div>
+                <div class="task-card__meta" style="margin-top:4px">⬆ Đã báo Giám đốc lúc 09:40</div>
+              </a>
+            </div>
+
+            <h2 class="section-title" style="margin-bottom:12px">🟡 Chưa phân công xuống Cấp 2 (4)</h2>
+            <div class="stack">
+              <a class="task-card task-card--compact" href="task-detail.html">
+                <div class="badge-row"><span class="badge badge--p2">P2</span></div>
+                <h3 class="task-card__title">Kiểm kê thuốc quý III</h3>
+                <div class="task-card__meta">Khoa Dược · giao 2 ngày trước · Hạn 30/08 · vẫn 0 nhiệm vụ con</div>
+              </a>
+              <a class="task-card task-card--compact" href="task-detail.html">
+                <div class="badge-row"><span class="badge badge--p2">P2</span></div>
+                <h3 class="task-card__title">Rà soát quy trình bàn giao ca</h3>
+                <div class="task-card__meta">Khoa Nội · giao 1 ngày trước · Hạn 28/08 · vẫn 0 nhiệm vụ con</div>
+              </a>
+              <p class="text-meta"><a href="tasks.html">xem tất cả →</a></p>
+            </div>
+          </div>
+
+          <aside>
+            <!-- Horizontal bars answer "which unit is worst?" at a glance, a table does not -->
+            <div class="card">
+              <h2 class="card__title">⏱ Quá hạn theo đơn vị</h2>
+              <div class="bar-row">
+                <span>Khoa Khám bệnh</span>
+                <span class="bar-row__track"><span class="bar-row__fill" style="width:100%"></span></span>
+                <span class="bar-row__value">5</span>
+              </div>
+              <div class="bar-row">
+                <span>Khoa YHCT – PHCN</span>
+                <span class="bar-row__track"><span class="bar-row__fill" style="width:60%"></span></span>
+                <span class="bar-row__value">3</span>
+              </div>
+              <div class="bar-row">
+                <span>Khoa Ngoại – Sản</span>
+                <span class="bar-row__track"><span class="bar-row__fill" style="width:40%"></span></span>
+                <span class="bar-row__value">2</span>
+              </div>
+              <div class="bar-row">
+                <span>Khoa Nội</span>
+                <span class="bar-row__track"><span class="bar-row__fill" style="width:40%"></span></span>
+                <span class="bar-row__value">2</span>
+              </div>
+              <p class="text-meta" style="margin:12px 0 0">và 3 đơn vị khác · <a href="tasks.html">xem tất cả →</a></p>
+            </div>
+
+            <section class="group is-collapsed" style="margin-top:24px">
+              <button class="group__head" type="button" data-action="toggle-group">
+                📋 Kết luận giao ban chưa hoàn thành (2)
+                <span class="group__caret" aria-hidden="true">▾</span>
+              </button>
+              <div class="group__body">
+                <div class="card">
+                  <div style="font-weight:500">Bổ sung quy trình sàng lọc tại Khoa Khám bệnh</div>
+                  <div class="text-meta">Giao ban 20/08 · Khoa Khám bệnh · quá hạn 2 ngày</div>
+                </div>
+                <div class="card">
+                  <div style="font-weight:500">Báo cáo tình hình nhân lực điều dưỡng</div>
+                  <div class="text-meta">Giao ban 24/08 · P. Tổ chức – HC · hạn 28/08</div>
+                </div>
+              </div>
+            </section>
+
+            <section class="group is-collapsed">
+              <button class="group__head" type="button" data-action="toggle-group">
+                📉 Chỉ tiêu chậm tiến độ (3)
+                <span class="group__caret" aria-hidden="true">▾</span>
+              </button>
+              <div class="group__body">
+                <div class="card">
+                  <p class="text-meta" style="margin:0">Phần G chưa đặc tả — khối này chỉ để giữ chỗ trong bản mẫu.</p>
+                </div>
+              </div>
+            </section>
+
+            <section class="group is-collapsed">
+              <button class="group__head" type="button" data-action="toggle-group">
+                ⭐ Kỳ thi đua chờ duyệt (112)
+                <span class="group__caret" aria-hidden="true">▾</span>
+              </button>
+              <div class="group__body">
+                <div class="card">
+                  <div style="font-weight:500">Kỳ tháng 08/2026 · đang duyệt</div>
+                  <div class="text-meta">112 phiếu chờ Hội đồng thi đua xét duyệt · hạn 05/09</div>
+                  <a class="btn btn--secondary btn--small" style="margin-top:12px" href="screens.html#chua-dung">Mở xét duyệt</a>
+                </div>
+              </div>
+            </section>
+          </aside>
+        </div>
+
+      </div>
+    </main>
+  </div>
+  <div data-shell="bottomnav"></div>
+</div>
+<script src="assets/app.js"></script>
+</body>
+</html>

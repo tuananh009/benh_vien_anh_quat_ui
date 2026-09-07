@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quản lý người dùng · Trung tâm điều hành số Bệnh viện Anh Quất</title>
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body data-screen="users" data-role="admin" data-unread="3">
+<div class="app">
+  <div data-shell="topbar"></div>
+  <div class="shell">
+    <div data-shell="sidebar"></div>
+    <main class="main">
+      <div class="page">
+
+        <div class="desktop-required">
+          <div class="state">
+            <div class="state__icon">💻</div>
+            <div class="state__title">Màn hình này cần máy tính</div>
+            <p class="state__text">Quản lý người dùng có bảng nhiều cột và thao tác phức tạp.
+              Vui lòng mở trên máy tính để làm việc thuận tiện.</p>
+            <a class="btn btn--secondary" href="my-tasks.html">Về Việc của tôi</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="page__head">
+            <div class="page__head-text">
+              <h1 class="page-title">Quản lý người dùng</h1>
+              <p class="text-meta">105 tài khoản · Cơ sở 2</p>
+            </div>
+            <div class="page__actions">
+              <a class="btn btn--secondary" href="user-import.html">Nhập Excel</a>
+              <button class="btn btn--primary" type="button"
+                      data-action="open-overlay" data-target="user-form">+ Tạo tài khoản</button>
+            </div>
+          </div>
+
+          <div class="toolbar">
+            <div class="toolbar__search">
+              <label class="sr-only" for="user-search">Tìm người dùng</label>
+              <input class="input" id="user-search" type="search"
+                     placeholder="Tìm theo tên, mã NV, tên đăng nhập (không dấu cũng được)">
+            </div>
+            <label class="sr-only" for="user-unit">Lọc theo đơn vị</label>
+            <select class="select" id="user-unit" style="width:auto;min-width:200px">
+              <option>Tất cả đơn vị</option>
+              <option>Khoa Nội – Nhi – Da liễu – HSCC</option>
+              <option>Khoa Khám bệnh</option>
+              <option>Phòng Tổ chức – Hành chính</option>
+            </select>
+            <label class="sr-only" for="user-zalo">Lọc liên kết Zalo</label>
+            <select class="select" id="user-zalo" style="width:auto;min-width:180px">
+              <option>Tất cả</option>
+              <option>Chưa liên kết Zalo</option>
+              <option>Chưa kích hoạt</option>
+            </select>
+            <span class="toolbar__count">Hiển thị 5 / 105</span>
+          </div>
+
+          <div class="table-wrap">
+            <table class="table table-as-cards">
+              <thead>
+                <tr>
+                  <th>Mã NV ▾</th><th>Họ tên</th><th>Tên đăng nhập</th><th>Đơn vị</th>
+                  <th>Chức danh</th><th>Vai trò</th><th>Zalo</th><th>Trạng thái</th><th>Thao tác</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td data-label="Mã NV">AQ-CS2-014</td>
+                  <td data-label="Họ tên">Nguyễn Thị Lan</td>
+                  <td data-label="Tên đăng nhập">nguyenthilan</td>
+                  <td data-label="Đơn vị">Khoa Nội</td>
+                  <td data-label="Chức danh">Điều dưỡng</td>
+                  <td data-label="Vai trò"><span class="chip">CBNV</span></td>
+                  <td data-label="Zalo">✅</td>
+                  <td data-label="Trạng thái"><span class="badge badge--done">Hoạt động</span></td>
+                  <td data-label="Thao tác">
+                    <button class="btn btn--small btn--secondary" type="button"
+                            data-action="open-overlay" data-target="user-form">Sửa</button>
+                    <button class="btn btn--small" type="button"
+                            data-action="open-overlay" data-target="lock-user">Khoá</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td data-label="Mã NV">AQ-CS2-007</td>
+                  <td data-label="Họ tên">Bùi Thị Tố Hoa</td>
+                  <td data-label="Tên đăng nhập">buithitohoa</td>
+                  <td data-label="Đơn vị">Khoa Nội</td>
+                  <td data-label="Chức danh">ĐD trưởng</td>
+                  <td data-label="Vai trò"><span class="chip">CBNV</span> <span class="chip chip--brand">DAU_MOI</span></td>
+                  <td data-label="Zalo">✅</td>
+                  <td data-label="Trạng thái"><span class="badge badge--done">Hoạt động</span></td>
+                  <td data-label="Thao tác">
+                    <button class="btn btn--small btn--secondary" type="button"
+                            data-action="open-overlay" data-target="user-form">Sửa</button>
+                    <button class="btn btn--small" type="button"
+                            data-action="open-overlay" data-target="lock-user">Khoá</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td data-label="Mã NV">AQ-CS2-002</td>
+                  <td data-label="Họ tên">Nguyễn Anh Tuấn</td>
+                  <td data-label="Tên đăng nhập">nguyenanhtuan</td>
+                  <td data-label="Đơn vị">Ban Giám đốc</td>
+                  <td data-label="Chức danh">Phó Giám đốc</td>
+                  <td data-label="Vai trò"><span class="chip">CBNV</span> <span class="chip chip--brand">BGD</span></td>
+                  <td data-label="Zalo">✅</td>
+                  <td data-label="Trạng thái"><span class="badge badge--done">Hoạt động</span></td>
+                  <td data-label="Thao tác">
+                    <button class="btn btn--small btn--secondary" type="button"
+                            data-action="open-overlay" data-target="user-form">Sửa</button>
+                    <!-- Blocked: locking your own account, and locking the last active QTHT -->
+                    <button class="btn btn--small" type="button" disabled
+                            title="Không thể tự khoá tài khoản của chính mình">Khoá</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td data-label="Mã NV">AQ-CS2-041</td>
+                  <td data-label="Họ tên">Trần Văn K</td>
+                  <td data-label="Tên đăng nhập">tranvank</td>
+                  <td data-label="Đơn vị">Khoa Khám bệnh</td>
+                  <td data-label="Chức danh">Bác sĩ</td>
+                  <td data-label="Vai trò"><span class="chip">CBNV</span></td>
+                  <td data-label="Zalo">⬜</td>
+                  <td data-label="Trạng thái"><span class="badge badge--rejected">Đã khoá</span></td>
+                  <td data-label="Thao tác">
+                    <button class="btn btn--small btn--secondary" type="button"
+                            data-action="open-overlay" data-target="user-form">Sửa</button>
+                    <button class="btn btn--small btn--secondary" type="button"
+                            data-action="toast" data-toast="Đã mở khoá tài khoản AQ-CS2-041">Mở khoá</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td data-label="Mã NV">AQ-CS2-105</td>
+                  <td data-label="Họ tên">Đỗ Thị Mai</td>
+                  <td data-label="Tên đăng nhập">dothimai</td>
+                  <td data-label="Đơn vị">P. Tổ chức – HC</td>
+                  <td data-label="Chức danh">Nhân viên</td>
+                  <td data-label="Vai trò"><span class="chip">CBNV</span></td>
+                  <td data-label="Zalo">⬜</td>
+                  <td data-label="Trạng thái"><span class="badge badge--not-accepted">Chưa kích hoạt</span></td>
+                  <td data-label="Thao tác">
+                    <button class="btn btn--small btn--secondary" type="button"
+                            data-action="open-overlay" data-target="activation-code">Gửi lại link</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="pagination">
+            <span>50 dòng/trang</span>
+            <button type="button" aria-label="Trang trước">‹</button>
+            <button type="button" class="is-active">1</button>
+            <button type="button">2</button>
+            <button type="button">3</button>
+            <button type="button" aria-label="Trang sau">›</button>
+          </div>
+
+          <p class="text-meta" style="margin-top:16px">* Không thể tự khoá tài khoản của chính mình,
+            và không thể khoá tài khoản quản trị hệ thống cuối cùng còn hoạt động.</p>
+        </div>
+
+      </div>
+    </main>
+  </div>
+  <div data-shell="bottomnav"></div>
+</div>
+
+<!-- Add/edit opens as a slide-over so the list context is kept -->
+<div class="overlay" id="user-form">
+  <div class="panel" role="dialog" aria-modal="true" aria-labelledby="user-form-title">
+    <div class="panel__head">
+      <h2 class="dialog__title" id="user-form-title">Sửa tài khoản</h2>
+      <button class="icon-btn" type="button" data-action="close-overlay" aria-label="Đóng">✕</button>
+    </div>
+    <div class="panel__body">
+      <div class="field">
+        <label class="field__label" for="form-code">Mã nhân viên</label>
+        <input class="input" id="form-code" type="text" value="AQ-CS2-014" disabled>
+        <p class="field__hint">Mã nhân viên không sửa được sau khi tạo.</p>
+      </div>
+      <div class="field">
+        <label class="field__label" for="form-name">Họ và tên <span class="field__required">*</span></label>
+        <input class="input" id="form-name" type="text" value="Nguyễn Thị Lan">
+      </div>
+      <div class="field">
+        <label class="field__label" for="form-username">Tên đăng nhập <span class="field__required">*</span></label>
+        <input class="input" id="form-username" type="text" value="nguyenthilan" autocapitalize="off">
+      </div>
+      <div class="field">
+        <label class="field__label" for="form-unit">Đơn vị <span class="field__required">*</span></label>
+        <select class="select" id="form-unit">
+          <option selected>Khoa Nội – Nhi – Da liễu – HSCC</option>
+          <option>Khoa Khám bệnh</option>
+          <option>Phòng Tổ chức – Hành chính</option>
+        </select>
+      </div>
+      <div class="field">
+        <label class="field__label" for="form-title-job">Chức danh <span class="field__required">*</span></label>
+        <select class="select" id="form-title-job">
+          <option selected>Điều dưỡng</option>
+          <option>Điều dưỡng trưởng</option>
+          <option>Bác sĩ</option>
+          <option>Bác sĩ đa khoa</option>
+        </select>
+      </div>
+      <div class="field">
+        <label class="field__label" for="form-manager">Người quản lý</label>
+        <select class="select" id="form-manager">
+          <option selected>ĐD trưởng Bùi Thị Tố Hoa (AQ-CS2-007)</option>
+          <option>BS TK Nguyễn Văn Sơn (AQ-CS2-005)</option>
+        </select>
+        <p class="field__hint">Cảnh báo việc quá hạn leo thang theo người quản lý này.</p>
+      </div>
+      <div class="field">
+        <label class="field__label" for="form-phone">Số điện thoại</label>
+        <input class="input" id="form-phone" type="tel" inputmode="tel" value="0912 345 678">
+      </div>
+      <div class="field">
+        <label class="field__label" for="form-email">Email</label>
+        <input class="input" id="form-email" type="email" value="lan.nt@bvanhquat.vn">
+      </div>
+      <div class="field" style="margin-bottom:0">
+        <span class="field__label">Vai trò</span>
+        <label class="checkbox"><input type="checkbox" checked><span>CBNV — Cán bộ nhân viên</span></label>
+        <label class="checkbox"><input type="checkbox"><span>DAU_MOI — Đầu mối đơn vị</span></label>
+        <label class="checkbox"><input type="checkbox"><span>KHTH — Kế hoạch tổng hợp</span></label>
+      </div>
+    </div>
+    <div class="panel__foot">
+      <button class="btn btn--quiet" type="button" data-action="close-overlay">Huỷ</button>
+      <button class="btn btn--primary" type="button" data-action="demo-submit"
+              data-busy-label="Đang lưu…" data-toast="Đã lưu tài khoản AQ-CS2-014">Lưu</button>
+    </div>
+  </div>
+</div>
+
+<!-- Locking someone who still has open tasks: the list is shown, the lock still goes through -->
+<div class="overlay" id="lock-user">
+  <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="lock-title">
+    <div class="dialog__head">
+      <h2 class="dialog__title" id="lock-title">Khoá tài khoản Nguyễn Thị Lan?</h2>
+      <button class="icon-btn" type="button" data-action="close-overlay" aria-label="Đóng">✕</button>
+    </div>
+    <div class="dialog__body">
+      <p>Người này còn <strong>3 nhiệm vụ chưa hoàn thành</strong>. Vui lòng bàn giao trước khi khoá:</p>
+      <ul>
+        <li>NOI-0142 · Hoàn thiện hồ sơ bệnh án 12 ca ra viện — quá hạn</li>
+        <li>HSCC-0091 · Kiểm tra máy thở buồng 4</li>
+        <li>NOI-0138 · Báo cáo sử dụng giường bệnh tháng 8</li>
+      </ul>
+      <p class="text-meta">Tài khoản bị khoá sẽ mất phiên đăng nhập ngay ở lần gọi tiếp theo.</p>
+    </div>
+    <div class="dialog__foot">
+      <button class="btn btn--quiet" type="button" data-action="close-overlay">Huỷ</button>
+      <button class="btn btn--danger" type="button" data-action="demo-submit"
+              data-busy-label="Đang khoá…" data-toast="Đã khoá tài khoản AQ-CS2-014" data-toast-kind="error">Vẫn khoá</button>
+    </div>
+  </div>
+</div>
+
+<!-- No password is ever shown, only an activation code -->
+<div class="overlay" id="activation-code">
+  <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="activation-title">
+    <div class="dialog__head">
+      <h2 class="dialog__title" id="activation-title">Đã tạo tài khoản</h2>
+      <button class="icon-btn" type="button" data-action="close-overlay" aria-label="Đóng">✕</button>
+    </div>
+    <div class="dialog__body">
+      <dl class="dl">
+        <dt>Mã nhân viên</dt><dd>AQ-CS2-105</dd>
+        <dt>Họ và tên</dt><dd>Đỗ Thị Mai</dd>
+        <dt>Tên đăng nhập</dt><dd>dothimai</dd>
+      </dl>
+      <div class="card card--flat" style="margin-top:24px;background:var(--warning-bg);border-color:#FED7AA">
+        <p style="margin:0">⚠️ Nhân viên chưa liên kết Zalo và không có email.</p>
+        <p style="margin:12px 0 8px">Đọc mã kích hoạt này cho nhân viên:</p>
+        <div class="row">
+          <strong style="font-size:24px;font-family:ui-monospace,Menlo,monospace;letter-spacing:.1em">K7NG-2MPX</strong>
+          <button class="btn btn--small btn--secondary" type="button"
+                  data-action="toast" data-toast="Đã sao chép mã kích hoạt" data-toast-kind="info">Sao chép</button>
+        </div>
+        <p class="text-meta" style="margin-top:8px">Hết hạn sau 24 giờ · dùng một lần</p>
+      </div>
+      <p class="text-meta" style="margin-top:16px">Nhân viên vào <strong>/kich-hoat</strong>, nhập mã và tự đặt mật khẩu.
+        Hệ thống không tạo và không hiển thị mật khẩu ở bất kỳ đâu.</p>
+    </div>
+    <div class="dialog__foot">
+      <button class="btn btn--primary" type="button" data-action="close-overlay">Đã đọc xong</button>
+    </div>
+  </div>
+</div>
+
+<script src="assets/app.js"></script>
+</body>
+</html>

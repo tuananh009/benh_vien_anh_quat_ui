@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chia việc · Trung tâm điều hành số Bệnh viện Anh Quất</title>
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body data-screen="task-split" data-role="manager" data-unread="5">
+<div class="app">
+  <div data-shell="topbar"></div>
+  <div class="shell">
+    <div data-shell="sidebar"></div>
+    <main class="main">
+      <div class="page" style="max-width:1000px">
+
+        <a class="text-meta" href="unit-dashboard.html">← Quay lại bảng điều khiển</a>
+
+        <div class="page__head" style="margin-top:16px">
+          <div class="page__head-text">
+            <h1 class="page-title">Chia việc</h1>
+          </div>
+        </div>
+
+        <!-- Parent task: kept in view the whole time so the user never loses the context -->
+        <div class="card" style="background:var(--bg-alt)">
+          <div class="text-meta">NHIỆM VỤ CHA</div>
+          <div style="font-size:18px;font-weight:600;margin:4px 0 8px">
+            NOI-0012 · Hoàn thành kiểm kê thuốc quý III
+          </div>
+          <div class="badge-row">
+            <span class="badge badge--p2">P2</span>
+            <span class="text-meta">Giao bởi PGĐ Nguyễn Anh Tuấn · Hạn 30/08 17:00 · Đã chia: 0 nhiệm vụ con</span>
+          </div>
+        </div>
+
+        <!-- ---------- Bước 1 ---------- -->
+        <div class="card">
+          <h2 class="card__title">1 · Chọn mẫu công việc</h2>
+
+          <div class="field">
+            <label class="sr-only" for="template-search">Tìm mẫu công việc</label>
+            <input class="input" id="template-search" type="search" autofocus
+                   placeholder="🔍 Tìm mẫu — gõ không dấu cũng được: kiem ke thuoc">
+          </div>
+
+          <div class="text-meta" style="margin:16px 0 8px">Gần đây</div>
+          <label class="card card--flat" style="display:flex;gap:12px;align-items:center;cursor:pointer;padding:12px 16px">
+            <input type="radio" name="template" style="width:20px;height:20px">
+            <span style="flex:1;min-width:0">
+              <span style="font-weight:500">Bàn giao ca trực</span>
+              <span class="text-meta" style="display:block">P3 · SLA 1 giờ</span>
+            </span>
+          </label>
+
+          <div class="text-meta" style="margin:16px 0 8px">Kết quả tìm</div>
+          <div class="stack">
+            <label class="card card--flat" style="display:flex;gap:12px;align-items:center;cursor:pointer;padding:12px 16px;border-color:var(--brand-blue)">
+              <input type="radio" name="template" checked style="width:20px;height:20px">
+              <span style="flex:1;min-width:0">
+                <span style="font-weight:500">Kiểm kê thuốc theo tủ trực</span>
+                <span class="text-meta" style="display:block">P3 · SLA 8 giờ</span>
+              </span>
+              <span class="badge badge--done">Đã chọn</span>
+            </label>
+            <label class="card card--flat" style="display:flex;gap:12px;align-items:center;cursor:pointer;padding:12px 16px">
+              <input type="radio" name="template" style="width:20px;height:20px">
+              <span style="flex:1;min-width:0">
+                <span style="font-weight:500">Kiểm kê vật tư tiêu hao</span>
+                <span class="text-meta" style="display:block">P3 · SLA 8 giờ</span>
+              </span>
+            </label>
+            <label class="card card--flat" style="display:flex;gap:12px;align-items:center;cursor:pointer;padding:12px 16px">
+              <input type="radio" name="template" style="width:20px;height:20px">
+              <span style="flex:1;min-width:0">
+                <span style="font-weight:500">Đối chiếu thẻ kho</span>
+                <span class="text-meta" style="display:block">P3 · SLA 4 giờ</span>
+              </span>
+            </label>
+          </div>
+
+          <section class="group is-collapsed" style="margin:16px 0 0">
+            <button class="group__head" type="button" data-action="toggle-group">
+              Xem nội dung mẫu đã chọn <span class="group__caret" aria-hidden="true">▾</span>
+            </button>
+            <div class="group__body">
+              <div class="card card--flat" style="background:var(--bg-alt)">
+                <dl class="dl">
+                  <dt>Nội dung / đầu ra</dt>
+                  <dd>Kiểm kê toàn bộ thuốc trong tủ trực được phân công, đối chiếu với thẻ kho,
+                    lập biên bản chênh lệch nếu có.</dd>
+                  <dt>Cách làm</dt>
+                  <dd>
+                    <ul class="checklist" style="margin-top:4px">
+                      <li><span class="checklist__box"></span> Đếm thực tế từng loại thuốc trong tủ</li>
+                      <li><span class="checklist__box"></span> Đối chiếu với thẻ kho và sổ theo dõi</li>
+                      <li><span class="checklist__box"></span> Kiểm tra hạn dùng, tách thuốc cận hạn</li>
+                      <li><span class="checklist__box"></span> Lập biên bản chênh lệch nếu có</li>
+                    </ul>
+                  </dd>
+                  <dt>Minh chứng yêu cầu</dt>
+                  <dd>Ảnh biên bản kiểm kê có chữ ký</dd>
+                  <dt>Tiêu chí hoàn thành</dt>
+                  <dd>Đủ – đúng – đúng hạn – có minh chứng</dd>
+                </dl>
+                <p class="text-meta" style="margin:16px 0 0">
+                  Mẫu là điểm khởi đầu, không phải ràng buộc cứng — mọi trường tự điền đều sửa được ở bước 3.
+                </p>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- ---------- Bước 2 ---------- -->
+        <div class="card">
+          <div class="row row--between" style="margin-bottom:12px">
+            <h2 class="card__title" style="margin:0">2 · Chọn người thực hiện</h2>
+            <span class="text-meta">3 người đã chọn</span>
+          </div>
+
+          <div class="row" style="margin-bottom:12px">
+            <label class="checkbox"><input type="radio" name="assign-mode" checked><span>Cùng cấu hình cho tất cả</span></label>
+            <label class="checkbox desktop-only"><input type="radio" name="assign-mode"><span>Chỉ định riêng từng người</span></label>
+          </div>
+
+          <div class="field">
+            <label class="sr-only" for="people-search">Tìm người thực hiện</label>
+            <input class="input" id="people-search" type="search" placeholder="🔍 Tìm theo tên hoặc chức danh">
+          </div>
+
+          <label class="checkbox"><input type="checkbox"><span>Chọn tất cả (5 người)</span></label>
+
+          <div class="stack" style="margin-top:12px">
+            <label class="card card--flat" style="display:flex;gap:12px;align-items:center;cursor:pointer;padding:12px 16px">
+              <input type="checkbox" checked style="width:20px;height:20px">
+              <span style="flex:1;min-width:0">
+                <span style="font-weight:500">ĐD Nguyễn Thị A</span>
+                <span class="text-meta" style="display:block">Khoa Nội</span>
+              </span>
+              <!-- Shift count next to the name so work gets spread evenly -->
+              <span class="chip">6 ca/tháng</span>
+            </label>
+
+            <label class="card card--flat" style="display:flex;gap:12px;align-items:center;cursor:pointer;padding:12px 16px">
+              <input type="checkbox" checked style="width:20px;height:20px">
+              <span style="flex:1;min-width:0">
+                <span style="font-weight:500">ĐD Trần Văn B</span>
+                <span class="text-meta" style="display:block">Khoa Nội</span>
+              </span>
+              <span class="chip">8 ca/tháng</span>
+            </label>
+
+            <!-- On approved leave: dimmed with a note, still selectable on purpose -->
+            <label class="card card--flat" style="display:flex;gap:12px;align-items:center;cursor:pointer;padding:12px 16px;opacity:.6">
+              <input type="checkbox" style="width:20px;height:20px">
+              <span style="flex:1;min-width:0">
+                <span style="font-weight:500">ĐD Lê Thị C</span>
+                <span class="text-meta" style="display:block">Khoa Nội · 🌴 Nghỉ phép 28–30/08</span>
+              </span>
+              <span class="chip">7 ca/tháng</span>
+            </label>
+
+            <label class="card card--flat" style="display:flex;gap:12px;align-items:center;cursor:pointer;padding:12px 16px">
+              <input type="checkbox" checked style="width:20px;height:20px">
+              <span style="flex:1;min-width:0">
+                <span style="font-weight:500">YS Phạm Văn D</span>
+                <span class="text-meta" style="display:block">Khoa Nội</span>
+              </span>
+              <span class="chip">5 ca/tháng</span>
+            </label>
+
+            <label class="card card--flat" style="display:flex;gap:12px;align-items:center;cursor:pointer;padding:12px 16px">
+              <input type="checkbox" style="width:20px;height:20px">
+              <span style="flex:1;min-width:0">
+                <span style="font-weight:500">ĐD Hoàng Văn E</span>
+                <span class="text-meta" style="display:block">Khoa Nội</span>
+              </span>
+              <span class="chip" style="background:var(--warning-bg);color:var(--warning)">12 ca/tháng</span>
+            </label>
+          </div>
+
+          <!-- Per-person mode: desktop only, too cramped on a phone -->
+          <div class="desktop-only" style="margin-top:24px">
+            <div class="text-meta" style="margin-bottom:8px">Chế độ chỉ định riêng từng người</div>
+            <div class="table-wrap">
+              <table class="table">
+                <thead><tr><th>Người thực hiện</th><th>Hạn hoàn thành</th><th>Khu vực / buồng / máy</th></tr></thead>
+                <tbody>
+                  <tr>
+                    <td>ĐD Nguyễn Thị A</td>
+                    <td><input class="input" type="datetime-local" value="2026-08-30T17:00" style="min-height:36px;padding:6px 8px"></td>
+                    <td><input class="input" type="text" value="Tủ trực A" style="min-height:36px;padding:6px 8px"></td>
+                  </tr>
+                  <tr>
+                    <td>ĐD Trần Văn B</td>
+                    <td><input class="input" type="datetime-local" value="2026-08-30T17:00" style="min-height:36px;padding:6px 8px"></td>
+                    <td><input class="input" type="text" value="Tủ trực B" style="min-height:36px;padding:6px 8px"></td>
+                  </tr>
+                  <tr>
+                    <td>YS Phạm Văn D</td>
+                    <td><input class="input" type="datetime-local" value="2026-08-31T12:00" style="min-height:36px;padding:6px 8px"></td>
+                    <td><input class="input" type="text" value="Kho lẻ" style="min-height:36px;padding:6px 8px"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- ---------- Bước 3 ---------- -->
+        <div class="card">
+          <h2 class="card__title">3 · Điều chỉnh</h2>
+
+          <div class="grid grid--2">
+            <div class="field">
+              <label class="field__label" for="split-deadline">Hạn hoàn thành</label>
+              <input class="input" id="split-deadline" type="datetime-local" value="2026-08-30T17:00">
+              <p class="field__hint">Tự điền từ mẫu: giờ hiện tại + SLA 8 giờ.</p>
+              <div class="row" style="margin-top:8px">
+                <button class="btn btn--small btn--secondary" type="button">Hôm nay</button>
+                <button class="btn btn--small btn--secondary" type="button">Ngày mai</button>
+                <button class="btn btn--small btn--secondary" type="button">Theo hạn cha</button>
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="split-priority">Mức độ</label>
+              <select class="select" id="split-priority">
+                <option>P1 – Khẩn, xử lý ngay</option>
+                <option>P2 – Cao</option>
+                <option selected>P3 – Bình thường</option>
+                <option>P4 – Thấp</option>
+              </select>
+              <p class="field__hint">Tự điền từ mẫu.</p>
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="split-area">Khu vực / buồng / máy / ca <span class="text-muted">(tuỳ chọn)</span></label>
+            <input class="input" id="split-area" type="text" placeholder="Ví dụ: Tủ trực A · ca ngày">
+          </div>
+
+          <section class="group is-collapsed" style="margin:0">
+            <button class="group__head" type="button" data-action="toggle-group">
+              Xem trước nội dung nhiệm vụ con <span class="group__caret" aria-hidden="true">▾</span>
+            </button>
+            <div class="group__body">
+              <div class="card card--flat" style="background:var(--bg-alt)">
+                <div class="badge-row">
+                  <span class="badge badge--p3">P3</span>
+                  <span class="badge badge--not-accepted">Chưa nhận</span>
+                </div>
+                <h3 class="task-card__title">Kiểm kê thuốc theo tủ trực</h3>
+                <div class="task-card__meta">📅 Hạn 30/08 17:00 · Người kiểm tra: ĐD trưởng Bùi Thị Tố Hoa</div>
+                <div class="task-card__parent">↑ NOI-0012 · Hoàn thành kiểm kê thuốc quý III</div>
+                <p class="text-meta" style="margin:12px 0 0">
+                  Ba nhiệm vụ con giống nhau sẽ được tạo, mỗi con một người thực hiện.
+                </p>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <div class="action-bar action-bar--inline">
+          <button class="btn btn--primary btn--large" type="button" data-action="demo-submit"
+                  data-busy-label="Đang tạo…"
+                  data-toast="Đã tạo 3 nhiệm vụ con và gửi 3 thông báo Zalo"
+                  data-next="unit-dashboard.html">Tạo 3 nhiệm vụ con và gửi thông báo</button>
+          <a class="btn btn--quiet" href="unit-dashboard.html">Huỷ</a>
+        </div>
+
+      </div>
+    </main>
+  </div>
+  <div data-shell="bottomnav"></div>
+</div>
+<script src="assets/app.js"></script>
+</body>
+</html>

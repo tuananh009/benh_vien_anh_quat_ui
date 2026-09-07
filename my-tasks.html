@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Việc của tôi · Trung tâm điều hành số Bệnh viện Anh Quất</title>
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body data-screen="my-tasks" data-role="cbnv" data-unread="3">
+<div class="app">
+  <div data-shell="topbar"></div>
+  <div class="shell">
+    <div data-shell="sidebar"></div>
+    <main class="main">
+      <div class="page">
+
+        <div class="proto-note" data-tabs="state">
+          <span>🧪</span>
+          <div>
+            <strong>Bản mẫu</strong> — MH-A05. Bấm để xem năm trạng thái màn hình:
+            <div class="row" style="margin-top:8px">
+              <button class="btn btn--small is-active btn--secondary" type="button" data-action="tab" data-tab="loaded">Có dữ liệu</button>
+              <button class="btn btn--small" type="button" data-action="tab" data-tab="loading">Đang tải</button>
+              <button class="btn btn--small" type="button" data-action="tab" data-tab="empty">Hết việc</button>
+              <button class="btn btn--small" type="button" data-action="tab" data-tab="error">Lỗi mạng</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="page__head">
+          <div class="page__head-text">
+            <h1 class="page-title">Chào chị Lan</h1>
+            <p class="text-meta">Thứ Hai, 24/08/2026</p>
+          </div>
+        </div>
+
+        <!-- ============ Loaded ============ -->
+        <div class="tab-panel" data-tab-panel="state" data-tab-name="loaded">
+        <div class="grid grid--main-aside">
+          <div>
+
+            <!-- Group order is fixed and empty groups are hidden entirely (A-TASK-07) -->
+            <section class="group">
+              <button class="group__head" type="button" data-action="toggle-group">
+                <span class="group__dot group__dot--overdue"></span> Quá hạn (1)
+                <span class="group__caret" aria-hidden="true">▾</span>
+              </button>
+              <div class="group__body">
+                <div class="task-card">
+                  <div class="badge-row">
+                    <span class="badge badge--p2">P2</span>
+                    <span class="badge badge--in-progress">Đang làm</span>
+                    <span class="badge badge--overdue">QUÁ HẠN 1 ngày</span>
+                  </div>
+                  <h2 class="task-card__title"><a href="task-detail.html">Hoàn thiện hồ sơ bệnh án 12 ca ra viện</a></h2>
+                  <div class="task-card__meta">📅 Hạn 23/08 17:00</div>
+                  <div class="task-card__parent">↑ NOI-0012 · Kiểm kê thuốc quý III</div>
+                  <div class="task-card__actions">
+                    <button class="btn btn--primary" type="button" data-action="demo-submit"
+                            data-busy-label="Đang gửi…" data-toast="Đã báo hoàn thành NOI-0142">Báo hoàn thành</button>
+                    <button class="btn btn--quiet" type="button" data-action="toast"
+                            data-toast="Đã gửi báo khó khăn" data-toast-kind="info">Báo khó khăn</button>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section class="group">
+              <button class="group__head" type="button" data-action="toggle-group">
+                <span class="group__dot group__dot--today"></span> Hôm nay (2)
+                <span class="group__caret" aria-hidden="true">▾</span>
+              </button>
+              <div class="group__body">
+                <div class="task-card">
+                  <div class="badge-row">
+                    <span class="badge badge--p1">P1</span>
+                    <span class="badge badge--not-accepted">Chưa nhận</span>
+                  </div>
+                  <h2 class="task-card__title"><a href="task-detail.html">Kiểm tra máy thở buồng 4</a></h2>
+                  <div class="task-card__meta">📅 Hạn 24/08 10:00</div>
+                  <div class="task-card__actions">
+                    <button class="btn btn--primary" type="button" data-action="demo-submit"
+                            data-busy-label="Đang gửi…" data-toast="Đã nhận HSCC-0091">Đã nhận</button>
+                    <!-- Secondary action only exists on P1 (B-P1-01) -->
+                    <button class="btn btn--quiet" type="button" data-action="toast"
+                            data-toast="Đã ghi nhận việc xử lý trước" data-toast-kind="info">Ghi nhận sau xử lý</button>
+                  </div>
+                </div>
+
+                <a class="task-card" href="task-detail.html">
+                  <div class="badge-row">
+                    <span class="badge badge--p3">P3</span>
+                    <span class="badge badge--pending-review">Chờ kiểm tra</span>
+                  </div>
+                  <h2 class="task-card__title">Bàn giao ca trực</h2>
+                  <div class="task-card__meta">📅 Hạn 24/08 17:00</div>
+                  <div class="task-card__meta" style="margin-top:8px;font-style:italic">
+                    Đang chờ người kiểm tra xác nhận
+                  </div>
+                </a>
+              </div>
+            </section>
+
+            <section class="group">
+              <button class="group__head" type="button" data-action="toggle-group">
+                <span class="group__dot group__dot--rejected"></span> Bị trả lại (1)
+                <span class="group__caret" aria-hidden="true">▾</span>
+              </button>
+              <div class="group__body">
+                <div class="task-card">
+                  <div class="badge-row">
+                    <span class="badge badge--p3">P3</span>
+                    <span class="badge badge--rejected">Không đạt</span>
+                  </div>
+                  <h2 class="task-card__title"><a href="task-detail.html">Báo cáo sử dụng giường bệnh tháng 8</a></h2>
+                  <div class="task-card__meta" style="color:var(--danger)">❗ Thiếu số liệu Khoa Ngoại</div>
+                  <div class="task-card__meta">📅 Khắc phục trước 25/08 17:00</div>
+                  <div class="task-card__actions">
+                    <button class="btn btn--primary" type="button" data-action="demo-submit"
+                            data-busy-label="Đang gửi…" data-toast="Đã gửi lại NOI-0138">Khắc phục xong</button>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- Collapsed by default: not today's problem -->
+            <section class="group is-collapsed">
+              <button class="group__head" type="button" data-action="toggle-group">
+                <span class="group__dot group__dot--soon"></span> 3 ngày tới (2)
+                <span class="group__caret" aria-hidden="true">▾</span>
+              </button>
+              <div class="group__body">
+                <a class="task-card task-card--compact" href="task-detail.html">
+                  <div class="badge-row">
+                    <span class="badge badge--p3">P3</span>
+                    <span class="badge badge--accepted">Đã nhận</span>
+                  </div>
+                  <h2 class="task-card__title">Chuẩn bị phòng khám sáng thứ Hai</h2>
+                  <div class="task-card__meta">📅 Hạn 25/08 07:00</div>
+                </a>
+                <a class="task-card task-card--compact" href="task-detail.html">
+                  <div class="badge-row">
+                    <span class="badge badge--p4">P4</span>
+                    <span class="badge badge--not-accepted">Chưa nhận</span>
+                  </div>
+                  <h2 class="task-card__title">Rà soát hồ sơ nhân sự quý III</h2>
+                  <div class="task-card__meta">📅 Hạn 27/08 17:00</div>
+                </a>
+              </div>
+            </section>
+          </div>
+
+          <!-- Right column on desktop, same content stacked underneath on a phone -->
+          <aside class="stack">
+            <section class="group" style="margin-bottom:0">
+              <button class="group__head" type="button" data-action="toggle-group">
+                📅 Ca trực sắp tới <span class="group__caret" aria-hidden="true">▾</span>
+              </button>
+              <div class="group__body">
+                <div class="card">
+                  <div style="font-weight:500">Trực đêm · T6 03/09</div>
+                  <div class="text-meta">19:00 – 07:00 · còn 2 ngày</div>
+                </div>
+              </div>
+            </section>
+
+            <section class="group" style="margin-bottom:0">
+              <button class="group__head" type="button" data-action="toggle-group">
+                ⭐ Phiếu thi đua chờ tự chấm <span class="group__caret" aria-hidden="true">▾</span>
+              </button>
+              <div class="group__body">
+                <div class="card">
+                  <div style="font-weight:500">Kỳ tháng 08/2026</div>
+                  <div class="text-meta">Tự chấm trước 02/09</div>
+                  <a class="btn btn--secondary btn--small" style="margin-top:12px" href="screens.html#chua-dung">Mở phiếu</a>
+                </div>
+              </div>
+            </section>
+          </aside>
+        </div>
+        </div>
+
+        <!-- ============ Loading ============ -->
+        <div class="tab-panel" data-tab-panel="state" data-tab-name="loading" hidden>
+          <div class="skeleton skeleton--title"></div>
+          <div class="skeleton skeleton--card"></div>
+          <div class="skeleton skeleton--card"></div>
+          <div class="skeleton skeleton--line" style="width:40%"></div>
+          <div class="skeleton skeleton--card"></div>
+        </div>
+
+        <!-- ============ Empty ============ -->
+        <div class="tab-panel" data-tab-panel="state" data-tab-name="empty" hidden>
+          <div class="card">
+            <div class="state">
+              <div class="state__icon">👏</div>
+              <div class="state__title">Anh/chị đã hoàn thành hết việc hôm nay</div>
+              <p class="state__text">Việc tiếp theo: 27/08</p>
+              <a class="btn btn--secondary" href="tasks.html">Xem tất cả việc của tôi</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- ============ Error ============ -->
+        <div class="tab-panel" data-tab-panel="state" data-tab-name="error" hidden>
+          <div class="card">
+            <div class="state">
+              <div class="state__icon">⚠️</div>
+              <div class="state__title">Không tải được danh sách việc</div>
+              <p class="state__text">Vui lòng kiểm tra kết nối mạng</p>
+              <button class="btn btn--secondary" type="button" data-action="demo-submit"
+                      data-busy-label="Đang tải lại…" data-toast="Đã tải lại" >Thử lại</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+  <div data-shell="bottomnav"></div>
+</div>
+<script src="assets/app.js"></script>
+</body>
+</html>

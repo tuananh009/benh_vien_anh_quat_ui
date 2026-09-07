@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nhật ký hệ thống · Trung tâm điều hành số Bệnh viện Anh Quất</title>
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body data-screen="audit-log" data-role="admin" data-unread="3">
+<div class="app">
+  <div data-shell="topbar"></div>
+  <div class="shell">
+    <div data-shell="sidebar"></div>
+    <main class="main">
+      <div class="page">
+
+        <div class="desktop-required">
+          <div class="state">
+            <div class="state__icon">💻</div>
+            <div class="state__title">Màn hình này cần máy tính</div>
+            <p class="state__text">Nhật ký có bảng nhiều cột và bộ lọc theo khoảng ngày. Vui lòng mở trên máy tính.</p>
+            <a class="btn btn--secondary" href="my-tasks.html">Về Việc của tôi</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="page__head">
+            <div class="page__head-text">
+              <h1 class="page-title">Nhật ký hệ thống</h1>
+              <p class="text-meta">Chỉ đọc, không xoá được. Việc xuất dữ liệu cũng được ghi vào nhật ký.</p>
+            </div>
+            <div class="page__actions">
+              <button class="btn btn--secondary" type="button" data-action="demo-submit"
+                      data-busy-label="Đang xuất…" data-toast="Đã xuất nhật ký theo bộ lọc">Xuất Excel</button>
+            </div>
+          </div>
+
+          <div class="tabs" data-tabs="log">
+            <button class="tab is-active" type="button" data-action="tab" data-tab="audit">Nhật ký thao tác</button>
+            <button class="tab" type="button" data-action="tab" data-tab="login">Nhật ký đăng nhập</button>
+            <button class="tab" type="button" data-action="tab" data-tab="export">Nhật ký xuất dữ liệu</button>
+          </div>
+
+          <div class="toolbar">
+            <label class="sr-only" for="log-from">Từ ngày</label>
+            <input class="input" id="log-from" type="date" value="2026-08-20" style="width:auto">
+            <label class="sr-only" for="log-to">Đến ngày</label>
+            <input class="input" id="log-to" type="date" value="2026-08-26" style="width:auto">
+            <label class="sr-only" for="log-action">Hành động</label>
+            <select class="select" id="log-action" style="width:auto;min-width:180px">
+              <option>Tất cả hành động</option>
+              <option>Tạo</option><option>Sửa</option><option>Khoá</option>
+              <option>Xuất dữ liệu</option><option>Đổi cấu hình</option>
+            </select>
+            <span class="toolbar__count">5 bản ghi</span>
+          </div>
+
+          <div class="tab-panel" data-tab-panel="log" data-tab-name="audit">
+            <div class="table-wrap">
+              <table class="table table-as-cards">
+                <thead>
+                  <tr><th>Thời điểm</th><th>Người thực hiện</th><th>Hành động</th><th>Đối tượng</th><th>Chi tiết</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td data-label="Thời điểm">26/08 09:14</td>
+                    <td data-label="Người thực hiện">QTHT Nguyễn Thế Quất</td>
+                    <td data-label="Hành động"><span class="badge badge--accepted">TẠO</span></td>
+                    <td data-label="Đối tượng">User</td>
+                    <td data-label="Chi tiết">Tạo tài khoản AQ-CS2-105 — Đỗ Thị Mai</td>
+                  </tr>
+                  <tr>
+                    <td data-label="Thời điểm">26/08 08:52</td>
+                    <td data-label="Người thực hiện">TCHC Lê Thị C</td>
+                    <td data-label="Hành động"><span class="badge badge--rejected">KHOÁ</span></td>
+                    <td data-label="Đối tượng">User</td>
+                    <td data-label="Chi tiết">Khoá tài khoản AQ-CS2-041 — Trần Văn K</td>
+                  </tr>
+                  <tr>
+                    <td data-label="Thời điểm">25/08 17:30</td>
+                    <td data-label="Người thực hiện">KHTH Phạm Văn H</td>
+                    <td data-label="Hành động"><span class="badge badge--done">XUẤT DỮ LIỆU</span></td>
+                    <td data-label="Đối tượng">Task</td>
+                    <td data-label="Chi tiết">Xuất Excel báo cáo nhiệm vụ tuần 34</td>
+                  </tr>
+                  <tr>
+                    <td data-label="Thời điểm">25/08 14:05</td>
+                    <td data-label="Người thực hiện">QTHT Nguyễn Thế Quất</td>
+                    <td data-label="Hành động"><span class="badge badge--pending-review">SỬA</span></td>
+                    <td data-label="Đối tượng">Role</td>
+                    <td data-label="Chi tiết">Gán vai trò DAU_MOI cho AQ-CS2-007</td>
+                  </tr>
+                  <tr>
+                    <td data-label="Thời điểm">24/08 10:41</td>
+                    <td data-label="Người thực hiện">Hệ thống</td>
+                    <td data-label="Hành động"><span class="badge badge--pending-review">ĐỔI CẤU HÌNH</span></td>
+                    <td data-label="Đối tượng">Config</td>
+                    <td data-label="Chi tiết">Đổi ngưỡng cảnh báo việc khẩn theo Q52</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="tab-panel" data-tab-panel="log" data-tab-name="login" hidden>
+            <label class="checkbox" style="margin-bottom:12px"><input type="checkbox"><span>Chỉ hiện lần đăng nhập thất bại</span></label>
+            <div class="table-wrap">
+              <table class="table table-as-cards">
+                <thead>
+                  <tr><th>Thời điểm</th><th>Tên đăng nhập</th><th>Kết quả</th><th>Địa chỉ IP</th><th>Thiết bị</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td data-label="Thời điểm">26/08 09:02</td>
+                    <td data-label="Tên đăng nhập">nguyenthilan</td>
+                    <td data-label="Kết quả"><span class="badge badge--done">Thành công</span></td>
+                    <td data-label="Địa chỉ IP">10.20.3.44</td>
+                    <td data-label="Thiết bị">iPhone · Safari</td>
+                  </tr>
+                  <tr>
+                    <td data-label="Thời điểm">26/08 08:58</td>
+                    <td data-label="Tên đăng nhập">nguyenthilan</td>
+                    <td data-label="Kết quả"><span class="badge badge--rejected">Sai mật khẩu</span></td>
+                    <td data-label="Địa chỉ IP">10.20.3.44</td>
+                    <td data-label="Thiết bị">iPhone · Safari</td>
+                  </tr>
+                  <tr>
+                    <td data-label="Thời điểm">25/08 23:11</td>
+                    <td data-label="Tên đăng nhập">admin</td>
+                    <td data-label="Kết quả"><span class="badge badge--rejected">Không tồn tại</span></td>
+                    <td data-label="Địa chỉ IP">203.0.113.9</td>
+                    <td data-label="Thiết bị">Không rõ</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="text-meta" style="margin-top:12px">Lọc “chỉ thất bại” để phát hiện dò mật khẩu.</p>
+          </div>
+
+          <div class="tab-panel" data-tab-panel="log" data-tab-name="export" hidden>
+            <div class="table-wrap">
+              <table class="table table-as-cards">
+                <thead>
+                  <tr><th>Thời điểm</th><th>Người xuất</th><th>Dữ liệu</th><th>Bộ lọc áp dụng</th><th>Số dòng</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td data-label="Thời điểm">25/08 17:30</td>
+                    <td data-label="Người xuất">KHTH Phạm Văn H</td>
+                    <td data-label="Dữ liệu">Báo cáo nhiệm vụ</td>
+                    <td data-label="Bộ lọc">Tuần 34 · toàn viện</td>
+                    <td data-label="Số dòng" class="table__num">412</td>
+                  </tr>
+                  <tr>
+                    <td data-label="Thời điểm">24/08 11:20</td>
+                    <td data-label="Người xuất">TCHC Lê Thị C</td>
+                    <td data-label="Dữ liệu">Danh sách nhân sự chưa liên kết Zalo</td>
+                    <td data-label="Bộ lọc">Cơ sở 2</td>
+                    <td data-label="Số dòng" class="table__num">23</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="text-meta" style="margin-top:12px">Xuất dữ liệu là hành động nhạy cảm nhất — luôn ghi lại đầy đủ.</p>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+  <div data-shell="bottomnav"></div>
+</div>
+<script src="assets/app.js"></script>
+</body>
+</html>

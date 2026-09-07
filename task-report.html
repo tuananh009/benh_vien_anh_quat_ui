@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Báo cáo nhiệm vụ · Trung tâm điều hành số Bệnh viện Anh Quất</title>
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body data-screen="task-report" data-role="manager" data-unread="5">
+<div class="app">
+  <div data-shell="topbar"></div>
+  <div class="shell">
+    <div data-shell="sidebar"></div>
+    <main class="main">
+      <div class="page">
+
+        <div class="desktop-required">
+          <div class="state">
+            <div class="state__icon">💻</div>
+            <div class="state__title">Màn hình này cần máy tính</div>
+            <p class="state__text">Báo cáo có bảng nhiều cột và xuất Excel. Vui lòng mở trên máy tính.</p>
+            <a class="btn btn--secondary" href="my-tasks.html">Về Việc của tôi</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="page__head">
+            <div class="page__head-text">
+              <h1 class="page-title">Báo cáo nhiệm vụ</h1>
+              <p class="text-meta">Kỳ báo cáo 01/08 – 26/08/2026 · Khoa Nội – Nhi – Da liễu – HSCC</p>
+            </div>
+            <div class="page__actions">
+              <button class="btn btn--secondary" type="button" data-action="demo-submit"
+                      data-busy-label="Đang xuất…"
+                      data-toast="Đã xuất Excel đúng bộ lọc đang áp dụng">Xuất Excel</button>
+            </div>
+          </div>
+
+          <div class="toolbar">
+            <label class="sr-only" for="report-from">Từ ngày</label>
+            <input class="input" id="report-from" type="date" value="2026-08-01" style="width:auto">
+            <label class="sr-only" for="report-to">Đến ngày</label>
+            <input class="input" id="report-to" type="date" value="2026-08-26" style="width:auto">
+            <label class="sr-only" for="report-unit">Đơn vị</label>
+            <select class="select" id="report-unit" style="width:auto;min-width:220px">
+              <option selected>Khoa Nội – Nhi – Da liễu – HSCC</option>
+              <option>Toàn viện</option>
+              <option>Khoa Khám bệnh</option>
+              <option>Khoa Ngoại – Sản – PT – GMHS</option>
+            </select>
+            <button class="btn btn--secondary" type="button"
+                    data-action="toast" data-toast="Đã áp dụng bộ lọc" data-toast-kind="info">Áp dụng</button>
+          </div>
+
+          <div class="grid grid--4" style="margin-bottom:24px">
+            <div class="metric">
+              <div class="metric__value">128</div>
+              <div class="metric__label">Nhiệm vụ được giao</div>
+            </div>
+            <div class="metric metric--success">
+              <div class="metric__value">86%</div>
+              <div class="metric__label">Hoàn thành đúng hạn</div>
+            </div>
+            <div class="metric metric--danger">
+              <div class="metric__value">12</div>
+              <div class="metric__label">Quá hạn</div>
+            </div>
+            <div class="metric metric--warning">
+              <div class="metric__value">5</div>
+              <div class="metric__label">Bị trả lại</div>
+            </div>
+          </div>
+
+          <div class="tabs" data-tabs="report">
+            <button class="tab is-active" type="button" data-action="tab" data-tab="by-person">Theo người thực hiện</button>
+            <button class="tab" type="button" data-action="tab" data-tab="by-unit">Theo đơn vị</button>
+            <button class="tab" type="button" data-action="tab" data-tab="by-template">Theo mẫu công việc</button>
+          </div>
+
+          <div class="tab-panel" data-tab-panel="report" data-tab-name="by-person">
+            <div class="table-wrap">
+              <table class="table table-as-cards">
+                <thead>
+                  <tr>
+                    <th>Người thực hiện</th><th>Chức danh</th><th>Được giao</th>
+                    <th>Hoàn thành</th><th>Đúng hạn</th><th>Quá hạn</th><th>Bị trả lại</th><th>Tỷ lệ đúng hạn</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td data-label="Người thực hiện">Nguyễn Thị Lan</td>
+                    <td data-label="Chức danh">Điều dưỡng</td>
+                    <td data-label="Được giao" class="table__num">24</td>
+                    <td data-label="Hoàn thành" class="table__num">21</td>
+                    <td data-label="Đúng hạn" class="table__num">19</td>
+                    <td data-label="Quá hạn" class="table__num">2</td>
+                    <td data-label="Bị trả lại" class="table__num">1</td>
+                    <td data-label="Tỷ lệ đúng hạn" class="table__num">90%</td>
+                  </tr>
+                  <tr>
+                    <td data-label="Người thực hiện">Trần Văn B</td>
+                    <td data-label="Chức danh">Điều dưỡng</td>
+                    <td data-label="Được giao" class="table__num">22</td>
+                    <td data-label="Hoàn thành" class="table__num">22</td>
+                    <td data-label="Đúng hạn" class="table__num">22</td>
+                    <td data-label="Quá hạn" class="table__num">0</td>
+                    <td data-label="Bị trả lại" class="table__num">0</td>
+                    <td data-label="Tỷ lệ đúng hạn" class="table__num">100%</td>
+                  </tr>
+                  <tr>
+                    <td data-label="Người thực hiện">Phạm Văn D</td>
+                    <td data-label="Chức danh">Y sĩ</td>
+                    <td data-label="Được giao" class="table__num">19</td>
+                    <td data-label="Hoàn thành" class="table__num">14</td>
+                    <td data-label="Đúng hạn" class="table__num">11</td>
+                    <td data-label="Quá hạn" class="table__num">5</td>
+                    <td data-label="Bị trả lại" class="table__num">2</td>
+                    <td data-label="Tỷ lệ đúng hạn" style="color:var(--danger)" class="table__num">58%</td>
+                  </tr>
+                  <tr>
+                    <td data-label="Người thực hiện">Hoàng Văn E</td>
+                    <td data-label="Chức danh">Điều dưỡng</td>
+                    <td data-label="Được giao" class="table__num">31</td>
+                    <td data-label="Hoàn thành" class="table__num">28</td>
+                    <td data-label="Đúng hạn" class="table__num">26</td>
+                    <td data-label="Quá hạn" class="table__num">3</td>
+                    <td data-label="Bị trả lại" class="table__num">1</td>
+                    <td data-label="Tỷ lệ đúng hạn" class="table__num">84%</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Reference figures only: a report never turns into emulation points by itself -->
+            <div class="figure-card" style="margin-top:16px">
+              📊 Số liệu này là <strong>tham chiếu</strong> khi chấm thi đua.
+              Hệ thống không bao giờ tự quy đổi con số ở đây thành điểm — người chấm tự quyết định.
+            </div>
+          </div>
+
+          <div class="tab-panel" data-tab-panel="report" data-tab-name="by-unit" hidden>
+            <div class="table-wrap">
+              <table class="table table-as-cards">
+                <thead>
+                  <tr><th>Đơn vị</th><th>Được giao</th><th>Hoàn thành</th><th>Quá hạn</th><th>Tỷ lệ đúng hạn</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td data-label="Đơn vị">Khoa Nội – Nhi – Da liễu – HSCC</td>
+                    <td data-label="Được giao" class="table__num">128</td>
+                    <td data-label="Hoàn thành" class="table__num">110</td>
+                    <td data-label="Quá hạn" class="table__num">12</td>
+                    <td data-label="Tỷ lệ đúng hạn" class="table__num">86%</td>
+                  </tr>
+                  <tr>
+                    <td data-label="Đơn vị">Khoa Khám bệnh</td>
+                    <td data-label="Được giao" class="table__num">96</td>
+                    <td data-label="Hoàn thành" class="table__num">74</td>
+                    <td data-label="Quá hạn" class="table__num">18</td>
+                    <td data-label="Tỷ lệ đúng hạn" style="color:var(--danger)" class="table__num">71%</td>
+                  </tr>
+                  <tr>
+                    <td data-label="Đơn vị">Khoa Ngoại – Sản – PT – GMHS</td>
+                    <td data-label="Được giao" class="table__num">84</td>
+                    <td data-label="Hoàn thành" class="table__num">78</td>
+                    <td data-label="Quá hạn" class="table__num">4</td>
+                    <td data-label="Tỷ lệ đúng hạn" class="table__num">93%</td>
+                  </tr>
+                  <tr>
+                    <td data-label="Đơn vị">Phòng Tổ chức – Hành chính</td>
+                    <td data-label="Được giao" class="table__num">42</td>
+                    <td data-label="Hoàn thành" class="table__num">40</td>
+                    <td data-label="Quá hạn" class="table__num">1</td>
+                    <td data-label="Tỷ lệ đúng hạn" class="table__num">95%</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="tab-panel" data-tab-panel="report" data-tab-name="by-template" hidden>
+            <div class="table-wrap">
+              <table class="table table-as-cards">
+                <thead>
+                  <tr><th>Mẫu công việc</th><th>Số lần giao</th><th>SLA (giờ)</th><th>Thời gian xong trung bình</th><th>Quá hạn</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td data-label="Mẫu công việc">Bàn giao ca trực</td>
+                    <td data-label="Số lần giao" class="table__num">62</td>
+                    <td data-label="SLA (giờ)" class="table__num">1</td>
+                    <td data-label="Thời gian xong TB" class="table__num">0,7 giờ</td>
+                    <td data-label="Quá hạn" class="table__num">2</td>
+                  </tr>
+                  <tr>
+                    <td data-label="Mẫu công việc">Kiểm kê thuốc theo tủ trực</td>
+                    <td data-label="Số lần giao" class="table__num">18</td>
+                    <td data-label="SLA (giờ)" class="table__num">8</td>
+                    <td data-label="Thời gian xong TB" class="table__num">9,4 giờ</td>
+                    <td data-label="Quá hạn" style="color:var(--danger)" class="table__num">6</td>
+                  </tr>
+                  <tr>
+                    <td data-label="Mẫu công việc">Đối chiếu thẻ kho</td>
+                    <td data-label="Số lần giao" class="table__num">12</td>
+                    <td data-label="SLA (giờ)" class="table__num">4</td>
+                    <td data-label="Thời gian xong TB" class="table__num">3,1 giờ</td>
+                    <td data-label="Quá hạn" class="table__num">1</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="text-meta" style="margin-top:12px">
+              Mẫu có thời gian xong trung bình vượt SLA là dấu hiệu SLA đặt quá chặt — nên xem lại
+              trong <a href="task-templates.html">Danh mục công việc chuẩn</a>.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+  <div data-shell="bottomnav"></div>
+</div>
+<script src="assets/app.js"></script>
+</body>
+</html>

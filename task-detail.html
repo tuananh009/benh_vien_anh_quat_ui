@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HSCC-0091 · Chi tiết nhiệm vụ · Bệnh viện Anh Quất</title>
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body data-screen="task-detail" data-role="cbnv" data-unread="3">
+<div class="app">
+  <div data-shell="topbar"></div>
+  <div class="shell">
+    <div data-shell="sidebar"></div>
+    <main class="main">
+      <div class="page">
+
+        <a class="text-meta" href="my-tasks.html">← Quay lại Việc của tôi</a>
+
+        <div class="grid grid--main-aside" style="margin-top:16px">
+          <div>
+            <div class="badge-row">
+              <span class="chip">HSCC-0091</span>
+              <span class="badge badge--p1">P1</span>
+              <span class="badge badge--in-progress">Đang làm</span>
+            </div>
+            <h1 class="page-title" style="margin:12px 0 8px">Kiểm tra máy thở buồng 4</h1>
+            <p class="text-meta">↑ Thuộc NOI-0012 · Kiểm kê thuốc quý III<br>Giao bởi PGĐ Nguyễn Anh Tuấn</p>
+
+            <div class="tabs" data-tabs="task" style="margin-top:24px">
+              <button class="tab is-active" type="button" data-action="tab" data-tab="info">Thông tin</button>
+              <button class="tab" type="button" data-action="tab" data-tab="comments">Trao đổi (2)</button>
+              <button class="tab" type="button" data-action="tab" data-tab="history">Lịch sử</button>
+            </div>
+
+            <!-- ---------- Tab: Thông tin ---------- -->
+            <div class="tab-panel" data-tab-panel="task" data-tab-name="info">
+              <div class="card">
+                <dl class="dl">
+                  <dt>Nội dung / đầu ra</dt>
+                  <dd style="font-size:18px">Kiểm tra hoạt động máy thở buồng 4, đối chiếu thông số theo checklist bảo trì.
+                    Báo ngay nếu phát hiện bất thường.</dd>
+
+                  <dt>Người thực hiện</dt>
+                  <dd>ĐD Nguyễn Thị Lan · Khoa Nội – Nhi – Da liễu – Hồi sức cấp cứu</dd>
+
+                  <dt>Người phối hợp</dt>
+                  <dd>ĐD Trần Văn B · Khoa Nội</dd>
+
+                  <dt>Người kiểm tra</dt>
+                  <dd>ĐD trưởng Bùi Thị Tố Hoa</dd>
+
+                  <dt>Hạn hoàn thành</dt>
+                  <dd>
+                    <!-- The original deadline never changes (A-TASK-03) — it stays visible next to the current one -->
+                    <s class="text-muted">23/08/2026 17:00</s> → <strong>24/08/2026 10:00</strong><br>
+                    <span class="text-meta">Đã gia hạn 1 lần · <a href="#" data-action="open-overlay" data-target="extension-history">xem →</a></span>
+                  </dd>
+                </dl>
+              </div>
+
+              <div class="card">
+                <h2 class="card__title">Cách làm — 3/4 hoàn thành</h2>
+                <ul class="checklist">
+                  <li class="is-done"><span class="checklist__box">✓</span> Kiểm tra nguồn điện và pin dự phòng</li>
+                  <li class="is-done"><span class="checklist__box">✓</span> Đối chiếu thông số áp lực, tần số theo y lệnh</li>
+                  <li class="is-done"><span class="checklist__box">✓</span> Kiểm tra bộ dây và bộ lọc</li>
+                  <li><span class="checklist__box"></span> Ghi nhận vào sổ theo dõi thiết bị</li>
+                </ul>
+              </div>
+
+              <div class="card">
+                <h2 class="card__title">Tiêu chí hoàn thành</h2>
+                <p>Đủ – đúng – đúng hạn – có minh chứng – đạt chất lượng.</p>
+
+                <h2 class="card__title" style="margin-top:24px">Minh chứng</h2>
+                <p class="text-meta">📄 Mã hồ sơ: HS-2026-08-1142</p>
+                <button class="btn btn--secondary btn--small" type="button"
+                        data-action="toast" data-toast="Đã thêm minh chứng" data-toast-kind="info">+ Thêm minh chứng</button>
+              </div>
+            </div>
+
+            <!-- ---------- Tab: Trao đổi ---------- -->
+            <div class="tab-panel" data-tab-panel="task" data-tab-name="comments" hidden>
+              <div class="card">
+                <div style="padding-bottom:16px;border-bottom:1px solid var(--border)">
+                  <div class="text-meta">ĐD trưởng Bùi Thị Tố Hoa · 24/08 08:12</div>
+                  <p style="margin-top:4px">Nhớ đối chiếu cả bộ lọc HEPA thay ngày 20/08 nhé.</p>
+                </div>
+                <div style="padding:16px 0;border-bottom:1px solid var(--border);background:var(--warning-bg);margin:0 -16px;padding-left:16px;padding-right:16px">
+                  <div class="text-meta">⚠️ ĐD Nguyễn Thị Lan · 24/08 09:05 · Báo khó khăn</div>
+                  <p style="margin-top:4px">Máy số 2 buồng 4 đang dùng cho người bệnh, chưa kiểm tra được. Xin lùi sang ca chiều.</p>
+                </div>
+
+                <div class="field" style="margin-top:16px;margin-bottom:0">
+                  <label class="field__label" for="comment">Viết trao đổi</label>
+                  <textarea class="textarea" id="comment" placeholder="Nhập nội dung trao đổi…"></textarea>
+                </div>
+                <button class="btn btn--secondary" type="button" style="margin-top:12px"
+                        data-action="demo-submit" data-busy-label="Đang gửi…" data-toast="Đã gửi trao đổi">Gửi</button>
+              </div>
+            </div>
+
+            <!-- ---------- Tab: Lịch sử ---------- -->
+            <div class="tab-panel" data-tab-panel="task" data-tab-name="history" hidden>
+              <div class="table-wrap">
+                <table class="table table-as-cards">
+                  <thead>
+                    <tr><th>Thời điểm</th><th>Người thực hiện</th><th>Thay đổi</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td data-label="Thời điểm">24/08 09:30</td>
+                      <td data-label="Người thực hiện">ĐD trưởng Bùi Thị Tố Hoa</td>
+                      <td data-label="Thay đổi">Gia hạn 23/08 17:00 → 24/08 10:00</td>
+                    </tr>
+                    <tr>
+                      <td data-label="Thời điểm">24/08 08:40</td>
+                      <td data-label="Người thực hiện">ĐD Nguyễn Thị Lan</td>
+                      <td data-label="Thay đổi">Chưa nhận → Đang làm</td>
+                    </tr>
+                    <tr>
+                      <td data-label="Thời điểm">23/08 16:02</td>
+                      <td data-label="Người thực hiện">PGĐ Nguyễn Anh Tuấn</td>
+                      <td data-label="Thay đổi">Giao nhiệm vụ</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sticky summary + actions. On a phone this becomes the bottom action bar. -->
+          <aside>
+            <div class="card desktop-only">
+              <dl class="dl">
+                <dt>Trạng thái</dt>
+                <dd><span class="badge badge--in-progress">Đang làm</span></dd>
+                <dt>Mức độ</dt>
+                <dd><span class="badge badge--p1">P1</span></dd>
+                <dt>Hạn</dt>
+                <dd>24/08/2026 10:00</dd>
+                <dt>Người kiểm tra</dt>
+                <dd>ĐD trưởng Bùi Thị Tố Hoa</dd>
+              </dl>
+            </div>
+
+            <div class="action-bar">
+              <button class="btn btn--primary btn--large" type="button" data-action="demo-submit"
+                      data-busy-label="Đang gửi…" data-toast="Đã báo hoàn thành HSCC-0091"
+                      data-next="my-tasks.html">Báo hoàn thành</button>
+              <button class="btn btn--quiet" type="button" data-action="toast"
+                      data-toast="Đã gửi báo khó khăn" data-toast-kind="info">Báo khó khăn</button>
+            </div>
+          </aside>
+        </div>
+
+      </div>
+    </main>
+  </div>
+  <div data-shell="bottomnav"></div>
+</div>
+
+<div class="overlay" id="extension-history">
+  <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="extension-title">
+    <div class="dialog__head">
+      <h2 class="dialog__title" id="extension-title">Lịch sử gia hạn</h2>
+      <button class="icon-btn" type="button" data-action="close-overlay" aria-label="Đóng">✕</button>
+    </div>
+    <div class="dialog__body">
+      <dl class="dl">
+        <dt>Hạn gốc</dt>
+        <dd>23/08/2026 17:00 — không thay đổi</dd>
+        <dt>Lần gia hạn 1</dt>
+        <dd>→ 24/08/2026 10:00<br>
+          <span class="text-meta">ĐD trưởng Bùi Thị Tố Hoa · 24/08 09:30<br>
+          Lý do: máy đang dùng cho người bệnh trong ca sáng</span></dd>
+      </dl>
+    </div>
+    <div class="dialog__foot">
+      <button class="btn btn--primary" type="button" data-action="close-overlay">Đóng</button>
+    </div>
+  </div>
+</div>
+
+<script src="assets/app.js"></script>
+</body>
+</html>

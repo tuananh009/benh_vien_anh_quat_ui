@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tất cả màn hình · Trung tâm điều hành số Bệnh viện Anh Quất</title>
+<link rel="stylesheet" href="assets/app.css">
+<style>
+  .index-list { display: grid; gap: 0; }
+  @media (min-width: 768px) { .index-list { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 32px; } }
+  .index-row {
+    display: flex; align-items: baseline; gap: 12px;
+    min-height: 44px; padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    color: inherit;
+  }
+  .index-row:hover { text-decoration: none; color: var(--brand-blue-dark); }
+  .index-row__name { flex: 1; min-width: 0; }
+  .index-row__code {
+    font-size: 14px; color: var(--text-faint);
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  }
+</style>
+</head>
+<body data-screen="" data-role="admin" data-unread="3">
+<div class="app">
+  <div data-shell="topbar"></div>
+  <div class="shell">
+    <div data-shell="sidebar"></div>
+    <main class="main">
+      <div class="page" style="max-width:900px">
+
+        <div class="page__head">
+          <div class="page__head-text">
+            <h1 class="page-title">Tất cả màn hình</h1>
+            <p class="text-meta">21 màn hình trong bản mẫu. Dữ liệu là dữ liệu giả, các nút bấm được nhưng không lưu gì cả.</p>
+          </div>
+        </div>
+
+        <h2 class="section-title" style="margin:24px 0 8px">Đăng nhập và tài khoản</h2>
+        <div class="index-list">
+          <a class="index-row" href="login.html"><span class="index-row__name">Đăng nhập</span><span class="index-row__code">A01</span></a>
+          <a class="index-row" href="two-factor.html"><span class="index-row__name">Xác thực hai lớp</span><span class="index-row__code">A01</span></a>
+          <a class="index-row" href="activate.html"><span class="index-row__name">Kích hoạt tài khoản</span><span class="index-row__code">A02</span></a>
+          <a class="index-row" href="change-password.html"><span class="index-row__name">Đổi mật khẩu lần đầu</span><span class="index-row__code">A02</span></a>
+          <a class="index-row" href="devices.html"><span class="index-row__name">Thiết bị của tôi</span><span class="index-row__code">A02</span></a>
+        </div>
+
+        <h2 class="section-title" style="margin:32px 0 8px">Nhiệm vụ</h2>
+        <div class="index-list">
+          <a class="index-row" href="my-tasks.html"><span class="index-row__name">Việc của tôi</span><span class="index-row__code">A05</span></a>
+          <a class="index-row" href="task-detail.html"><span class="index-row__name">Chi tiết nhiệm vụ</span><span class="index-row__code">A06</span></a>
+          <a class="index-row" href="tasks.html"><span class="index-row__name">Danh sách nhiệm vụ · 5 cách xem</span><span class="index-row__code">A04</span></a>
+          <a class="index-row" href="task-create.html"><span class="index-row__name">Giao việc</span><span class="index-row__code">A07</span></a>
+          <a class="index-row" href="task-split.html"><span class="index-row__name">Chia việc</span><span class="index-row__code">B04</span></a>
+          <a class="index-row" href="shift-handover.html"><span class="index-row__name">Việc tồn cuối ca</span><span class="index-row__code">B07</span></a>
+          <a class="index-row" href="notifications.html"><span class="index-row__name">Thông báo</span><span class="index-row__code">A12</span></a>
+        </div>
+
+        <h2 class="section-title" style="margin:32px 0 8px">Điều hành</h2>
+        <div class="index-list">
+          <a class="index-row" href="unit-dashboard.html"><span class="index-row__name">Bảng điều khiển đơn vị</span><span class="index-row__code">B02</span></a>
+          <a class="index-row" href="exec-dashboard.html"><span class="index-row__name">Bảng điều khiển Ban Giám đốc</span><span class="index-row__code">B01</span></a>
+          <a class="index-row" href="task-report.html"><span class="index-row__name">Báo cáo nhiệm vụ</span><span class="index-row__code">B08</span></a>
+        </div>
+
+        <h2 class="section-title" style="margin:32px 0 8px">Quản trị</h2>
+        <div class="index-list">
+          <a class="index-row" href="index.html"><span class="index-row__name">Quản lý người dùng</span><span class="index-row__code">A08</span></a>
+          <a class="index-row" href="user-import.html"><span class="index-row__name">Nhập tài khoản từ Excel</span><span class="index-row__code">A09</span></a>
+          <a class="index-row" href="org-units.html"><span class="index-row__name">Cơ cấu tổ chức</span><span class="index-row__code">A10</span></a>
+          <a class="index-row" href="task-templates.html"><span class="index-row__name">Danh mục công việc chuẩn</span><span class="index-row__code">B06</span></a>
+          <a class="index-row" href="audit-log.html"><span class="index-row__name">Nhật ký hệ thống</span><span class="index-row__code">A11</span></a>
+        </div>
+
+        <h2 class="section-title" style="margin:32px 0 8px" id="chua-dung">Chưa dựng</h2>
+        <p class="text-meta" style="max-width:640px">
+          Sitemap đầy đủ có 48 màn hình. Các nhóm sau đã có đặc tả nhưng chưa dựng HTML:
+          nhiệm vụ gắn người bệnh (Phần B2) · giao ban (Phần C) · thi đua: chấm phiếu, xét duyệt
+          hội đồng, đối chiếu (Phần D) · lịch trực: xếp lịch, nghỉ phép, đổi trực (Phần E) ·
+          chỉ tiêu (Phần G, chưa đặc tả). Mục menu dẫn tới các màn hình đó sẽ quay về đây.
+        </p>
+
+      </div>
+    </main>
+  </div>
+  <div data-shell="bottomnav"></div>
+</div>
+<script src="assets/app.js"></script>
+</body>
+</html>
