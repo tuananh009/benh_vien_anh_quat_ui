@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Xin đổi ca trực · Trung tâm điều hành số Bệnh viện Anh Quất</title>
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body data-screen="shift-swap" data-role="cbnv" data-unread="2">
+<div class="app">
+  <div data-shell="topbar"></div>
+  <div class="shell">
+    <div data-shell="sidebar"></div>
+    <main class="main">
+      <div class="page" style="max-width:640px">
+
+        <div class="page__head">
+          <div class="page__head-text">
+            <p class="text-meta"><a href="my-duty.html">← Lịch trực của tôi</a></p>
+            <h1 class="page-title">Xin đổi ca trực</h1>
+          </div>
+        </div>
+
+        <ol class="stepper" style="padding:0;list-style:none">
+          <li class="stepper__step is-active"><span class="stepper__num">1</span> Chọn ca và người nhận thay</li>
+          <li class="stepper__step"><span class="stepper__num">2</span> Người nhận thay đồng ý</li>
+          <li class="stepper__step"><span class="stepper__num">3</span> ĐD trưởng duyệt</li>
+        </ol>
+
+        <div class="proto-note">
+          <span>🧪</span>
+          <div><strong>Bản mẫu</strong> — MH-E06, hôm nay 01/09 15:30. Chọn ca Đêm hôm nay để thấy cảnh báo “bắt đầu trong 4 giờ”.
+            Danh sách người nhận thay được lọc từ lịch thật của khoa: ai trùng giờ hoặc nghỉ phép thì không hiện.</div>
+        </div>
+
+        <form class="card" data-roster="swap-form" data-person="lan" data-day="11" novalidate>
+          <div class="field">
+            <label class="field__label" for="swap-shift">Ca cần đổi <span class="field__required">*</span></label>
+            <select class="select" id="swap-shift"></select>
+            <div class="field__hint">Ca đã bắt đầu hoặc đã qua không xin đổi được</div>
+          </div>
+          <div data-roster="swap-time" style="margin-bottom:16px"></div>
+
+          <div class="field">
+            <span class="field__label" id="swap-to-label">Chọn người nhận thay <span class="field__required">*</span></span>
+            <label class="sr-only" for="swap-search">Tìm người nhận thay</label>
+            <input class="input" id="swap-search" type="search" placeholder="🔍 Tìm tên hoặc chức danh" style="margin-bottom:8px">
+            <div data-roster="swap-candidates"></div>
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="swap-reason">Lý do (tuỳ chọn)</label>
+            <textarea class="textarea" id="swap-reason" placeholder="Ví dụ: việc gia đình"></textarea>
+          </div>
+
+          <button class="btn btn--primary btn--large btn--block" type="button" data-action="demo-submit" data-busy-label="Đang gửi…"
+                  data-toast="Đã gửi yêu cầu · người nhận thay nhận thông báo qua Zalo" data-next="my-duty.html">Gửi yêu cầu đổi trực</button>
+          <p class="text-meta" style="margin:12px 0 0;text-align:center">Lịch chỉ đổi người sau khi ĐD trưởng duyệt. Chưa duyệt xong trước giờ vào ca, yêu cầu tự huỷ.</p>
+        </form>
+
+      </div>
+    </main>
+  </div>
+  <div data-shell="bottomnav"></div>
+</div>
+<script src="assets/app.js"></script>
+<script src="assets/roster.js"></script>
+<script src="assets/roster-ui.js"></script>
+</body>
+</html>

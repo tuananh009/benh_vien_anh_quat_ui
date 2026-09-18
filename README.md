@@ -1,6 +1,6 @@
 # Bản mẫu giao diện
 
-21 màn hình HTML tĩnh của **Trung tâm điều hành số Bệnh viện Đa khoa Anh Quất**,
+31 màn hình HTML tĩnh của **Trung tâm điều hành số Bệnh viện Đa khoa Anh Quất**,
 dựng để bệnh viện xem và góp ý trước khi lập trình phần mềm thật.
 
 Repo này **chỉ chứa bản mẫu giao diện** — không có mã nguồn máy chủ, không có lược đồ cơ sở
@@ -57,9 +57,20 @@ hoặc bật chế độ thiết bị di động trong công cụ nhà phát tri
 ├── exec-dashboard.html   MH-B01  Bảng điều khiển Ban Giám đốc
 ├── task-report.html      MH-B08  Báo cáo nhiệm vụ
 │
+├── duty-roster.html      MH-E01  Lịch trực đơn vị — theo ngày, theo người, lịch sử đổi trực
+├── duty-schedule.html    MH-E02  Xếp lịch trực ★ — gõ phím, hoàn tác, cảnh báo tức thì
+├── my-duty.html          MH-E03  Lịch trực của tôi
+├── leave-request.html    MH-E04  Đăng ký nghỉ
+├── leave-approval.html   MH-E05  Duyệt nghỉ — thấy ca bị gỡ trước khi duyệt
+├── shift-swap.html       MH-E06  Xin đổi ca (bước 1)
+├── swap-approval.html    MH-E06  Duyệt đổi trực (bước 3)
+├── duty-stats.html       MH-E07  Thống kê ca trực
+├── duty-print.html       E-XUAT  In lịch dán bảng A3
+│
 ├── user-import.html      MH-A09  Nhập tài khoản từ Excel
 ├── org-units.html        MH-A10  Cơ cấu tổ chức
 ├── task-templates.html   MH-B06  Danh mục công việc chuẩn
+├── shift-types.html      MH-E08  Cấu hình ca trực
 └── audit-log.html        MH-A11  Nhật ký hệ thống
 ```
 
@@ -103,6 +114,16 @@ Logo trên thanh trên dẫn về "nhà" của từng vai trò: `cbnv` → Việ
 
 ---
 
+## Lịch trực dùng chung một bộ dữ liệu
+
+Các màn Phần E đọc cùng một lịch tháng 9/2026 của Khoa Nội trong `assets/roster.js` (15 người,
+ca S · C · Đ · 24, nghỉ phép, ca ở khoa khác, đổi trực đã duyệt), nên số ca, cảnh báo và danh sách
+người nhận thay khớp nhau giữa các màn. `assets/roster-ui.js` gắn các thành phần qua thuộc tính
+`data-roster="…"` — màn nào không dùng lịch trực thì không cần nạp hai tệp này.
+"Bây giờ" của bản mẫu cố định là **01/09/2026 15:30** để minh hoạ ca đã bắt đầu và ca sắp vào trong 4 giờ.
+
+---
+
 ## Đã theo đúng những gì trong tài liệu thiết kế
 
 | Ràng buộc | Nguồn |
@@ -127,6 +148,13 @@ Logo trên thanh trên dẫn về "nhà" của từng vai trò: `cbnv` → Việ
 | Màn hình quản trị chỉ dùng máy tính, điện thoại hiện thông báo | `13-Man-hinh-quan-tri.md` mục 11 |
 | Hạn gốc không đổi, hiện cạnh hạn hiện tại | `A-TASK-03` — xem `task-detail.html` |
 | Không hiển thị mật khẩu ở bất kỳ đâu, chỉ có mã kích hoạt | `13-Man-hinh-quan-tri.md` mục 2.5 |
+| Xếp lịch: chỉ chặn trùng giờ và ngày đã duyệt nghỉ, mọi cảnh báo khác vẫn lưu | `E-CHECK-01` · `08-MH-E02` mục 5 |
+| Cảnh báo nằm ngay dưới bảng, nút “tới ô” cuộn tới đúng ô | `08-MH-E02` mục 5.2 |
+| Cột ca đêm cuối tháng trước, kiểm tra trực đêm liên tiếp xuyên tháng | `08-MH-E02` mục 2.1 · `E-LICH-04` |
+| Duyệt nghỉ hiện từng ca bị gỡ và số người còn lại; không hiện số ngày phép còn lại | `09-Lich-truc-ca-nhan` mục 5, 8 |
+| Người nhận thay không hợp lệ không hiện trong danh sách | `09-Lich-truc-ca-nhan` mục 9 |
+| Thống kê chỉ đếm ca và quy đổi hệ số, không tính tiền | `E-TK-01` |
+| Bản in dán bảng theo ngày × ca, A3 ngang, có người lập / người duyệt | `E-XUAT-01` |
 | Tôn trọng `prefers-reduced-motion` | `00-Quy-uoc-va-Component.md` mục 5 |
 
 ---
@@ -137,7 +165,7 @@ Logo trên thanh trên dẫn về "nhà" của từng vai trò: `cbnv` → Việ
 - Nút bấm chạy hiệu ứng chờ rồi hiện thông báo — không thay đổi dữ liệu.
 - Cây đơn vị chưa kéo thả được; bảng chưa sắp xếp được khi bấm tiêu đề cột.
 - Ở màn Chia việc, chọn mẫu chưa thực sự tự điền lại các trường bên dưới.
-- Chưa có màn hình Phần B2, C, D, E, G — xem mục *Chưa dựng* ở `screens.html`.
+- Chưa có màn hình Phần B2, C, D, G — xem mục *Chưa dựng* ở `screens.html`.
 - Logo là hình vẽ tạm bằng SVG. Cần bản logo gốc của bệnh viện để thay.
 
 ---

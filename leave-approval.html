@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Duyệt nghỉ · Trung tâm điều hành số Bệnh viện Anh Quất</title>
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body data-screen="leave-approval" data-role="manager" data-unread="4">
+<div class="app">
+  <div data-shell="topbar"></div>
+  <div class="shell">
+    <div data-shell="sidebar"></div>
+    <main class="main">
+      <div class="page" style="max-width:820px">
+
+        <div class="page__head">
+          <div class="page__head-text">
+            <h1 class="page-title">Duyệt nghỉ</h1>
+            <p class="text-meta">Khoa Nội – Nhi – Da liễu – HSCC · xem trước ca nào sẽ bị gỡ và còn bao nhiêu người, rồi mới duyệt</p>
+          </div>
+        </div>
+
+        <div class="tabs" data-tabs="leave" role="tablist">
+          <button class="tab is-active" type="button" role="tab" data-action="tab" data-tab="pending">Chờ duyệt (3)</button>
+          <button class="tab" type="button" role="tab" data-action="tab" data-tab="done">Đã xử lý</button>
+        </div>
+
+        <div class="tab-panel stack stack--lg" data-tab-panel="leave" data-tab-name="pending">
+
+          <article class="card">
+            <div class="row row--between">
+              <div>
+                <h2 class="card__title">ĐD Nguyễn Thị Lan</h2>
+                <div class="text-meta">Điều dưỡng · gửi 30/08 14:02</div>
+              </div>
+              <span class="badge badge--pending-review">Chờ duyệt</span>
+            </div>
+            <dl class="dl grid grid--2" style="margin:16px 0;gap:0 24px">
+              <div><dt>Loại nghỉ</dt><dd>Phép năm</dd></div>
+              <div><dt>Thời gian</dt><dd>13/09 → 14/09 · 2 ngày</dd></div>
+              <div><dt>Lý do</dt><dd>Về quê dự đám cưới em gái</dd></div>
+              <div><dt>Bàn giao</dt><dd>ĐD Lê Văn Chung</dd></div>
+            </dl>
+            <div data-roster="impact" data-person="lan" data-from="13" data-to="14"></div>
+            <p class="text-meta" style="margin:12px 0 0">Số ngày phép còn lại không hiển thị ở đây — đối chiếu với hồ sơ nhân sự của Phòng TCHC nếu cần.</p>
+            <div class="row" style="justify-content:flex-end;margin-top:16px">
+              <button class="btn btn--quiet" type="button" data-action="open-overlay" data-target="reject-dialog">Từ chối</button>
+              <button class="btn btn--primary" type="button" data-action="demo-submit" data-busy-label="Đang duyệt…"
+                      data-toast="Đã duyệt · gỡ 2 ca khỏi lịch, đã báo đầu mối xếp lại">Duyệt đơn nghỉ</button>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="row row--between">
+              <div>
+                <h2 class="card__title">YS Phạm Văn Duy</h2>
+                <div class="text-meta">Y sĩ · gửi 01/09 07:30</div>
+              </div>
+              <span class="badge badge--pending-review">Chờ duyệt</span>
+            </div>
+            <dl class="dl grid grid--2" style="margin:16px 0;gap:0 24px">
+              <div><dt>Loại nghỉ</dt><dd>Việc riêng · nửa ngày</dd></div>
+              <div><dt>Thời gian</dt><dd>02/09 buổi chiều · 0,5 ngày</dd></div>
+              <div><dt>Lý do</dt><dd>Làm thủ tục nhập học cho con</dd></div>
+              <div><dt>Bàn giao</dt><dd><span class="text-muted">Không chọn</span></dd></div>
+            </dl>
+            <div data-roster="impact" data-person="duy" data-from="2" data-to="2"></div>
+            <div class="row" style="justify-content:flex-end;margin-top:16px">
+              <button class="btn btn--quiet" type="button" data-action="open-overlay" data-target="reject-dialog">Từ chối</button>
+              <button class="btn btn--primary" type="button" data-action="demo-submit" data-busy-label="Đang duyệt…"
+                      data-toast="Đã duyệt đơn nghỉ của YS Phạm Văn Duy">Duyệt đơn nghỉ</button>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="row row--between">
+              <div>
+                <h2 class="card__title">ĐD Lý Thị Mỹ</h2>
+                <div class="text-meta">Điều dưỡng · gửi 01/09 11:45</div>
+              </div>
+              <span class="badge badge--pending-review">Chờ duyệt</span>
+            </div>
+            <dl class="dl grid grid--2" style="margin:16px 0;gap:0 24px">
+              <div><dt>Loại nghỉ</dt><dd>Ốm</dd></div>
+              <div><dt>Thời gian</dt><dd>07/09 → 09/09 · 3 ngày</dd></div>
+              <div><dt>Lý do</dt><dd>Mổ nội soi theo hẹn, có giấy hẹn của Khoa Ngoại</dd></div>
+              <div><dt>Bàn giao</dt><dd>ĐD Vũ Thị Giang</dd></div>
+            </dl>
+            <div data-roster="impact" data-person="my" data-from="7" data-to="9"></div>
+            <div class="row" style="justify-content:flex-end;margin-top:16px">
+              <button class="btn btn--quiet" type="button" data-action="open-overlay" data-target="reject-dialog">Từ chối</button>
+              <button class="btn btn--primary" type="button" data-action="demo-submit" data-busy-label="Đang duyệt…"
+                      data-toast="Đã duyệt · gỡ 2 ca khỏi lịch, đã báo đầu mối xếp lại">Duyệt đơn nghỉ</button>
+            </div>
+          </article>
+        </div>
+
+        <div class="tab-panel stack" data-tab-panel="leave" data-tab-name="done" hidden>
+          <div class="card">
+            <div class="row row--between">
+              <div style="min-width:0">
+                <span class="badge badge--done">✓ Đã duyệt</span>
+                <div style="margin-top:8px;font-weight:500">ĐD Phạm Thị Dung · Phép năm · 01–03/09</div>
+                <div class="text-meta">Duyệt 25/08 10:20 · đã gỡ 2 ca, đã xếp người thay</div>
+              </div>
+              <button class="btn btn--small btn--quiet" type="button" data-action="open-overlay" data-target="cancel-dialog">Huỷ đơn đã duyệt</button>
+            </div>
+          </div>
+          <div class="card">
+            <span class="badge badge--done">✓ Đã duyệt</span>
+            <div style="margin-top:8px;font-weight:500">ĐD Ngô Văn Long · Ốm · 21–22/09</div>
+            <div class="text-meta">Duyệt 31/08 08:02 · gỡ 1 ca</div>
+          </div>
+          <div class="card">
+            <span class="badge badge--rejected">✕ Từ chối</span>
+            <div style="margin-top:8px;font-weight:500">ĐD Hoàng Văn Em · Việc riêng · 05/09</div>
+            <div class="text-meta" style="color:#991B1B">Lý do: ngày 05/09 ca Sáng chỉ còn 1 người, đề nghị xin đổi ca trước</div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+  <div data-shell="bottomnav"></div>
+</div>
+
+<div class="overlay" id="reject-dialog">
+  <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="reject-title">
+    <div class="dialog__head">
+      <h2 class="dialog__title" id="reject-title">Từ chối đơn nghỉ</h2>
+      <button class="icon-btn" type="button" data-action="close-overlay" aria-label="Đóng">✕</button>
+    </div>
+    <div class="dialog__body" id="reject-scope">
+      <div class="field" style="margin:0">
+        <label class="field__label" for="reject-reason">Lý do từ chối <span class="field__required">*</span></label>
+        <textarea class="textarea" id="reject-reason" required placeholder="Ví dụ: trùng lịch trực chưa có người thay"></textarea>
+        <div class="field__hint">Nhân viên luôn thấy lý do này trong danh sách đơn của họ</div>
+      </div>
+    </div>
+    <div class="dialog__foot">
+      <button class="btn btn--quiet" type="button" data-action="close-overlay">Quay lại</button>
+      <button class="btn btn--danger" type="button" data-require-scope="reject-scope" data-action="demo-submit"
+              data-busy-label="Đang gửi…" data-toast="Đã từ chối đơn nghỉ · đã báo người xin">Từ chối đơn</button>
+    </div>
+  </div>
+</div>
+
+<div class="overlay" id="cancel-dialog">
+  <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="cancel-title">
+    <div class="dialog__head">
+      <h2 class="dialog__title" id="cancel-title">Huỷ đơn nghỉ đã duyệt?</h2>
+      <button class="icon-btn" type="button" data-action="close-overlay" aria-label="Đóng">✕</button>
+    </div>
+    <div class="dialog__body" id="cancel-scope">
+      <div class="section-box section-box--warn" style="margin-bottom:16px">
+        Các ca đã gỡ khi duyệt <strong>không tự khôi phục</strong> — có thể đã xếp người khác vào. Nếu cần, xếp lại ở màn hình lập lịch hoặc qua đổi trực.
+      </div>
+      <div class="field" style="margin:0">
+        <label class="field__label" for="cancel-reason">Lý do huỷ <span class="field__required">*</span></label>
+        <textarea class="textarea" id="cancel-reason" required placeholder="Ví dụ: nhân viên đi làm lại sớm"></textarea>
+        <div class="field__hint">Ghi vào nhật ký và báo cho người xin nghỉ</div>
+      </div>
+    </div>
+    <div class="dialog__foot">
+      <button class="btn btn--quiet" type="button" data-action="close-overlay">Quay lại</button>
+      <button class="btn btn--danger" type="button" data-require-scope="cancel-scope" data-action="demo-submit"
+              data-busy-label="Đang huỷ…" data-toast="Đã huỷ đơn nghỉ · ca đã gỡ giữ nguyên">Huỷ đơn</button>
+    </div>
+  </div>
+</div>
+
+<script src="assets/app.js"></script>
+<script src="assets/roster.js"></script>
+<script src="assets/roster-ui.js"></script>
+</body>
+</html>

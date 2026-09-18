@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>In lịch dán bảng · Trung tâm điều hành số Bệnh viện Anh Quất</title>
+<link rel="stylesheet" href="assets/app.css">
+<style>
+  .print-bar {
+    position: sticky; top: 0; z-index: 10;
+    display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center;
+    padding: 12px 24px; background: var(--bg); border-bottom: 1px solid var(--border);
+  }
+  .print-stage { padding: 24px; overflow-x: auto; }
+  .sheet {
+    width: 420mm; min-height: 297mm; margin: 0 auto; padding: 12mm 14mm;
+    background: #fff; color: #000; box-shadow: var(--shadow-dialog);
+    font-size: 13pt; line-height: 1.35;
+  }
+  .sheet__head { display: flex; align-items: center; gap: 16px; padding-bottom: 8px; border-bottom: 2px solid #000; }
+  .sheet__logo { width: 56px; height: 56px; flex: none; }
+  .sheet__org { font-size: 12pt; font-weight: 600; text-transform: uppercase; color: var(--brand-orange); }
+  .sheet__title { flex: 1; text-align: center; font-size: 22pt; font-weight: 700; }
+  .sheet__sub { text-align: center; font-size: 14pt; margin-top: 2px; }
+  .sheet__tables { display: grid; grid-template-columns: 1fr 1fr; gap: 8mm; margin-top: 6mm; }
+  .print-table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+  .print-table th, .print-table td { border: 1px solid #333; padding: 3px 6px; vertical-align: top; text-align: left; }
+  .print-table thead th { background: #E5E7EB; font-size: 13pt; text-align: center; }
+  .print-table thead th span { display: block; font-weight: 400; font-size: 11pt; }
+  .print-table tbody th { width: 64px; text-align: center; font-size: 14pt; white-space: nowrap; }
+  .print-table tbody th span { display: block; font-weight: 400; font-size: 11pt; }
+  .print-table td { font-size: 12.5pt; }
+  .print-table tr.is-weekend th, .print-table tr.is-weekend td { background: #EDEDED; }
+  .sheet__sign { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 8mm; text-align: center; font-size: 13pt; }
+  .sheet__sign strong { display: block; margin-top: 18mm; }
+  .sheet__foot { margin-top: 4mm; font-size: 10pt; color: #444; }
+
+  @page { size: A3 landscape; margin: 0; }
+  @media print {
+    .print-bar { display: none; }
+    body { background: #fff; }
+    .print-stage { padding: 0; overflow: visible; }
+    .sheet { box-shadow: none; margin: 0; }
+    .print-table tr.is-weekend th, .print-table tr.is-weekend td, .print-table thead th {
+      -webkit-print-color-adjust: exact; print-color-adjust: exact;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="print-bar">
+    <a class="btn btn--quiet" href="duty-roster.html">← Lịch trực</a>
+    <div style="flex:1;min-width:240px">
+      <strong>In lịch dán bảng · E-XUAT-01</strong>
+      <div class="text-meta">Bố cục ngày × ca, khổ A3 ngang. Bấm “In / Lưu PDF”, chọn đích <em>Lưu thành PDF</em>. Ngày cuối tuần nền xám.</div>
+    </div>
+    <label class="sr-only" for="paper">Khổ giấy</label>
+    <select class="select" id="paper" style="width:auto">
+      <option>A3 ngang · 1 trang</option>
+      <option>A4 ngang · 2 trang</option>
+    </select>
+    <button class="btn btn--primary" type="button" onclick="window.print()">In / Lưu PDF</button>
+  </div>
+
+  <div class="print-stage">
+    <article class="sheet">
+      <header class="sheet__head">
+        <svg class="sheet__logo" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#ED3E0F"/><circle cx="20" cy="20" r="12" fill="none" stroke="#fff" stroke-width="2" opacity=".55"/><path d="M17 11h6v6h6v6h-6v6h-6v-6h-6v-6h6z" fill="#fff"/></svg>
+        <div>
+          <div class="sheet__org">Bệnh viện Đa khoa Anh Quất</div>
+          <div style="font-size:12pt">Cơ sở 2</div>
+        </div>
+        <div style="flex:1">
+          <div class="sheet__title">LỊCH TRỰC THÁNG 9/2026</div>
+          <div class="sheet__sub">Khoa Nội – Nhi – Da liễu – HSCC</div>
+        </div>
+        <div style="width:180px;text-align:right;font-size:11pt">S 07:00–13:00<br>C 13:00–19:00<br>Đ 19:00–07:00</div>
+      </header>
+
+      <div class="sheet__tables" data-roster="print"></div>
+
+      <div class="sheet__sign">
+        <div>Người lập<strong>ĐD trưởng Bùi Thị Tố Hoa</strong></div>
+        <div>Người duyệt<strong>TK Trần Văn Xuân</strong></div>
+        <div>Ngày duyệt<strong>28/08/2026</strong></div>
+      </div>
+      <div class="sheet__foot">Lịch đã bao gồm các lần đổi trực được duyệt đến 01/09/2026 15:30. Thay đổi sau thời điểm in xem trên phần mềm.</div>
+    </article>
+  </div>
+
+<script src="assets/app.js"></script>
+<script src="assets/roster.js"></script>
+<script src="assets/roster-ui.js"></script>
+</body>
+</html>

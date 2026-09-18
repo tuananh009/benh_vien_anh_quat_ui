@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cấu hình ca trực · Trung tâm điều hành số Bệnh viện Anh Quất</title>
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body data-screen="shift-types" data-role="admin" data-unread="3">
+<div class="app">
+  <div data-shell="topbar"></div>
+  <div class="shell">
+    <div data-shell="sidebar"></div>
+    <main class="main">
+      <div class="page">
+
+        <div class="desktop-required">
+          <div class="state">
+            <div class="state__icon">💻</div>
+            <div class="state__title">Màn hình này cần máy tính</div>
+            <p class="state__text">Cấu hình ca trực có bảng nhiều cột. Vui lòng mở trên máy tính.</p>
+            <a class="btn btn--secondary" href="index.html">Về Quản lý người dùng</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="page__head">
+            <div class="page__head-text">
+              <h1 class="page-title">Cấu hình ca trực</h1>
+              <p class="text-meta">Mỗi ca định nghĩa một lần cho từng khoa. Số người tối thiểu và chức danh bắt buộc dùng để cảnh báo khi xếp lịch.</p>
+            </div>
+            <div class="page__actions">
+              <button class="btn btn--primary" type="button" data-action="open-overlay" data-target="shift-form">+ Thêm ca</button>
+            </div>
+          </div>
+
+          <div class="toolbar">
+            <label class="sr-only" for="shift-unit">Đơn vị</label>
+            <select class="select" id="shift-unit" style="width:auto;min-width:280px">
+              <option>Khoa Nội – Nhi – Da liễu – HSCC</option>
+              <option>Dùng chung mọi đơn vị</option>
+              <option>Khoa Cấp cứu</option>
+              <option>Khoa Khám bệnh</option>
+            </select>
+            <span class="toolbar__count">5 ca · 1 ca dùng chung</span>
+          </div>
+
+          <div class="table-wrap">
+            <table class="table table-as-cards">
+              <thead>
+                <tr>
+                  <th>Mã</th><th>Tên ca</th><th>Giờ</th><th>Qua đêm</th><th class="table__num">Tối thiểu</th>
+                  <th>Chức danh bắt buộc</th><th class="table__num">Hệ số phụ cấp</th><th>Áp dụng</th><th>Thao tác</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td data-label="Mã"><span class="shift-chip" data-code="S">S</span></td>
+                  <td data-label="Tên ca">Trực sáng</td>
+                  <td data-label="Giờ">07:00 – 13:00</td>
+                  <td data-label="Qua đêm">—</td>
+                  <td data-label="Tối thiểu" class="table__num">2</td>
+                  <td data-label="Chức danh bắt buộc">1 điều dưỡng</td>
+                  <td data-label="Hệ số phụ cấp" class="table__num">1,0</td>
+                  <td data-label="Áp dụng">Khoa Nội</td>
+                  <td data-label="Thao tác"><button class="btn btn--small btn--secondary" type="button" data-action="open-overlay" data-target="shift-form">Sửa</button></td>
+                </tr>
+                <tr>
+                  <td data-label="Mã"><span class="shift-chip" data-code="C">C</span></td>
+                  <td data-label="Tên ca">Trực chiều</td>
+                  <td data-label="Giờ">13:00 – 19:00</td>
+                  <td data-label="Qua đêm">—</td>
+                  <td data-label="Tối thiểu" class="table__num">1</td>
+                  <td data-label="Chức danh bắt buộc">1 điều dưỡng</td>
+                  <td data-label="Hệ số phụ cấp" class="table__num">1,0</td>
+                  <td data-label="Áp dụng">Khoa Nội</td>
+                  <td data-label="Thao tác"><button class="btn btn--small btn--secondary" type="button" data-action="open-overlay" data-target="shift-form">Sửa</button></td>
+                </tr>
+                <tr>
+                  <td data-label="Mã"><span class="shift-chip" data-code="Đ">Đ</span></td>
+                  <td data-label="Tên ca">Trực đêm</td>
+                  <td data-label="Giờ">19:00 – 07:00</td>
+                  <td data-label="Qua đêm"><span class="badge badge--in-progress">🌙 Qua đêm</span></td>
+                  <td data-label="Tối thiểu" class="table__num">2</td>
+                  <td data-label="Chức danh bắt buộc">1 bác sĩ + 1 điều dưỡng</td>
+                  <td data-label="Hệ số phụ cấp" class="table__num">1,5</td>
+                  <td data-label="Áp dụng">Khoa Nội</td>
+                  <td data-label="Thao tác"><button class="btn btn--small btn--secondary" type="button" data-action="open-overlay" data-target="shift-form">Sửa</button></td>
+                </tr>
+                <tr>
+                  <td data-label="Mã"><span class="shift-chip" data-code="24">24</span></td>
+                  <td data-label="Tên ca">Trực 24 giờ</td>
+                  <td data-label="Giờ">07:00 – 07:00</td>
+                  <td data-label="Qua đêm"><span class="badge badge--in-progress">🌙 Qua đêm</span></td>
+                  <td data-label="Tối thiểu" class="table__num">1</td>
+                  <td data-label="Chức danh bắt buộc">1 bác sĩ</td>
+                  <td data-label="Hệ số phụ cấp" class="table__num">2,0</td>
+                  <td data-label="Áp dụng">Khoa Nội</td>
+                  <td data-label="Thao tác"><button class="btn btn--small btn--secondary" type="button" data-action="open-overlay" data-target="shift-form">Sửa</button></td>
+                </tr>
+                <tr>
+                  <td data-label="Mã"><span class="shift-chip" data-code="HC">HC</span></td>
+                  <td data-label="Tên ca">Hành chính</td>
+                  <td data-label="Giờ">07:00 – 16:30</td>
+                  <td data-label="Qua đêm">—</td>
+                  <td data-label="Tối thiểu" class="table__num">0</td>
+                  <td data-label="Chức danh bắt buộc"><span class="text-muted">Không yêu cầu</span></td>
+                  <td data-label="Hệ số phụ cấp" class="table__num">0,0</td>
+                  <td data-label="Áp dụng"><span class="chip chip--brand">Dùng chung</span></td>
+                  <td data-label="Thao tác"><button class="btn btn--small btn--secondary" type="button" data-action="open-overlay" data-target="shift-form">Sửa</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="text-meta" style="margin-top:8px"><strong>N</strong> (nghỉ) và <strong>P</strong> (nghỉ phép đã duyệt) do hệ thống tự điền, không cấu hình ở đây.
+            Sửa giờ ca không làm thay đổi lịch đã duyệt.</p>
+
+          <h2 class="section-title" style="margin:32px 0 4px">Ngưỡng cảnh báo · Khoa Nội – Nhi – Da liễu – HSCC</h2>
+          <p class="text-meta" style="margin-bottom:16px">Chỉ dùng để cảnh báo, không chặn xếp lịch. Giá trị đang tạm dùng, chờ bệnh viện trả lời Q16.</p>
+          <div class="card" style="max-width:860px">
+            <div class="grid grid--2" style="gap:0 24px">
+              <div class="field">
+                <label class="field__label" for="limit-max">Số ca tối đa một người trong tháng</label>
+                <input class="input" id="limit-max" type="number" min="1" value="12">
+                <div class="field__hint">Mặc định toàn viện: 12 · ô Tổng chuyển vàng khi vượt</div>
+              </div>
+              <div class="field">
+                <label class="field__label" for="limit-nights">Số đêm trực liên tiếp tối đa</label>
+                <input class="input" id="limit-nights" type="number" min="1" value="2">
+                <div class="field__hint">Tính xuyên qua ranh giới tháng</div>
+              </div>
+              <div class="field">
+                <label class="field__label" for="limit-gap">Chênh lệch số ca tối đa trong cùng chức danh</label>
+                <input class="input" id="limit-gap" type="number" min="0" value="4">
+              </div>
+              <div class="field">
+                <label class="field__label" for="limit-remind">Nhắc trước ca trực</label>
+                <select class="select" id="limit-remind">
+                  <option>6 giờ</option>
+                  <option selected>12 giờ</option>
+                  <option>24 giờ</option>
+                </select>
+                <div class="field__hint">12 giờ để người trực đêm được nhắc từ chiều hôm trước</div>
+              </div>
+            </div>
+            <label class="checkbox"><input type="checkbox"> Cho phép đổi trực với người khoa khác (Q44 — mặc định tắt)</label>
+            <label class="checkbox"><input type="checkbox" checked> Dùng ngưỡng riêng cho khoa này, không theo mặc định toàn viện</label>
+            <div class="row" style="justify-content:flex-end;margin-top:8px">
+              <button class="btn btn--primary" type="button" data-action="demo-submit" data-busy-label="Đang lưu…" data-toast="Đã lưu ngưỡng cảnh báo cho Khoa Nội">Lưu ngưỡng</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+  <div data-shell="bottomnav"></div>
+</div>
+
+<div class="overlay" id="shift-form">
+  <div class="panel" role="dialog" aria-modal="true" aria-labelledby="shift-form-title">
+    <div class="panel__head">
+      <h2 class="dialog__title" id="shift-form-title">Sửa ca · Trực đêm</h2>
+      <button class="icon-btn" type="button" data-action="close-overlay" aria-label="Đóng">✕</button>
+    </div>
+    <div class="panel__body">
+      <div class="field">
+        <label class="field__label" for="sf-unit">Đơn vị áp dụng</label>
+        <select class="select" id="sf-unit">
+          <option value="">Dùng chung mọi đơn vị</option>
+          <option selected>Khoa Nội – Nhi – Da liễu – HSCC</option>
+        </select>
+        <div class="field__hint">Để “Dùng chung” thì mọi khoa đều thấy ca này</div>
+      </div>
+      <div class="grid" style="grid-template-columns:120px 1fr;gap:0 16px">
+        <div class="field">
+          <label class="field__label" for="sf-code">Mã ngắn <span class="field__required">*</span></label>
+          <input class="input" id="sf-code" type="text" maxlength="2" value="Đ">
+        </div>
+        <div class="field">
+          <label class="field__label" for="sf-name">Tên đầy đủ <span class="field__required">*</span></label>
+          <input class="input" id="sf-name" type="text" value="Trực đêm">
+        </div>
+      </div>
+      <p class="field__hint" style="margin:-8px 0 16px">Mã 1–2 ký tự, hiện trong ô lịch. Gõ đúng ký tự này trên bàn phím để gán ca.</p>
+      <div class="grid grid--2" style="gap:0 16px">
+        <div class="field">
+          <label class="field__label" for="sf-start">Giờ bắt đầu</label>
+          <input class="input" id="sf-start" type="time" value="19:00">
+        </div>
+        <div class="field">
+          <label class="field__label" for="sf-end">Giờ kết thúc</label>
+          <input class="input" id="sf-end" type="time" value="07:00">
+        </div>
+      </div>
+      <label class="checkbox"><input type="checkbox" checked> Qua đêm — ca kết thúc vào ngày hôm sau</label>
+      <p class="field__hint" style="margin:0 0 16px">Ca qua đêm thuộc về ngày bắt đầu: ca 31/08 19:00 → 01/09 07:00 nằm ở lịch và thống kê tháng 8.</p>
+
+      <div class="field">
+        <span class="field__label">Màu nền trên lịch</span>
+        <div class="swatch-row" role="radiogroup" aria-label="Màu nền">
+          <label><input type="radio" name="sf-color"><span data-code="S" aria-label="Xanh da trời">Đ</span></label>
+          <label><input type="radio" name="sf-color"><span data-code="C" aria-label="Vàng">Đ</span></label>
+          <label><input type="radio" name="sf-color" checked><span data-code="Đ" aria-label="Chàm">Đ</span></label>
+          <label><input type="radio" name="sf-color"><span data-code="24" aria-label="Hồng">Đ</span></label>
+          <label><input type="radio" name="sf-color"><span data-code="HC" aria-label="Xám">Đ</span></label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="field__label" for="sf-min">Số người tối thiểu</label>
+        <input class="input" id="sf-min" type="number" min="0" value="2">
+        <div class="field__hint">Ít hơn con số này → cảnh báo thiếu người, vẫn lưu được</div>
+      </div>
+
+      <div class="field">
+        <span class="field__label">Chức danh bắt buộc</span>
+        <div class="stack" style="gap:8px">
+          <div class="row"><select class="select" style="flex:1" aria-label="Chức danh 1"><option selected>Bác sĩ</option><option>Điều dưỡng</option><option>Y sĩ</option></select>
+            <input class="input" type="number" min="1" value="1" style="width:88px" aria-label="Số lượng bác sĩ">
+            <button class="icon-btn" type="button" aria-label="Bỏ chức danh" data-action="toast" data-toast="Đã bỏ chức danh" data-toast-kind="info">✕</button></div>
+          <div class="row"><select class="select" style="flex:1" aria-label="Chức danh 2"><option>Bác sĩ</option><option selected>Điều dưỡng</option><option>Y sĩ</option></select>
+            <input class="input" type="number" min="1" value="1" style="width:88px" aria-label="Số lượng điều dưỡng">
+            <button class="icon-btn" type="button" aria-label="Bỏ chức danh" data-action="toast" data-toast="Đã bỏ chức danh" data-toast-kind="info">✕</button></div>
+          <button class="btn btn--quiet btn--small" type="button" style="align-self:flex-start" data-action="toast" data-toast="Đã thêm dòng chức danh" data-toast-kind="info">+ Thêm chức danh</button>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="field__label" for="sf-coef">Hệ số phụ cấp</label>
+        <input class="input" id="sf-coef" type="text" inputmode="decimal" value="1,5">
+        <div class="field__hint">Chỉ để quy đổi số ca khi thống kê. Hệ thống không tính ra tiền.</div>
+      </div>
+    </div>
+    <div class="panel__foot">
+      <button class="btn btn--quiet" type="button" data-action="close-overlay">Huỷ</button>
+      <button class="btn btn--primary" type="button" data-action="demo-submit" data-busy-label="Đang lưu…" data-toast="Đã lưu ca Trực đêm">Lưu ca</button>
+    </div>
+  </div>
+</div>
+
+<script src="assets/app.js"></script>
+</body>
+</html>

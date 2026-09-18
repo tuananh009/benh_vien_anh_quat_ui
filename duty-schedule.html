@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Xếp lịch trực · Trung tâm điều hành số Bệnh viện Anh Quất</title>
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body data-screen="duty-schedule" data-role="manager" data-unread="4">
+<div class="app">
+  <div data-shell="topbar"></div>
+  <div class="shell">
+    <div data-shell="sidebar"></div>
+    <main class="main">
+      <div class="page">
+
+        <div class="desktop-required">
+          <div class="state">
+            <div class="state__icon">💻</div>
+            <div class="state__title">Màn hình xếp lịch cần dùng trên máy tính</div>
+            <p class="state__text">Bảng lịch trực có 30 cột ngày và thao tác bằng bàn phím.
+              Trên điện thoại, anh/chị vẫn xem được lịch đã duyệt.</p>
+            <a class="btn btn--secondary" href="duty-roster.html">Xem lịch</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="proto-note" data-tabs="state">
+            <span>🧪</span>
+            <div>
+              <strong>Bản mẫu</strong> — MH-E02. Cùng một lịch tháng 9 ở các trạng thái khác nhau. Bảng ở trạng thái Nháp gõ phím được thật:
+              chọn ô rồi gõ <span class="kbd">S</span> <span class="kbd">C</span> <span class="kbd">D</span> <span class="kbd">2</span>,
+              thử gán ca cho <em>ĐD Phạm Thị Dung</em> ngày 1–3 (đã duyệt nghỉ) hoặc ca Sáng cho <em>BS Đỗ Minh Đức</em> ngày 15 (trùng ca ở Khoa Cấp cứu).
+              <div class="row" style="margin-top:8px">
+                <button class="btn btn--small btn--secondary is-active" type="button" data-action="tab" data-tab="draft">Nháp</button>
+                <button class="btn btn--small" type="button" data-action="tab" data-tab="pending">Chờ duyệt</button>
+                <button class="btn btn--small" type="button" data-action="tab" data-tab="approved">Đã duyệt</button>
+                <button class="btn btn--small" type="button" data-action="tab" data-tab="empty">Chưa có lịch</button>
+                <button class="btn btn--small" type="button" data-action="tab" data-tab="noconfig">Chưa cấu hình ca</button>
+                <button class="btn btn--small" type="button" data-action="tab" data-tab="loading">Đang tải</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="page__head">
+            <div class="page__head-text">
+              <p class="text-meta"><a href="duty-roster.html">← Lịch trực</a></p>
+              <h1 class="page-title">Xếp lịch trực · Khoa Nội – Nhi – Da liễu – HSCC</h1>
+              <div class="row" style="margin-top:8px">
+                <label class="sr-only" for="schedule-month">Tháng</label>
+                <select class="select" id="schedule-month" style="width:auto;min-width:160px">
+                  <option>Tháng 10/2026</option>
+                  <option selected>Tháng 9/2026</option>
+                  <option>Tháng 8/2026</option>
+                </select>
+
+                <span class="tab-panel" data-tab-panel="state" data-tab-name="draft">
+                  <span class="badge badge--not-accepted">● Nháp</span>
+                  <span class="text-meta" data-roster="autosave">Đã tự lưu lúc 15:28</span>
+                </span>
+                <span class="tab-panel" data-tab-panel="state" data-tab-name="pending" hidden>
+                  <span class="badge badge--pending-review">● Chờ duyệt</span>
+                </span>
+                <span class="tab-panel" data-tab-panel="state" data-tab-name="approved" hidden>
+                  <span class="badge badge--done">● Đã duyệt</span>
+                </span>
+              </div>
+            </div>
+
+            <div class="page__actions tab-panel" data-tab-panel="state" data-tab-name="draft">
+              <button class="btn btn--secondary" type="button" data-action="open-overlay" data-target="copy-dialog">Sao chép tháng 8</button>
+              <button class="btn btn--secondary" type="button" data-action="demo-submit" data-busy-label="Đang lưu…" data-toast="Đã lưu nháp lịch trực">Lưu</button>
+              <button class="btn btn--primary" type="button" data-action="open-overlay" data-target="submit-dialog">Gửi duyệt</button>
+            </div>
+            <div class="page__actions tab-panel" data-tab-panel="state" data-tab-name="pending" hidden>
+              <button class="btn btn--secondary" type="button" data-roster-goto="draft"
+                      data-roster-toast="Đã thu hồi — lịch trở về Nháp, sửa được" data-roster-toast-kind="info">Thu hồi</button>
+            </div>
+            <div class="page__actions tab-panel" data-tab-panel="state" data-tab-name="approved" hidden>
+              <a class="btn btn--secondary" href="duty-print.html">In lịch dán bảng</a>
+              <button class="btn btn--secondary" type="button" data-action="toast" data-toast="Đang xuất LichTruc_KhoaNoi_09-2026.xlsx · đã ghi nhật ký" data-toast-kind="info">Xuất Excel</button>
+              <button class="btn btn--secondary" type="button" data-action="open-overlay" data-target="unlock-dialog">🔓 Mở khoá sửa</button>
+            </div>
+          </div>
+
+          <!-- Lifecycle bands -->
+          <div class="tab-panel" data-tab-panel="state" data-tab-name="pending" hidden>
+            <div class="strip strip--pending">
+              <span class="strip__text">⏳ <strong>Đang chờ duyệt</strong> — gửi lúc 27/08 17:40 tới TK Trần Văn Xuân. Bảng chỉ đọc; thu hồi để sửa tiếp.
+                <span class="text-meta" style="display:block;color:inherit">Lý do giữ nguyên 4 cảnh báo: “Khoa thiếu 2 điều dưỡng tuần đầu tháng, đã báo cáo BGĐ.”</span></span>
+            </div>
+          </div>
+          <div class="tab-panel" data-tab-panel="state" data-tab-name="approved" hidden>
+            <div class="strip strip--approved">
+              <span class="strip__text">✅ <strong>Đã duyệt</strong> bởi TK Trần Văn Xuân ngày 28/08/2026 16:05.
+                Không sửa trực tiếp — mọi thay đổi đi qua <a href="swap-approval.html">đổi trực</a>. Ô có chấm cam là ca đã đổi, bấm để xem lưu vết.</span>
+            </div>
+          </div>
+
+          <!-- Loading -->
+          <div class="tab-panel" data-tab-panel="state" data-tab-name="loading" hidden>
+            <div class="skeleton skeleton--line" style="width:30%"></div>
+            <div class="skeleton" style="height:520px;margin-top:12px"></div>
+          </div>
+
+          <!-- No roster yet -->
+          <div class="tab-panel" data-tab-panel="state" data-tab-name="empty" hidden>
+            <div class="card">
+              <div class="state">
+                <div class="state__icon">📅</div>
+                <div class="state__title">Chưa có lịch trực tháng 9/2026</div>
+                <p class="state__text">Sao chép lịch tháng 8 theo thứ trong tuần là cách nhanh nhất — hệ thống tự bỏ người đã chuyển khoa và ngày đã duyệt nghỉ.</p>
+                <div class="row" style="justify-content:center">
+                  <button class="btn btn--primary btn--large" type="button" data-action="open-overlay" data-target="copy-dialog">Sao chép tháng 8</button>
+                  <button class="btn btn--quiet" type="button" data-roster-goto="draft" data-roster-toast="Đã tạo lịch trống tháng 9" data-roster-toast-kind="info">Bắt đầu từ bảng trống</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Unit has no shift definitions -->
+          <div class="tab-panel" data-tab-panel="state" data-tab-name="noconfig" hidden>
+            <div class="card">
+              <div class="state">
+                <div class="state__icon">🕒</div>
+                <div class="state__title">Khoa chưa cấu hình ca trực</div>
+                <p class="state__text">Cần có danh mục ca (giờ, số người tối thiểu, chức danh bắt buộc) thì hệ thống mới cảnh báo thiếu người được.</p>
+                <a class="btn btn--primary" href="shift-types.html">Cấu hình ca trực</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Matrix, shared by Nháp / Chờ duyệt / Đã duyệt -->
+          <div data-roster-area>
+            <div data-roster="matrix" data-source="base" data-mode="edit"></div>
+
+            <div class="row row--between" style="margin-top:12px">
+              <div class="legend">
+                <span class="legend__item"><span class="shift-chip" data-code="S">S</span> Sáng 07–13</span>
+                <span class="legend__item"><span class="shift-chip" data-code="C">C</span> Chiều 13–19</span>
+                <span class="legend__item"><span class="shift-chip" data-code="Đ">Đ</span> Đêm 19–07</span>
+                <span class="legend__item"><span class="shift-chip" data-code="24">24</span> 24 giờ</span>
+                <span class="legend__item"><span class="shift-chip" data-code="P">P</span> Nghỉ phép đã duyệt</span>
+                <span class="legend__item">↗ Có ca ở khoa khác</span>
+                <span class="legend__item"><span class="legend__warn"></span> Trực dày / liền ca</span>
+                <span class="legend__item"><span class="legend__dot"></span> Đổi trực</span>
+              </div>
+              <div class="text-meta">
+                <span class="kbd">←</span><span class="kbd">→</span> di chuyển ·
+                <span class="kbd">S</span><span class="kbd">C</span><span class="kbd">D</span><span class="kbd">2</span> gán ca ·
+                <span class="kbd">Del</span> xoá · <span class="kbd">Ctrl</span>+<span class="kbd">Z</span> hoàn tác ·
+                <span class="kbd">Ctrl</span>+<span class="kbd">C</span>/<span class="kbd">V</span> chép hàng · kéo ngang để gán nhiều ngày
+              </div>
+            </div>
+
+            <div data-roster="warnings"></div>
+
+            <p class="text-meta" style="margin-top:16px;max-width:900px">
+              Ngưỡng cảnh báo đang tạm dùng: tối đa <strong>12 ca/tháng</strong>, <strong>2 đêm liên tiếp</strong>, chênh lệch không quá 4 ca trong cùng nhóm chức danh — chờ bệnh viện trả lời Q16.
+              Chỉ <strong>trùng giờ</strong> và <strong>ngày đã duyệt nghỉ</strong> bị chặn; mọi cảnh báo khác vẫn lưu được.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+  <div data-shell="bottomnav"></div>
+</div>
+
+<!-- Copy last month -->
+<div class="overlay" id="copy-dialog">
+  <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="copy-title">
+    <div class="dialog__head">
+      <h2 class="dialog__title" id="copy-title">Sao chép lịch tháng 8/2026</h2>
+      <button class="icon-btn" type="button" data-action="close-overlay" aria-label="Đóng">✕</button>
+    </div>
+    <div class="dialog__body">
+      <p>Sao chép theo <strong>thứ trong tuần</strong>, không theo ngày. Người trực Thứ Hai tuần 1 tháng 8 sẽ trực Thứ Hai tuần 1 tháng 9.</p>
+      <div class="section-box section-box--info" style="margin-bottom:16px">
+        <div class="section-box__title">Sẽ bỏ qua</div>
+        <ul class="bullets">
+          <li>ĐD Vũ Thị Kiều — đã chuyển sang Khoa Ngoại từ 20/08 · <strong>9 ô để trống, đánh dấu cần điền</strong></li>
+          <li>3 ngày nghỉ phép đã duyệt của ĐD Phạm Thị Dung (01–03/09)</li>
+          <li>2 ngày nghỉ ốm đã duyệt của ĐD Ngô Văn Long (21–22/09)</li>
+        </ul>
+      </div>
+      <div class="text-label" style="margin-bottom:8px">Lịch tháng 9 hiện đã có dữ liệu</div>
+      <label class="radio-card"><input type="radio" name="copy-mode" checked>
+        <span><strong>Chỉ điền vào ô trống</strong><span class="text-meta" style="display:block">Giữ nguyên những ô anh/chị đã xếp</span></span></label>
+      <label class="radio-card"><input type="radio" name="copy-mode">
+        <span><strong>Ghi đè toàn bộ</strong><span class="text-meta" style="display:block">Hoàn tác được bằng Ctrl+Z ngay sau khi sao chép</span></span></label>
+      <p class="text-meta" style="margin:8px 0 0">Sao chép xong, hệ thống chạy lại toàn bộ kiểm tra và đưa anh/chị tới ô cần xử lý đầu tiên.</p>
+    </div>
+    <div class="dialog__foot">
+      <button class="btn btn--quiet" type="button" data-action="close-overlay">Huỷ</button>
+      <button class="btn btn--primary" type="button" data-roster-goto="draft" data-roster-jump="first"
+              data-roster-toast="Đã sao chép lịch tháng 8 · 9 ô cần điền · 4 cảnh báo">Sao chép</button>
+    </div>
+  </div>
+</div>
+
+<!-- Submit for approval -->
+<div class="overlay" id="submit-dialog">
+  <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="submit-title" style="max-width:640px">
+    <div class="dialog__head">
+      <h2 class="dialog__title" id="submit-title">Gửi duyệt lịch trực tháng 9/2026</h2>
+      <button class="icon-btn" type="button" data-action="close-overlay" aria-label="Đóng">✕</button>
+    </div>
+    <div class="dialog__body" id="submit-scope" style="max-height:60vh;overflow-y:auto" data-roster="submit-body"></div>
+    <div class="dialog__foot">
+      <button class="btn btn--quiet" type="button" data-action="close-overlay">Quay lại sửa</button>
+      <button class="btn btn--primary" type="button" data-roster-goto="pending" data-require-reason="submit-scope"
+              data-roster-toast="Đã gửi duyệt tới TK Trần Văn Xuân">Vẫn gửi duyệt</button>
+    </div>
+  </div>
+</div>
+
+<!-- Unlock an approved roster -->
+<div class="overlay" id="unlock-dialog">
+  <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="unlock-title">
+    <div class="dialog__head">
+      <h2 class="dialog__title" id="unlock-title">Mở khoá sửa lịch đã duyệt?</h2>
+      <button class="icon-btn" type="button" data-action="close-overlay" aria-label="Đóng">✕</button>
+    </div>
+    <div class="dialog__body" id="unlock-scope">
+      <p>Chỉ dùng khi đổi trực không giải quyết được, ví dụ nhân sự nghỉ đột xuất dài ngày. Lịch trở về <strong>Nháp</strong> và phải duyệt lại.</p>
+      <div class="section-box section-box--warn" style="margin-bottom:16px">
+        📣 <strong>15 người</strong> có ca trong tháng 9 sẽ nhận thông báo “Lịch trực có thay đổi”. Thao tác được ghi nhật ký.
+      </div>
+      <div class="field">
+        <label class="field__label" for="unlock-reason">Lý do mở khoá <span class="field__required">*</span></label>
+        <textarea class="textarea" id="unlock-reason" required placeholder="Ví dụ: ĐD Ngô Văn Long nghỉ ốm dài ngày từ 21/09"></textarea>
+        <div class="field__hint">Bắt buộc — người có ca sẽ đọc được lý do này</div>
+      </div>
+    </div>
+    <div class="dialog__foot">
+      <button class="btn btn--quiet" type="button" data-action="close-overlay">Huỷ</button>
+      <button class="btn btn--danger" type="button" data-roster-goto="draft" data-require-reason="unlock-scope"
+              data-roster-toast="Đã mở khoá · đã thông báo 15 người có ca" data-roster-toast-kind="info">Mở khoá và thông báo</button>
+    </div>
+  </div>
+</div>
+
+<script src="assets/app.js"></script>
+<script src="assets/roster.js"></script>
+<script src="assets/roster-ui.js"></script>
+</body>
+</html>

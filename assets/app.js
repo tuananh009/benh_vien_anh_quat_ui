@@ -31,6 +31,17 @@
     { id: 'exec-dashboard', code: 'MH-B01', file: 'exec-dashboard.html', title: 'Bảng điều khiển Ban Giám đốc', group: 'manage', device: '📱' },
     { id: 'task-report',    code: 'MH-B08', file: 'task-report.html',    title: 'Báo cáo nhiệm vụ',         group: 'manage', device: '💻' },
 
+    { id: 'duty-roster',    code: 'MH-E01', file: 'duty-roster.html',    title: 'Lịch trực đơn vị',         group: 'duty', device: '💻' },
+    { id: 'duty-schedule',  code: 'MH-E02', file: 'duty-schedule.html',  title: 'Xếp lịch trực',            group: 'duty', device: '💻' },
+    { id: 'my-duty',        code: 'MH-E03', file: 'my-duty.html',        title: 'Lịch trực của tôi',        group: 'duty', device: '📱' },
+    { id: 'leave-request',  code: 'MH-E04', file: 'leave-request.html',  title: 'Đăng ký nghỉ',             group: 'duty', device: '📱' },
+    { id: 'leave-approval', code: 'MH-E05', file: 'leave-approval.html', title: 'Duyệt nghỉ',               group: 'duty', device: '📱 💻' },
+    { id: 'shift-swap',     code: 'MH-E06', file: 'shift-swap.html',     title: 'Xin đổi ca trực',          group: 'duty', device: '📱' },
+    { id: 'swap-approval',  code: 'MH-E06', file: 'swap-approval.html',  title: 'Duyệt đổi trực',           group: 'duty', device: '📱 💻' },
+    { id: 'duty-stats',     code: 'MH-E07', file: 'duty-stats.html',     title: 'Thống kê ca trực',         group: 'duty', device: '💻' },
+    { id: 'duty-print',     code: 'E-XUAT-01', file: 'duty-print.html',  title: 'In lịch dán bảng',         group: 'duty', device: '💻' },
+    { id: 'shift-types',    code: 'MH-E08', file: 'shift-types.html',    title: 'Cấu hình ca trực',         group: 'admin', device: '💻' },
+
     { id: 'users',          code: 'MH-A08', file: 'index.html',          title: 'Quản lý người dùng',       group: 'admin', device: '💻' },
     { id: 'user-import',    code: 'MH-A09', file: 'user-import.html',    title: 'Nhập tài khoản từ Excel',  group: 'admin', device: '💻' },
     { id: 'org-units',      code: 'MH-A10', file: 'org-units.html',      title: 'Cơ cấu tổ chức',           group: 'admin', device: '💻' },
@@ -45,7 +56,7 @@
     // ~80% of the users. Five entries, nothing more — see the sitemap note.
     cbnv: [
       { icon: '📋', label: 'Việc của tôi',          screen: 'my-tasks' },
-      { icon: '📅', label: 'Lịch trực của tôi',     screen: null },
+      { icon: '📅', label: 'Lịch trực của tôi',     screen: 'my-duty' },
       { icon: '⭐', label: 'Phiếu thi đua của tôi', screen: null },
       { icon: '🔔', label: 'Thông báo',             screen: 'notifications' },
       { icon: '⚙️', label: 'Cài đặt',               screen: 'devices' }
@@ -59,7 +70,12 @@
       { icon: '📝', label: 'Việc của tôi',           screen: 'my-tasks' },
       { icon: '🗣', label: 'Giao ban',               screen: null },
       { icon: '⭐', label: 'Thi đua',                screen: null },
-      { icon: '📅', label: 'Lịch trực',              screen: null },
+      { icon: '📅', label: 'Lịch trực',              screen: 'duty-roster' },
+      { label: 'Lập lịch',         screen: 'duty-schedule',  sub: true },
+      { label: 'Duyệt nghỉ',       screen: 'leave-approval', sub: true },
+      { label: 'Duyệt đổi trực',   screen: 'swap-approval',  sub: true },
+      { label: 'Thống kê ca trực', screen: 'duty-stats',     sub: true },
+      { label: 'Lịch của tôi',     screen: 'my-duty',        sub: true },
       { icon: '📊', label: 'Báo cáo nhiệm vụ',       screen: 'task-report' },
       { icon: '🔔', label: 'Thông báo',              screen: 'notifications' }
     ],
@@ -77,6 +93,7 @@
       { icon: '👥', label: 'Người dùng',               screen: 'users' },
       { icon: '🏢', label: 'Cơ cấu tổ chức',           screen: 'org-units' },
       { icon: '📚', label: 'Danh mục công việc chuẩn', screen: 'task-templates' },
+      { icon: '🕒', label: 'Ca trực',                  screen: 'shift-types' },
       { icon: '📜', label: 'Nhật ký',                  screen: 'audit-log' },
       { icon: '🔔', label: 'Thông báo',                screen: 'notifications' }
     ]
@@ -90,14 +107,14 @@
   // The bottom bar is CBNV-only. Other roles have too many entries for three slots.
   var BOTTOM_NAV = [
     { icon: '📋', label: 'Việc',    screen: 'my-tasks' },
-    { icon: '📅', label: 'Trực',    screen: null },
+    { icon: '📅', label: 'Trực',    screen: 'my-duty' },
     { icon: '⭐', label: 'Thi đua', screen: null }
   ];
 
   var NOTIFICATIONS = [
     { unread: true,  title: 'Nhiệm vụ mới: Kiểm tra máy thở buồng 4', meta: 'PGĐ Nguyễn Anh Tuấn · 5 phút',   screen: 'task-detail' },
     { unread: true,  title: 'Việc bị trả lại: Báo cáo giường bệnh',   meta: 'ĐD trưởng Bùi Thị Tố Hoa · 1 giờ', screen: 'task-detail' },
-    { unread: false, title: 'Đổi trực đã được duyệt',                 meta: 'Hệ thống · 2 giờ trước',           screen: null },
+    { unread: false, title: 'Đổi trực đã được duyệt',                 meta: 'Hệ thống · 2 giờ trước',           screen: 'my-duty' },
     { unread: false, title: 'Có bình luận mới trên NOI-0142',         meta: 'ĐD Trần Văn B · Hôm qua',          screen: 'task-detail' },
     { unread: true,  title: 'Nhiệm vụ đã quá hạn: Hoàn thiện hồ sơ 12 ca ra viện', meta: 'Hệ thống · Hôm qua',  screen: 'task-detail' }
   ];
@@ -175,8 +192,8 @@
       var target = entry.screen ? hrefFor(entry.screen) : 'screens.html#chua-dung';
       var active = entry.screen === current ? ' is-active' : '';
       var soon = entry.screen ? '' : ' title="Màn hình này chưa có trong bản mẫu"';
-      return '<a class="nav__item' + active + '" href="' + target + '"' + soon + '>' +
-        '<span class="nav__icon" aria-hidden="true">' + entry.icon + '</span>' +
+      return '<a class="nav__item' + (entry.sub ? ' nav__sub' : '') + active + '" href="' + target + '"' + soon + '>' +
+        (entry.sub ? '' : '<span class="nav__icon" aria-hidden="true">' + entry.icon + '</span>') +
         '<span class="nav__label">' + escapeHtml(entry.label) + (entry.screen ? '' : ' <span class="text-muted">·</span>') + '</span></a>';
     }).join('');
 

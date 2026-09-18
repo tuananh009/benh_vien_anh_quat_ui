@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lịch trực đơn vị · Trung tâm điều hành số Bệnh viện Anh Quất</title>
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body data-screen="duty-roster" data-role="manager" data-unread="4">
+<div class="app">
+  <div data-shell="topbar"></div>
+  <div class="shell">
+    <div data-shell="sidebar"></div>
+    <main class="main">
+      <div class="page">
+
+        <div class="page__head">
+          <div class="page__head-text">
+            <h1 class="page-title">Lịch trực · Khoa Nội – Nhi – Da liễu – HSCC</h1>
+            <div class="row" style="margin-top:8px">
+              <label class="sr-only" for="roster-month">Tháng</label>
+              <select class="select" id="roster-month" style="width:auto;min-width:160px">
+                <option>Tháng 10/2026 · Nháp</option>
+                <option selected>Tháng 9/2026</option>
+                <option>Tháng 8/2026</option>
+              </select>
+              <span class="badge badge--done">● Đã duyệt</span>
+            </div>
+          </div>
+          <div class="page__actions">
+            <a class="btn btn--secondary" href="duty-print.html">In lịch dán bảng</a>
+            <button class="btn btn--secondary" type="button" data-action="toast"
+                    data-toast="Đang xuất LichTruc_KhoaNoi_09-2026.xlsx (3 sheet) · đã ghi nhật ký" data-toast-kind="info">Xuất Excel</button>
+            <a class="btn btn--primary" href="duty-schedule.html">Lập lịch</a>
+          </div>
+        </div>
+
+        <div class="strip strip--approved">
+          <span class="strip__text">✅ Lập bởi <strong>ĐD trưởng Bùi Thị Tố Hoa</strong> · duyệt bởi <strong>TK Trần Văn Xuân</strong> ngày 28/08/2026 16:05.
+            Lịch đã khoá — thay đổi đi qua đổi trực và được lưu vết.</span>
+          <a class="btn btn--small btn--secondary" href="swap-approval.html">2 yêu cầu đổi trực chờ duyệt</a>
+        </div>
+
+        <div class="tabs" data-tabs="view" role="tablist">
+          <button class="tab is-active" type="button" role="tab" data-action="tab" data-tab="day">Theo ngày</button>
+          <button class="tab desktop-only" type="button" role="tab" data-action="tab" data-tab="person">Theo người</button>
+          <button class="tab" type="button" role="tab" data-action="tab" data-tab="history">Lịch sử đổi trực (2)</button>
+        </div>
+
+        <div class="tab-panel" data-tab-panel="view" data-tab-name="day">
+          <div data-roster="day-list" data-source="approved"></div>
+          <p class="text-meta" style="margin-top:12px"><span style="color:var(--brand-orange)">●</span> người nhận ca qua đổi trực — rê chuột để xem ai chuyển và ai duyệt.</p>
+        </div>
+
+        <div class="tab-panel" data-tab-panel="view" data-tab-name="person" hidden>
+          <div data-roster="matrix" data-source="approved" data-mode="view"></div>
+          <div class="legend" style="margin-top:12px">
+            <span class="legend__item"><span class="shift-chip" data-code="S">S</span> Sáng 07–13</span>
+            <span class="legend__item"><span class="shift-chip" data-code="C">C</span> Chiều 13–19</span>
+            <span class="legend__item"><span class="shift-chip" data-code="Đ">Đ</span> Đêm 19–07</span>
+            <span class="legend__item"><span class="shift-chip" data-code="P">P</span> Nghỉ phép đã duyệt</span>
+            <span class="legend__item"><span class="legend__dot"></span> Đổi trực — bấm ô để xem lưu vết</span>
+          </div>
+
+        </div>
+
+        <div class="tab-panel" data-tab-panel="view" data-tab-name="history" hidden>
+          <div class="toolbar">
+            <span class="text-meta" style="flex:1">Mọi lần đổi trực đã duyệt trong tháng, đủ lưu vết để đối chiếu phụ cấp.</span>
+            <button class="btn btn--secondary" type="button" data-action="toast"
+                    data-toast="Đang xuất lịch sử đổi trực tháng 9 · đã ghi nhật ký" data-toast-kind="info">Xuất Excel</button>
+          </div>
+          <div class="table-wrap">
+            <table class="table table-as-cards">
+              <thead>
+                <tr><th>Ca</th><th>Người xin đổi</th><th>Người nhận thay</th><th>Lý do</th><th>Người thay đồng ý</th><th>Người duyệt</th></tr>
+              </thead>
+              <tbody data-roster="swap-history"></tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+  <div data-shell="bottomnav"></div>
+</div>
+<script src="assets/app.js"></script>
+<script src="assets/roster.js"></script>
+<script src="assets/roster-ui.js"></script>
+</body>
+</html>

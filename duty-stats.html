@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thống kê ca trực · Trung tâm điều hành số Bệnh viện Anh Quất</title>
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body data-screen="duty-stats" data-role="manager" data-unread="4">
+<div class="app">
+  <div data-shell="topbar"></div>
+  <div class="shell">
+    <div data-shell="sidebar"></div>
+    <main class="main">
+      <div class="page">
+
+        <div class="desktop-required">
+          <div class="state">
+            <div class="state__icon">💻</div>
+            <div class="state__title">Màn hình này cần máy tính</div>
+            <p class="state__text">Bảng thống kê có nhiều cột để đối chiếu. Vui lòng mở trên máy tính.</p>
+            <a class="btn btn--secondary" href="duty-roster.html">Xem lịch trực</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="page__head">
+            <div class="page__head-text">
+              <h1 class="page-title">Thống kê ca trực</h1>
+              <p class="text-meta">Số liệu để Phòng Tài chính – Kế toán đối chiếu phụ cấp. Hệ thống chỉ đếm ca, <strong>không tính ra tiền</strong>.</p>
+            </div>
+            <div class="page__actions">
+              <button class="btn btn--primary" type="button" data-action="open-overlay" data-target="export-dialog">Xuất Excel</button>
+            </div>
+          </div>
+
+          <div class="toolbar">
+            <label class="sr-only" for="stats-scope">Phạm vi</label>
+            <select class="select" id="stats-scope" style="width:auto;min-width:260px">
+              <option>Khoa Nội – Nhi – Da liễu – HSCC</option>
+              <option>Toàn viện</option>
+              <option>Một người…</option>
+            </select>
+            <label class="sr-only" for="stats-from">Từ tháng</label>
+            <select class="select" id="stats-from" style="width:auto">
+              <option>Từ 7/2026</option><option>Từ 8/2026</option><option selected>Từ 9/2026</option>
+            </select>
+            <label class="sr-only" for="stats-to">Đến tháng</label>
+            <select class="select" id="stats-to" style="width:auto">
+              <option selected>Đến 9/2026</option>
+            </select>
+            <label class="sr-only" for="stats-title">Chức danh</label>
+            <select class="select" id="stats-title" style="width:auto;min-width:180px">
+              <option value="">Mọi chức danh</option>
+              <option value="BS">Bác sĩ</option>
+              <option value="DD">Điều dưỡng</option>
+              <option value="YS">Y sĩ</option>
+            </select>
+          </div>
+
+          <div class="grid grid--4" style="margin-bottom:16px">
+            <div class="metric"><div class="metric__value">149</div><div class="metric__label">ca trực trong tháng 9</div></div>
+            <div class="metric"><div class="metric__value">60</div><div class="metric__label">ca đêm</div></div>
+            <div class="metric"><div class="metric__value">2</div><div class="metric__label">lần đổi trực đã duyệt</div></div>
+            <div class="metric"><div class="metric__value">5</div><div class="metric__label">ngày nghỉ đã duyệt</div></div>
+          </div>
+
+          <div class="table-wrap">
+            <table class="table table-as-cards">
+              <thead>
+                <tr>
+                  <th>Họ tên</th>
+                  <th class="table__num">Sáng</th><th class="table__num">Chiều</th><th class="table__num">Đêm</th><th class="table__num">24 giờ</th>
+                  <th class="table__num">Tổng ca</th><th class="table__num">Ca đêm</th><th class="table__num">Cuối tuần</th>
+                  <th class="table__num" title="Số ca nhận thêm qua đổi trực">Nhận thêm</th>
+                  <th class="table__num" title="Số ca đã chuyển cho người khác">Chuyển đi</th>
+                  <th class="table__num" title="Tổng (số ca × hệ số phụ cấp)">Quy đổi hệ số</th>
+                  <th>Nghỉ đã duyệt</th>
+                </tr>
+              </thead>
+              <tbody data-roster="stats" data-filter="stats-title"></tbody>
+            </table>
+          </div>
+
+          <div class="grid grid--2" style="margin-top:16px">
+            <p class="text-meta" style="margin:0">
+              <strong>Ca đêm</strong> tính cả ca 24 giờ. Ca đêm 31/08 → 01/09 thuộc tháng 8, không tính ở đây.
+              <strong>Quy đổi hệ số</strong> = Σ (số ca × hệ số): Sáng 1,0 · Chiều 1,0 · Đêm 1,5 · 24 giờ 2,0. Ô vàng: vượt 12 ca/tháng.
+            </p>
+            <div class="figure-card">
+              📎 Số ca trực được đưa sang phiếu thi đua 01A làm <strong>căn cứ tham khảo</strong> cho người chấm, không tự quy ra điểm —
+              số ca nhiều hay ít phụ thuộc phân công của đơn vị, không phản ánh nỗ lực cá nhân.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+  <div data-shell="bottomnav"></div>
+</div>
+
+<div class="overlay" id="export-dialog">
+  <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="export-title">
+    <div class="dialog__head">
+      <h2 class="dialog__title" id="export-title">Xuất Excel lịch trực tháng 9/2026</h2>
+      <button class="icon-btn" type="button" data-action="close-overlay" aria-label="Đóng">✕</button>
+    </div>
+    <div class="dialog__body">
+      <p>Tệp <strong>LichTruc_KhoaNoi_09-2026.xlsx</strong> gồm ba sheet:</p>
+      <ul class="bullets" style="margin-bottom:16px">
+        <li><strong>Lich thang</strong> — ma trận người × ngày, đúng như màn hình xếp lịch</li>
+        <li><strong>Thong ke</strong> — bảng thống kê ở màn hình này</li>
+        <li><strong>Lich su doi truc</strong> — mọi lần đổi trực trong tháng, đủ người xin, người nhận, người duyệt, thời điểm</li>
+      </ul>
+      <div class="section-box section-box--info">Mỗi lần xuất được ghi vào nhật ký hệ thống.</div>
+    </div>
+    <div class="dialog__foot">
+      <button class="btn btn--quiet" type="button" data-action="close-overlay">Huỷ</button>
+      <button class="btn btn--primary" type="button" data-action="demo-submit" data-busy-label="Đang xuất…"
+              data-toast="Đã xuất LichTruc_KhoaNoi_09-2026.xlsx · đã ghi nhật ký">Xuất tệp</button>
+    </div>
+  </div>
+</div>
+
+<script src="assets/app.js"></script>
+<script src="assets/roster.js"></script>
+<script src="assets/roster-ui.js"></script>
+</body>
+</html>

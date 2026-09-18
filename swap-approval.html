@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Duyệt đổi trực · Trung tâm điều hành số Bệnh viện Anh Quất</title>
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body data-screen="swap-approval" data-role="manager" data-unread="4">
+<div class="app">
+  <div data-shell="topbar"></div>
+  <div class="shell">
+    <div data-shell="sidebar"></div>
+    <main class="main">
+      <div class="page" style="max-width:820px">
+
+        <div class="page__head">
+          <div class="page__head-text">
+            <h1 class="page-title">Duyệt đổi trực</h1>
+            <p class="text-meta">Bước 3 của 3 · chỉ khi duyệt lịch mới đổi người, ô lịch được đánh dấu và lưu vết</p>
+          </div>
+        </div>
+
+        <div class="tabs" data-tabs="swap" role="tablist">
+          <button class="tab is-active" type="button" role="tab" data-action="tab" data-tab="pending">Chờ duyệt (2)</button>
+          <button class="tab" type="button" role="tab" data-action="tab" data-tab="waiting">Chờ người nhận đồng ý (2)</button>
+          <button class="tab" type="button" role="tab" data-action="tab" data-tab="done">Đã xử lý</button>
+        </div>
+
+        <div class="tab-panel stack stack--lg" data-tab-panel="swap" data-tab-name="pending">
+          <article class="card">
+            <div class="row">
+              <span class="shift-chip" data-code="Đ">Đ</span>
+              <strong>Trực đêm · Chủ Nhật 20/09 · 19:00 – 07:00</strong>
+            </div>
+            <div class="swap-flow" style="margin-top:12px">
+              <span>ĐD Tạ Thị Nga</span><span class="swap-flow__arrow" aria-label="chuyển cho">→</span><span>ĐD Phạm Thị Dung</span>
+            </div>
+            <div class="text-meta">Lý do: về quê giỗ bố · gửi 31/08 18:30</div>
+            <div class="section-box section-box--ok" style="margin:12px 0">✅ ĐD Phạm Thị Dung đã đồng ý · 01/09 11:20</div>
+            <div class="text-label" style="margin-bottom:4px">Sau khi đổi</div>
+            <div data-roster="swap-outcome" data-from="nga" data-to="dung" data-day="20" data-code="Đ"></div>
+            <div class="row" style="justify-content:flex-end;margin-top:16px">
+              <button class="btn btn--quiet" type="button" data-action="open-overlay" data-target="deny-dialog">Không duyệt</button>
+              <button class="btn btn--primary" type="button" data-action="demo-submit" data-busy-label="Đang duyệt…"
+                      data-toast="Đã duyệt đổi trực · lịch 20/09 đã cập nhật, đã báo cả hai người">Duyệt đổi</button>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="row">
+              <span class="shift-chip" data-code="Đ">Đ</span>
+              <strong>Trực đêm · Thứ Sáu 18/09 · 19:00 – 07:00</strong>
+            </div>
+            <div class="swap-flow" style="margin-top:12px">
+              <span>BS Trần Thị Bình</span><span class="swap-flow__arrow" aria-label="chuyển cho">→</span><span>ĐD Vũ Thị Giang</span>
+            </div>
+            <div class="text-meta">Lý do: dự hội nghị Nhi khoa tại Hà Nội · gửi 31/08 21:05</div>
+            <div class="section-box section-box--ok" style="margin:12px 0">✅ ĐD Vũ Thị Giang đã đồng ý · 01/09 06:50</div>
+            <div class="text-label" style="margin-bottom:4px">Sau khi đổi</div>
+            <div data-roster="swap-outcome" data-from="binh" data-to="giang" data-day="18" data-code="Đ"></div>
+            <p class="text-meta" style="margin:8px 0 0">Người xin đổi đã được cảnh báo khi chọn. Phần mềm không chặn — người duyệt quyết định.</p>
+            <div class="row" style="justify-content:flex-end;margin-top:16px">
+              <button class="btn btn--quiet" type="button" data-action="open-overlay" data-target="deny-dialog">Không duyệt</button>
+              <button class="btn btn--primary" type="button" data-action="demo-submit" data-busy-label="Đang duyệt…"
+                      data-toast="Đã duyệt đổi trực 18/09 · đã báo cả hai người">Vẫn duyệt đổi</button>
+            </div>
+          </article>
+        </div>
+
+        <div class="tab-panel stack" data-tab-panel="swap" data-tab-name="waiting" hidden>
+          <div class="card">
+            <span class="badge badge--not-accepted">Chờ ĐD Vũ Thị Giang đồng ý</span>
+            <div style="margin-top:8px;font-weight:500">ĐD Nguyễn Thị Lan → ĐD Vũ Thị Giang · Đêm 11/09</div>
+            <div class="text-meta">Gửi 31/08 20:10 · tự huỷ nếu chưa duyệt xong trước 19:00 11/09</div>
+          </div>
+          <div class="card">
+            <span class="badge badge--not-accepted">Chờ ĐD Nguyễn Thị Lan đồng ý</span>
+            <div style="margin-top:8px;font-weight:500">ĐD Trịnh Thu Hà → ĐD Nguyễn Thị Lan · Đêm 16/09</div>
+            <div class="text-meta">Gửi 01/09 09:12</div>
+          </div>
+        </div>
+
+        <div class="tab-panel stack" data-tab-panel="swap" data-tab-name="done" hidden>
+          <div class="card">
+            <span class="badge badge--done">✓ Đã duyệt</span>
+            <div style="margin-top:8px;font-weight:500">ĐD Đinh Thị Khánh → ĐD Hoàng Văn Em · Sáng 12/09</div>
+            <div class="text-meta">Đồng ý 30/08 08:05 · duyệt bởi ĐD trưởng Bùi Thị Tố Hoa 30/08 09:40</div>
+          </div>
+          <div class="card">
+            <span class="badge badge--done">✓ Đã duyệt</span>
+            <div style="margin-top:8px;font-weight:500">ĐD Phạm Thị Dung → ĐD Lý Thị Mỹ · Đêm 04/09</div>
+            <div class="text-meta">Đồng ý 29/08 10:12 · duyệt bởi ĐD trưởng Bùi Thị Tố Hoa 29/08 14:30</div>
+          </div>
+          <div class="card">
+            <span class="badge badge--not-accepted">⌛ Tự huỷ</span>
+            <div style="margin-top:8px;font-weight:500">ĐD Ngô Văn Long → ĐD Tạ Thị Nga · Chiều 01/09</div>
+            <div class="text-meta">Quá 13:00 01/09 chưa duyệt xong — lịch giữ nguyên người cũ, đã báo cả hai</div>
+          </div>
+          <div class="card">
+            <span class="badge badge--rejected">✕ Người nhận từ chối</span>
+            <div style="margin-top:8px;font-weight:500">YS Phạm Văn Duy → ĐD Hoàng Văn Em · Sáng 06/09</div>
+            <div class="text-meta">Lý do: đã nhận 12 ca tháng này</div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+  <div data-shell="bottomnav"></div>
+</div>
+
+<div class="overlay" id="deny-dialog">
+  <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="deny-title">
+    <div class="dialog__head">
+      <h2 class="dialog__title" id="deny-title">Không duyệt đổi trực</h2>
+      <button class="icon-btn" type="button" data-action="close-overlay" aria-label="Đóng">✕</button>
+    </div>
+    <div class="dialog__body" id="deny-scope">
+      <p>Lịch giữ nguyên người cũ. Cả hai người nhận thông báo kèm lý do.</p>
+      <div class="field" style="margin:0">
+        <label class="field__label" for="deny-reason">Lý do <span class="field__required">*</span></label>
+        <textarea class="textarea" id="deny-reason" required placeholder="Ví dụ: ca đêm cần có bác sĩ, đề nghị đổi với BS khác"></textarea>
+        <div class="field__hint">Bắt buộc</div>
+      </div>
+    </div>
+    <div class="dialog__foot">
+      <button class="btn btn--quiet" type="button" data-action="close-overlay">Quay lại</button>
+      <button class="btn btn--danger" type="button" data-require-scope="deny-scope" data-action="demo-submit"
+              data-busy-label="Đang gửi…" data-toast="Đã không duyệt · lịch giữ nguyên, đã báo cả hai người">Không duyệt</button>
+    </div>
+  </div>
+</div>
+
+<script src="assets/app.js"></script>
+<script src="assets/roster.js"></script>
+<script src="assets/roster-ui.js"></script>
+</body>
+</html>

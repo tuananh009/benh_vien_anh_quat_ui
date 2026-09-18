@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Đăng ký nghỉ · Trung tâm điều hành số Bệnh viện Anh Quất</title>
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body data-screen="leave-request" data-role="cbnv" data-unread="2">
+<div class="app">
+  <div data-shell="topbar"></div>
+  <div class="shell">
+    <div data-shell="sidebar"></div>
+    <main class="main">
+      <div class="page" style="max-width:640px">
+
+        <div class="page__head">
+          <div class="page__head-text">
+            <p class="text-meta"><a href="my-duty.html">← Lịch trực của tôi</a></p>
+            <h1 class="page-title">Đăng ký nghỉ</h1>
+          </div>
+        </div>
+
+        <div class="proto-note">
+          <span>🧪</span>
+          <div><strong>Bản mẫu</strong> — MH-E04, hôm nay là 01/09/2026. Thử: chọn 13/09 (trùng đơn đang chờ duyệt), chọn ngày trước 01/09,
+            hoặc đổi sang <em>Việc riêng</em> rồi bấm gửi khi chưa ghi lý do.</div>
+        </div>
+
+        <form class="card" data-roster="leave-form" data-person="lan" novalidate>
+          <div class="field">
+            <label class="field__label" for="leave-type">Loại nghỉ <span class="field__required">*</span></label>
+            <select class="select" id="leave-type">
+              <option>Phép năm</option>
+              <option>Ốm</option>
+              <option>Việc riêng</option>
+              <option>Không lương</option>
+              <option>Thai sản</option>
+              <option>Bù trực</option>
+            </select>
+          </div>
+
+          <div class="grid grid--2" style="gap:0 16px">
+            <div class="field">
+              <label class="field__label" for="leave-from">Từ ngày <span class="field__required">*</span></label>
+              <input class="input" id="leave-from" type="date" value="2026-09-21">
+            </div>
+            <div class="field">
+              <label class="field__label" for="leave-to">Đến ngày <span class="field__required">*</span></label>
+              <input class="input" id="leave-to" type="date" value="2026-09-23">
+            </div>
+          </div>
+          <label class="checkbox"><input type="checkbox" id="leave-half"> Nghỉ nửa ngày</label>
+          <p style="font-weight:500;margin:4px 0 16px" data-roster="leave-days"></p>
+
+          <div data-roster="leave-alert" style="margin-bottom:16px"></div>
+          <div data-roster="leave-impact" style="margin-bottom:16px"></div>
+
+          <div class="field">
+            <label class="field__label" for="leave-reason">Lý do <span class="field__required" data-reason-star hidden>*</span></label>
+            <textarea class="textarea" id="leave-reason" data-error-text="Loại nghỉ này bắt buộc ghi lý do" placeholder="Ví dụ: việc gia đình"></textarea>
+            <div class="field__hint">Bắt buộc với Việc riêng và Không lương</div>
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="leave-handover">Người bàn giao công việc (tuỳ chọn)</label>
+            <select class="select" id="leave-handover">
+              <option value="">Không chọn</option>
+              <option>ĐD Lê Văn Chung</option>
+              <option>ĐD Vũ Thị Giang</option>
+              <option>ĐD Trịnh Thu Hà</option>
+            </select>
+          </div>
+
+          <button class="btn btn--primary btn--large btn--block" type="submit">Gửi đơn</button>
+          <p class="text-meta" style="margin:12px 0 0;text-align:center">ĐD trưởng Bùi Thị Tố Hoa duyệt. Số ngày phép còn lại xem ở Phòng Tổ chức – Hành chính.</p>
+        </form>
+
+        <h2 class="section-title" style="margin:32px 0 12px">Đơn của tôi</h2>
+        <div class="stack">
+          <div class="card">
+            <div class="row row--between">
+              <div style="min-width:0">
+                <span class="badge badge--pending-review">● Chờ duyệt</span>
+                <div style="margin-top:8px;font-weight:500">13–14/09 · Phép năm · 2 ngày</div>
+                <div class="text-meta">Gửi 30/08 14:02 · ảnh hưởng 2 ca trực</div>
+              </div>
+              <button class="btn btn--small btn--quiet" type="button" data-action="toast" data-toast="Đã huỷ đơn nghỉ 13–14/09" data-toast-kind="info">Huỷ đơn</button>
+            </div>
+          </div>
+          <div class="card">
+            <span class="badge badge--done">✓ Đã duyệt</span>
+            <div style="margin-top:8px;font-weight:500">10–11/08 · Ốm · 2 ngày</div>
+            <div class="text-meta">Duyệt bởi ĐD trưởng Bùi Thị Tố Hoa · 10/08 07:48</div>
+          </div>
+          <div class="card">
+            <span class="badge badge--rejected">✕ Từ chối</span>
+            <div style="margin-top:8px;font-weight:500">20/07 · Việc riêng · 1 ngày</div>
+            <div class="text-meta" style="color:#991B1B">Lý do: trùng lịch trực chưa có người thay — đề nghị xin đổi ca trước</div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+  <div data-shell="bottomnav"></div>
+</div>
+<script src="assets/app.js"></script>
+<script src="assets/roster.js"></script>
+<script src="assets/roster-ui.js"></script>
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lịch trực của tôi · Trung tâm điều hành số Bệnh viện Anh Quất</title>
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body data-screen="my-duty" data-role="cbnv" data-unread="2">
+<div class="app">
+  <div data-shell="topbar"></div>
+  <div class="shell">
+    <div data-shell="sidebar"></div>
+    <main class="main">
+      <div class="page" style="max-width:1100px">
+
+        <div class="page__head">
+          <div class="page__head-text">
+            <h1 class="page-title">Lịch trực của tôi</h1>
+            <p class="text-meta" data-roster-now>Thứ Ba, 01/09/2026 · 15:30</p>
+          </div>
+          <label class="sr-only" for="my-month">Tháng</label>
+          <select class="select" id="my-month" style="width:auto;min-width:150px">
+            <option>Tháng 8/2026</option>
+            <option selected>Tháng 9/2026</option>
+          </select>
+        </div>
+
+        <div class="grid grid--main-aside">
+          <div class="stack stack--lg">
+
+            <section>
+              <h2 class="group__head" style="cursor:default">🔜 Ca sắp tới</h2>
+              <div class="card">
+                <div class="row">
+                  <span class="shift-chip" data-code="Đ">Đ</span>
+                  <strong style="font-size:18px">Trực đêm · hôm nay</strong>
+                </div>
+                <div class="text-meta" style="margin-top:4px">Thứ Ba 01/09 · 19:00 – 07:00 sáng 02/09</div>
+                <div style="margin-top:12px" class="text-label">Cùng ca</div>
+                <ul class="bullets" style="margin-bottom:12px">
+                  <li>BS Lê Quang Cường</li>
+                </ul>
+                <div class="badge badge--pending-review">⏱ Còn 3 giờ 30 phút</div>
+                <div class="task-card__actions">
+                  <a class="btn btn--secondary" href="shift-swap.html?day=1">Xin đổi ca này</a>
+                </div>
+                <p class="text-meta" style="margin:8px 0 0">Ca bắt đầu trong vòng 4 giờ — nếu cần đổi, báo trực tiếp ĐD trưởng.</p>
+              </div>
+            </section>
+
+            <section>
+              <h2 class="group__head" style="cursor:default"><span class="group__dot group__dot--today"></span> Chờ tôi xác nhận (1)</h2>
+              <div class="card" style="border-color:var(--warning)">
+                <div><strong>ĐD Trịnh Thu Hà</strong> xin anh/chị nhận thay ca</div>
+                <div class="row" style="margin-top:8px">
+                  <span class="shift-chip" data-code="Đ">Đ</span>
+                  <span>Trực đêm · Thứ Tư 16/09 · 19:00 – 07:00</span>
+                </div>
+                <div class="text-meta" style="margin-top:4px">Lý do: con nhỏ ốm, không ai trông · gửi 01/09 09:12</div>
+                <div class="section-box section-box--warn" style="margin-top:12px">
+                  ⚠️ Anh/chị đang có <strong>11 ca</strong> tháng này, nhận thêm thành <strong>12 ca</strong> (tối đa 12).
+                  Hôm sau 17/09 anh/chị có ca Chiều 13:00.
+                </div>
+                <div class="task-card__actions">
+                  <button class="btn btn--primary" type="button" data-action="demo-submit" data-busy-label="Đang gửi…"
+                          data-toast="Đã đồng ý · chờ ĐD trưởng duyệt, lịch chưa thay đổi">Đồng ý nhận ca</button>
+                  <button class="btn btn--quiet" type="button" data-action="open-overlay" data-target="decline-dialog">Từ chối</button>
+                </div>
+              </div>
+            </section>
+
+            <section>
+              <h2 class="group__head" style="cursor:default">📅 Tháng 9/2026</h2>
+              <div data-roster="my-calendar" data-person="lan" data-source="approved"></div>
+              <p style="margin:12px 0 4px;font-weight:500" data-roster="my-totals" data-person="lan" data-source="approved"></p>
+              <div class="legend">
+                <span class="legend__item"><span class="shift-chip" data-code="S">S</span> Sáng</span>
+                <span class="legend__item"><span class="shift-chip" data-code="C">C</span> Chiều</span>
+                <span class="legend__item"><span class="shift-chip" data-code="Đ">Đ</span> Đêm</span>
+                <span class="legend__item"><span class="shift-chip" data-code="P">P</span> Nghỉ phép</span>
+                <span class="legend__item"><span class="legend__dot"></span> Đổi trực</span>
+              </div>
+            </section>
+          </div>
+
+          <aside class="stack">
+            <a class="btn btn--primary btn--block" href="leave-request.html">🌴 Đăng ký nghỉ</a>
+            <a class="btn btn--secondary btn--block" href="shift-swap.html">🔄 Xin đổi ca</a>
+
+            <section class="group" style="margin:12px 0 0">
+              <h2 class="group__head" style="cursor:default">Yêu cầu tôi đã gửi</h2>
+              <div class="group__body">
+                <div class="card">
+                  <div class="badge-row"><span class="badge badge--pending-review">Chờ người nhận đồng ý</span></div>
+                  <div style="margin-top:8px;font-weight:500">Đổi ca Đêm · Thứ Sáu 11/09</div>
+                  <div class="text-meta">→ ĐD Vũ Thị Giang · gửi 31/08 20:10</div>
+                  <ol class="stepper" style="margin:12px 0 0;padding:0;list-style:none;flex-direction:column;gap:0">
+                    <li class="stepper__step is-done"><span class="stepper__num">✓</span> Anh/chị gửi yêu cầu</li>
+                    <li class="stepper__step is-active"><span class="stepper__num">2</span> ĐD Vũ Thị Giang đồng ý</li>
+                    <li class="stepper__step"><span class="stepper__num">3</span> ĐD trưởng duyệt</li>
+                  </ol>
+                  <button class="btn btn--small btn--quiet" type="button" style="margin-top:8px" data-action="toast"
+                          data-toast="Đã huỷ yêu cầu đổi ca 11/09" data-toast-kind="info">Huỷ yêu cầu</button>
+                </div>
+                <div class="card">
+                  <div class="badge-row"><span class="badge badge--pending-review">Chờ duyệt</span></div>
+                  <div style="margin-top:8px;font-weight:500">Nghỉ phép năm · 13–14/09</div>
+                  <div class="text-meta">2 ngày · gửi 30/08 · ảnh hưởng 2 ca</div>
+                  <a class="btn btn--small btn--quiet" style="margin-top:8px" href="leave-request.html">Xem đơn</a>
+                </div>
+              </div>
+            </section>
+
+            <p class="text-meta">Anh/chị chỉ thấy lịch của mình và tên người cùng ca. Lịch cả khoa do ĐD trưởng quản lý.</p>
+          </aside>
+        </div>
+
+      </div>
+    </main>
+  </div>
+  <div data-shell="bottomnav"></div>
+</div>
+
+<div class="overlay" id="day-detail">
+  <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="day-detail-title">
+    <div class="dialog__head">
+      <h2 class="dialog__title" id="day-detail-title" data-roster="day-detail-title">Chi tiết ngày</h2>
+      <button class="icon-btn" type="button" data-action="close-overlay" aria-label="Đóng">✕</button>
+    </div>
+    <div class="dialog__body" data-roster="day-detail"></div>
+  </div>
+</div>
+
+<div class="overlay" id="decline-dialog">
+  <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="decline-title">
+    <div class="dialog__head">
+      <h2 class="dialog__title" id="decline-title">Từ chối nhận ca 16/09?</h2>
+      <button class="icon-btn" type="button" data-action="close-overlay" aria-label="Đóng">✕</button>
+    </div>
+    <div class="dialog__body" id="decline-scope">
+      <div class="field" style="margin:0">
+        <label class="field__label" for="decline-reason">Lý do ngắn <span class="field__required">*</span></label>
+        <input class="input" id="decline-reason" type="text" required placeholder="Ví dụ: hôm đó tôi đã có việc riêng">
+        <div class="field__hint">ĐD Trịnh Thu Hà sẽ thấy lý do để tìm người khác</div>
+      </div>
+    </div>
+    <div class="dialog__foot">
+      <button class="btn btn--quiet" type="button" data-action="close-overlay">Quay lại</button>
+      <button class="btn btn--primary" type="button" data-require-scope="decline-scope" data-action="demo-submit"
+              data-busy-label="Đang gửi…" data-toast="Đã từ chối · ĐD Trịnh Thu Hà nhận thông báo, lịch giữ nguyên">Gửi từ chối</button>
+    </div>
+  </div>
+</div>
+
+<script src="assets/app.js"></script>
+<script src="assets/roster.js"></script>
+<script src="assets/roster-ui.js"></script>
+</body>
+</html>

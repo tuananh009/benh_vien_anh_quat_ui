@@ -859,3 +859,278 @@ button.nav__item {
 .bar-row__track { height: 12px; border-radius: 6px; background: var(--bg-alt); overflow: hidden; }
 .bar-row__fill { height: 100%; border-radius: 6px; background: var(--warning); }
 .bar-row__value { font-variant-numeric: tabular-nums; font-weight: 600; }
+
+/* ---------- 19. Duty roster — Part E ---------- */
+:root {
+  --shift-s-bg:  #E0F2FE;  --shift-s-fg:  #075985;
+  --shift-c-bg:  #FEF3C7;  --shift-c-fg:  #92400E;
+  --shift-d-bg:  #E0E7FF;  --shift-d-fg:  #3730A3;
+  --shift-24-bg: #FCE7F3;  --shift-24-fg: #9D174D;
+  --shift-hc-bg: #F1F5F9;  --shift-hc-fg: #334155;
+  --leave-hatch: repeating-linear-gradient(135deg, #F1F5F9 0 5px, #E2E8F0 5px 10px);
+}
+
+.shift-chip {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 28px; height: 28px; padding: 0 6px;
+  border-radius: 6px;
+  font-size: 14px; font-weight: 600; line-height: 1;
+}
+[data-code="S"]  { background: var(--shift-s-bg);  color: var(--shift-s-fg); }
+[data-code="C"]  { background: var(--shift-c-bg);  color: var(--shift-c-fg); }
+[data-code="Đ"]  { background: var(--shift-d-bg);  color: var(--shift-d-fg); }
+[data-code="24"] { background: var(--shift-24-bg); color: var(--shift-24-fg); }
+[data-code="HC"] { background: var(--shift-hc-bg); color: var(--shift-hc-fg); }
+[data-code="P"]  { background: var(--leave-hatch); color: #475569; }
+
+.legend { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; font-size: 14px; color: var(--text-muted); }
+.legend__item { display: inline-flex; align-items: center; gap: 6px; }
+.legend__dot { width: 8px; height: 8px; border-radius: 50%; background: var(--brand-orange); }
+.legend__warn { width: 20px; height: 20px; border-radius: 4px; box-shadow: inset 0 0 0 2px var(--warning); }
+
+/* Lifecycle band above the roster — NHAP / CHO_DUYET / DA_DUYET */
+.strip {
+  display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center;
+  padding: 12px 16px; margin-bottom: 16px;
+  border: 1px solid var(--border); border-radius: var(--radius-md);
+  background: var(--bg); font-size: 16px;
+}
+.strip__text { flex: 1; min-width: 240px; }
+.strip--pending  { background: #FEFCE8; border-color: #FDE68A; color: #713F12; }
+.strip--approved { background: var(--success-bg); border-color: #BBF7D0; color: #14532D; }
+
+/* Person × day matrix */
+.roster-scroll {
+  position: relative;
+  overflow-x: auto;
+  background: var(--bg);
+  border: 1px solid var(--border); border-radius: var(--radius-md);
+}
+.roster-scroll:focus-visible { outline: 2px solid var(--brand-blue); outline-offset: 2px; }
+.roster { border-collapse: separate; border-spacing: 0; font-size: 14px; }
+.roster th, .roster td {
+  width: 36px; min-width: 36px; height: 38px; padding: 0;
+  border-right: 1px solid var(--border); border-bottom: 1px solid var(--border);
+  text-align: center; vertical-align: middle;
+  font-variant-numeric: tabular-nums;
+}
+.roster thead th {
+  height: 52px; background: var(--bg-alt);
+  font-weight: 600; color: var(--text-muted); line-height: 1.25;
+}
+.roster thead th span { display: block; font-weight: 400; }
+.roster thead th.is-weekend { background: #E9EEF5; color: var(--text); }
+.roster td.is-weekend { background: #F6F8FB; }
+
+.roster__name {
+  position: sticky; left: 0; z-index: 3;
+  width: 220px !important; min-width: 220px !important; max-width: 220px;
+  padding: 0 12px !important;
+  background: var(--bg); text-align: left !important;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  font-weight: 500;
+}
+thead .roster__name, tfoot .roster__name { background: var(--bg-alt); }
+.roster__name-leave { margin-left: 4px; cursor: help; }
+
+.roster__prev {
+  background: #EEF2F6 !important; color: var(--text-muted);
+  border-right: 2px solid #CBD5E1 !important;
+}
+.roster__prev.has-shift { font-weight: 600; color: var(--shift-d-fg); }
+
+.roster__tot {
+  position: sticky; z-index: 2;
+  width: 40px !important; min-width: 40px !important;
+  background: var(--bg); font-weight: 500;
+}
+.roster thead .roster__tot, .roster tfoot .roster__tot { background: var(--bg-alt); }
+.roster__tot--1 { right: 160px; box-shadow: inset 2px 0 0 #CBD5E1; }
+.roster__tot--2 { right: 120px; }
+.roster__tot--3 { right: 80px; }
+.roster__tot--4 { right: 40px; }
+.roster__tot--5 { right: 0; font-weight: 600; }
+.roster__tot.is-over { background: #FEF08A !important; color: #713F12; }
+
+.cell { position: relative; font-weight: 600; cursor: cell; user-select: none; }
+.cell:empty::before { content: '·'; color: #CBD5E1; font-weight: 400; }
+.cell.is-leave { cursor: not-allowed; }
+.cell.is-ext { color: var(--text-faint); font-weight: 400; cursor: help; }
+.cell.is-warn { box-shadow: inset 0 0 0 2px var(--warning); }
+.cell.is-swap::after {
+  content: ''; position: absolute; top: 3px; right: 3px;
+  width: 7px; height: 7px; border-radius: 50%; background: var(--brand-orange);
+}
+.cell.is-active { outline: 2px solid var(--brand-blue-dark); outline-offset: -2px; z-index: 1; }
+.cell.is-drag { box-shadow: inset 0 0 0 2px var(--brand-blue); }
+.cell.is-flash { animation: cell-flash 1.6s ease; }
+.cell.is-shake { animation: cell-shake 200ms ease; }
+@keyframes cell-flash { 0%, 60% { box-shadow: inset 0 0 0 3px var(--brand-blue-dark); background-color: #BAE6FD; } }
+@keyframes cell-shake { 25% { transform: translateX(-3px); } 75% { transform: translateX(3px); } }
+.roster.is-readonly .cell { cursor: default; }
+.roster.is-readonly .cell.is-swap { cursor: pointer; }
+
+.roster tfoot th, .roster tfoot td { background: var(--bg-alt); font-weight: 600; }
+.check--ok   { color: var(--success); }
+.check--warn { color: #9A3412; background: var(--warning-bg) !important; }
+
+/* Shift picker — the "tap a cell" way of assigning */
+.roster-picker {
+  position: absolute; z-index: 20;
+  display: flex; gap: 4px; padding: 6px;
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); box-shadow: var(--shadow-dialog);
+}
+.roster-picker[hidden] { display: none; }
+.roster-picker button {
+  min-width: 40px; height: 40px; padding: 0 8px;
+  border: 0; border-radius: 6px; cursor: pointer; font-weight: 600;
+}
+.roster-picker button[data-pick=""] { background: var(--bg-alt); color: var(--text-muted); font-weight: 500; }
+
+/* Swap trace bubble on an approved roster */
+.roster-trace {
+  position: absolute; z-index: 20; width: 320px; padding: 12px 16px;
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: var(--radius-md); box-shadow: var(--shadow-dialog);
+  font-size: 14px; text-align: left;
+}
+.roster-trace[hidden] { display: none; }
+
+/* Warnings directly under the matrix — never only at save time */
+.warn-panel { margin-top: 16px; }
+.warn-panel__head {
+  display: flex; align-items: center; gap: 8px; width: 100%;
+  min-height: 44px; padding: 8px 0; border: 0; background: transparent;
+  font-size: 14px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase;
+  color: #9A3412; cursor: pointer; text-align: left;
+}
+.warn-panel__head.is-clear { color: var(--success); cursor: default; }
+.warn-panel.is-collapsed .warn-panel__body { display: none; }
+.warn-panel.is-collapsed .group__caret { transform: rotate(-90deg); }
+.warn-row {
+  display: flex; align-items: center; gap: 12px;
+  min-height: 44px; padding: 6px 16px;
+  border-bottom: 1px solid var(--border);
+}
+.warn-row:last-child { border-bottom: 0; }
+.warn-row__text { flex: 1; min-width: 0; }
+.warn-row__kind { flex: none; width: 240px; font-size: 14px; color: var(--text-muted); }
+
+/* Personal month calendar — MH-E03 */
+.cal { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 4px; }
+.cal__dow { padding: 4px 0; text-align: center; font-size: 14px; font-weight: 600; color: var(--text-muted); }
+.cal__day {
+  position: relative;
+  display: flex; flex-direction: column; align-items: center; gap: 4px;
+  min-height: 64px; padding: 6px 2px;
+  border: 1px solid var(--border); border-radius: var(--radius-sm);
+  background: var(--bg); color: var(--text); font: inherit; cursor: pointer;
+}
+.cal__day:hover { border-color: var(--brand-blue); }
+.cal__day.is-weekend { background: #F6F8FB; }
+.cal__day.is-today { box-shadow: inset 0 0 0 2px var(--brand-blue-dark); }
+.cal__day.is-blank { visibility: hidden; }
+.cal__num { font-size: 14px; color: var(--text-muted); line-height: 1; }
+.cal__day .shift-chip { min-width: 32px; }
+.cal__day.is-swap::after {
+  content: ''; position: absolute; top: 6px; right: 6px;
+  width: 7px; height: 7px; border-radius: 50%; background: var(--brand-orange);
+}
+
+/* Candidate list — MH-E06, invalid people are never listed */
+.pick-list { border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--bg); overflow: hidden; }
+.pick-row {
+  display: flex; align-items: center; gap: 12px;
+  min-height: 56px; padding: 10px 16px;
+  border-bottom: 1px solid var(--border); cursor: pointer;
+}
+.pick-row:last-child { border-bottom: 0; }
+.pick-row:hover { background: var(--bg-alt); }
+.pick-row input { width: 20px; height: 20px; flex: none; accent-color: var(--brand-blue-dark); }
+.pick-row__main { flex: 1; min-width: 0; }
+.pick-row__meta { font-size: 14px; color: var(--text-muted); }
+.pick-row__warn { font-size: 14px; color: #9A3412; }
+.pick-row.is-dim .pick-row__name { color: var(--text-muted); }
+.pick-row:has(input:checked) { background: var(--brand-blue-light); }
+
+/* Consequence list — what approving will do (MH-E05 / MH-E04) */
+.impact { list-style: none; margin: 0; padding: 0; }
+.impact li {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 4px 12px;
+  min-height: 44px; padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+}
+.impact li:last-child { border-bottom: 0; }
+.impact__what { flex: 1; min-width: 160px; }
+.impact__left { font-variant-numeric: tabular-nums; white-space: nowrap; }
+.impact__left.is-short { color: #9A3412; font-weight: 600; }
+.impact__left.is-ok { color: var(--success); }
+
+.section-box { padding: 12px 16px; border-radius: var(--radius-md); }
+.section-box--warn { background: var(--warning-bg); border: 1px solid #FED7AA; }
+.section-box--ok   { background: var(--success-bg); border: 1px solid #BBF7D0; color: #14532D; }
+.section-box--info { background: var(--brand-blue-light); border: 1px solid #BAE6FD; }
+.section-box__title {
+  margin-bottom: 8px;
+  font-size: 14px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase;
+}
+
+.swap-flow { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 12px; font-size: 18px; font-weight: 500; }
+.swap-flow__arrow { color: var(--text-faint); }
+.compare { width: 100%; border-collapse: collapse; font-size: 16px; }
+.compare td { padding: 8px 0; border-bottom: 1px solid var(--border); }
+.compare tr:last-child td { border-bottom: 0; }
+.compare td:last-child { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+/* Day × shift reading of the roster — MH-E01 */
+.day-list { display: grid; gap: 8px; }
+.day-row {
+  display: grid; grid-template-columns: 110px repeat(3, minmax(0, 1fr)); gap: 12px;
+  padding: 12px 16px; background: var(--bg);
+  border: 1px solid var(--border); border-radius: var(--radius-md);
+}
+.day-row.is-weekend { background: #F6F8FB; }
+.day-row.is-today { box-shadow: inset 0 0 0 2px var(--brand-blue-dark); }
+.day-row__date { font-weight: 600; }
+.day-row__slot { display: flex; align-items: flex-start; gap: 8px; min-width: 0; }
+.day-row__people { font-size: 14px; line-height: 1.6; }
+@media (max-width: 767px) {
+  .day-row { grid-template-columns: 1fr; gap: 8px; }
+}
+
+.color-swatch { display: inline-block; width: 20px; height: 20px; border-radius: 4px; vertical-align: middle; border: 1px solid rgba(15, 23, 42, .08); }
+.swatch-row { display: flex; flex-wrap: wrap; gap: 8px; }
+.swatch-row label { position: relative; display: inline-flex; cursor: pointer; }
+.swatch-row input { position: absolute; opacity: 0; pointer-events: none; }
+.swatch-row span {
+  width: 44px; height: 44px; border-radius: var(--radius-sm);
+  border: 2px solid transparent;
+  display: inline-flex; align-items: center; justify-content: center; font-weight: 600;
+}
+.swatch-row input:checked + span { border-color: var(--brand-blue-dark); }
+.swatch-row input:focus-visible + span { outline: 2px solid var(--brand-blue); outline-offset: 2px; }
+
+.radio-card {
+  display: flex; gap: 12px; align-items: flex-start;
+  padding: 12px 16px; margin-bottom: 8px;
+  border: 1px solid var(--border); border-radius: var(--radius-sm); cursor: pointer;
+}
+.radio-card input { flex: none; width: 20px; height: 20px; margin-top: 2px; accent-color: var(--brand-blue-dark); }
+.radio-card:has(input:checked) { border-color: var(--brand-blue-dark); background: var(--brand-blue-light); }
+
+.bullets { margin: 0; padding-left: 20px; }
+.bullets li { padding: 2px 0; }
+
+.kbd {
+  display: inline-block; min-width: 24px; padding: 0 6px;
+  border: 1px solid var(--border); border-bottom-width: 2px; border-radius: 4px;
+  background: var(--bg); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 14px; text-align: center;
+}
+
+/* Sub-entries under a menu group — sitemap "Lịch trực └ Lập lịch · Duyệt nghỉ…" */
+.nav__item.nav__sub { padding-left: 44px; font-size: 15px; color: var(--text-muted); }
+.nav__item.nav__sub.is-active { color: var(--brand-blue-dark); }
+@media (max-width: 767px) {
+  .sidebar .nav__item.nav__sub { display: flex !important; padding-left: 44px !important; min-height: 44px; }
+}
