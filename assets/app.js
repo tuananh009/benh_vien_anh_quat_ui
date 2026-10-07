@@ -31,6 +31,13 @@
     { id: 'exec-dashboard', code: 'MH-B01', file: 'exec-dashboard.html', title: 'Bảng điều khiển Ban Giám đốc', group: 'manage', device: '📱' },
     { id: 'task-report',    code: 'MH-B08', file: 'task-report.html',    title: 'Báo cáo nhiệm vụ',         group: 'manage', device: '💻' },
 
+    { id: 'meetings',        code: 'MH-C01', file: 'meetings.html',         title: 'Danh sách phiên giao ban', group: 'meeting', device: '💻 📱' },
+    { id: 'meeting-create',  code: 'MH-C02', file: 'meeting-create.html',   title: 'Tạo phiên giao ban',       group: 'meeting', device: '💻' },
+    { id: 'meeting',         code: 'MH-C03', file: 'meeting.html',          title: 'Chủ trì phiên giao ban',   group: 'meeting', device: '💻' },
+    { id: 'meeting-minutes', code: 'MH-C04', file: 'meeting-minutes.html',  title: 'Biên bản giao ban',        group: 'meeting', device: '💻' },
+    { id: 'directives',      code: 'MH-C05', file: 'directives.html',       title: 'Theo dõi chỉ đạo',         group: 'meeting', device: '💻 📱' },
+    { id: 'meeting-schedule',code: 'MH-C06', file: 'meeting-schedule.html', title: 'Lịch giao ban',            group: 'admin',   device: '💻' },
+
     { id: 'duty-roster',    code: 'MH-E01', file: 'duty-roster.html',    title: 'Lịch trực đơn vị',         group: 'duty', device: '💻' },
     { id: 'duty-schedule',  code: 'MH-E02', file: 'duty-schedule.html',  title: 'Xếp lịch trực',            group: 'duty', device: '💻' },
     { id: 'my-duty',        code: 'MH-E03', file: 'my-duty.html',        title: 'Lịch trực của tôi',        group: 'duty', device: '📱' },
@@ -68,7 +75,9 @@
       { icon: '🔀', label: 'Chia việc',              screen: 'task-split' },
       { icon: '🌙', label: 'Việc tồn cuối ca',       screen: 'shift-handover' },
       { icon: '📝', label: 'Việc của tôi',           screen: 'my-tasks' },
-      { icon: '🗣', label: 'Giao ban',               screen: null },
+      { icon: '🗣', label: 'Giao ban',               screen: 'meetings' },
+      { label: 'Tạo phiên',         screen: 'meeting-create', sub: true },
+      { label: 'Theo dõi chỉ đạo',  screen: 'directives',     sub: true },
       { icon: '⭐', label: 'Thi đua',                screen: null },
       { icon: '📅', label: 'Lịch trực',              screen: 'duty-roster' },
       { label: 'Lập lịch',         screen: 'duty-schedule',  sub: true },
@@ -83,7 +92,9 @@
     board: [
       { icon: '🏠', label: 'Bảng điều khiển',    screen: 'exec-dashboard' },
       { icon: '📋', label: 'Nhiệm vụ toàn viện', screen: 'tasks' },
-      { icon: '🗣', label: 'Giao ban',           screen: null },
+      { icon: '🗣', label: 'Giao ban',           screen: 'meetings' },
+      { label: 'Tạo phiên',         screen: 'meeting-create', sub: true },
+      { label: 'Theo dõi chỉ đạo',  screen: 'directives',     sub: true },
       { icon: '⭐', label: 'Thi đua',            screen: null },
       { icon: '📉', label: 'Chỉ tiêu',           screen: null },
       { icon: '📊', label: 'Báo cáo nhiệm vụ',   screen: 'task-report' },
@@ -94,6 +105,7 @@
       { icon: '🏢', label: 'Cơ cấu tổ chức',           screen: 'org-units' },
       { icon: '📚', label: 'Danh mục công việc chuẩn', screen: 'task-templates' },
       { icon: '🕒', label: 'Ca trực',                  screen: 'shift-types' },
+      { icon: '🗣', label: 'Lịch giao ban',            screen: 'meeting-schedule' },
       { icon: '📜', label: 'Nhật ký',                  screen: 'audit-log' },
       { icon: '🔔', label: 'Thông báo',                screen: 'notifications' }
     ]

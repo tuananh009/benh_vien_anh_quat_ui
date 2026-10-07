@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chủ trì phiên giao ban · Trung tâm điều hành số Bệnh viện Anh Quất</title>
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body data-screen="meetings" data-role="board" data-unread="3">
+<div class="app">
+  <div data-shell="topbar"></div>
+  <div class="shell">
+    <div data-shell="sidebar"></div>
+    <main class="main">
+
+      <!-- MH-C03 · màn hình dùng chung, chiếu lên TV. Hai cột cuộn độc lập. -->
+      <div class="mt">
+        <header class="mt__head">
+          <div class="mt__head-text">
+            <!-- Chuyển nhanh để so sánh hai loại phiên (chỉ có trong bản mẫu) -->
+            <div class="row" style="margin-bottom:8px" role="group" aria-label="Loại giao ban">
+              <a class="btn btn--secondary btn--small" id="sw-hospital" href="meeting.html">Giao ban toàn viện</a>
+              <a class="btn btn--secondary btn--small" id="sw-unit" href="meeting.html?type=unit">Giao ban khoa (Khoa Nội)</a>
+            </div>
+            <h1 class="mt__title" id="mt-title"></h1>
+            <p class="mt__people" id="mt-people"></p>
+          </div>
+          <div class="mt__actions">
+            <span class="mt__status mt__status--live">Đang diễn ra</span>
+            <button class="btn btn--primary btn--large" type="button" id="mt-end">Kết thúc giao ban</button>
+          </div>
+        </header>
+
+        <div class="mt__cols">
+          <section class="mt__col mt__col--left" id="mt-left" aria-label="Số liệu mở phiên"></section>
+          <section class="mt__col mt__col--right" id="mt-right" aria-label="Biên bản"></section>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<script src="assets/app.js"></script>
+<script src="assets/meeting-data.js"></script>
+<script src="assets/meeting.js"></script>
+</body>
+</html>

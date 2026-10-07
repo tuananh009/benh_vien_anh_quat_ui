@@ -26,6 +26,12 @@
             <h1 class="page-title" style="margin:12px 0 8px">Kiểm tra máy thở buồng 4</h1>
             <p class="text-meta">↑ Thuộc NOI-0012 · Kiểm kê thuốc quý III<br>Giao bởi PGĐ Nguyễn Anh Tuấn</p>
 
+            <!-- C-CHIDAO-02: liên kết hai chiều. Chỉ hiện khi mở từ một kết luận giao ban (?from=meeting). -->
+            <div class="section-box section-box--info" id="from-meeting" hidden style="margin-top:12px">
+              🗣 Từ kết luận giao ban ngày 26/08/2026 — Giao ban toàn viện
+              · <a href="meeting.html?type=hospital&amp;mode=closed">Xem kết luận</a>
+            </div>
+
             <div class="tabs" data-tabs="task" style="margin-top:24px">
               <button class="tab is-active" type="button" data-action="tab" data-tab="info">Thông tin</button>
               <button class="tab" type="button" data-action="tab" data-tab="comments">Trao đổi (2)</button>
@@ -183,5 +189,12 @@
 </div>
 
 <script src="assets/app.js"></script>
+<script>
+// Opened from a briefing conclusion: show the link back to it.
+if (/[?&]from=meeting/.test(window.location.search)) {
+  var strip = document.getElementById('from-meeting');
+  if (strip) strip.hidden = false;
+}
+</script>
 </body>
 </html>
