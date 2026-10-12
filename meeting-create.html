@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tạo phiên giao ban · Trung tâm điều hành số Bệnh viện Anh Quất</title>
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body data-screen="meeting-create" data-role="board" data-unread="3">
+<div class="app">
+  <div data-shell="topbar"></div>
+  <div class="shell">
+    <div data-shell="sidebar"></div>
+    <main class="main">
+      <div class="page" style="max-width:720px">
+
+        <a class="text-meta" href="meetings.html">← Quay lại Giao ban</a>
+        <div class="page__head" style="margin-top:8px">
+          <div class="page__head-text">
+            <h1 class="page-title">Tạo phiên giao ban</h1>
+            <p class="text-meta">Hệ thống tự điền thành phần tham dự và chụp sẵn số liệu khi tạo phiên.</p>
+          </div>
+        </div>
+
+        <form class="card" id="create-form" novalidate>
+          <div class="field">
+            <span class="field__label">Loại giao ban <span class="field__required">*</span></span>
+            <label class="radio-card"><input type="radio" name="type" value="unit" checked>
+              <span><strong>Giao ban khoa/phòng</strong></span></label>
+            <label class="radio-card"><input type="radio" name="type" value="hospital">
+              <span><strong>Giao ban toàn viện</strong></span></label>
+          </div>
+
+          <div class="field" id="unit-field">
+            <label class="field__label" for="unit">Đơn vị <span class="field__required">*</span></label>
+            <select class="select" id="unit">
+              <option>Khoa Nội – Nhi – Da liễu – HSCC</option>
+              <option>Khoa Khám bệnh</option>
+              <option>Khoa Ngoại – Sản – PT – GMHS</option>
+            </select>
+          </div>
+
+          <div class="grid grid--2" style="gap:0 16px">
+            <div class="field">
+              <label class="field__label" for="date">Ngày <span class="field__required">*</span></label>
+              <input class="input" id="date" type="date" value="2026-08-26">
+            </div>
+            <div class="field">
+              <label class="field__label" for="time">Giờ bắt đầu</label>
+              <input class="input" id="time" type="time" value="07:15">
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="chair">Người chủ trì <span class="field__required">*</span></label>
+            <select class="select" id="chair"></select>
+          </div>
+          <div class="field">
+            <label class="field__label" for="recorder">Người ghi biên bản</label>
+            <select class="select" id="recorder">
+              <option value="">Chủ trì tự ghi</option>
+              <option>CV Trần Thị Mai (Phòng Kế hoạch tổng hợp)</option>
+              <option>ĐD Lý Thị Mỹ (Khoa Nội)</option>
+            </select>
+            <div class="field__hint">Để trống thì chủ trì tự ghi.</div>
+          </div>
+
+          <div class="row" style="justify-content:flex-end">
+            <a class="btn btn--quiet" href="meetings.html">Huỷ</a>
+            <button class="btn btn--primary" type="submit" id="submit">Tạo phiên</button>
+          </div>
+        </form>
+
+      </div>
+    </main>
+  </div>
+</div>
+<script src="assets/app.js"></script>
+<script>
+(function () {
+  'use strict';
+  function $(id) { return document.getElementById(id); }
+  var CHAIRS = {
+    hospital: ['PGĐ Nguyễn Anh Tuấn', 'PGĐ Đặng Thu Hương', 'GĐ Vũ Đức Thành'],
+    unit: ['ĐD trưởng Bùi Thị Tố Hoa', 'TK Lê Văn Khải']
+  };
+  function type() { return document.querySelector('input[name="type"]:checked').value; }
+  function refresh() {
+    $('unit-field').hidden = type() === 'hospital';
+    $('chair').innerHTML = CHAIRS[type()].map(function (c) { return '<option>' + c + '</option>'; }).join('');
+  }
+  document.querySelectorAll('input[name="type"]').forEach(function (r) { r.addEventListener('change', refresh); });
+
+  $('create-form').addEventListener('submit', function (event) {
+    event.preventDefault();
+    var btn = $('submit');
+    if (btn.classList.contains('is-busy')) return;
+    btn.classList.add('is-busy');
+    window.setTimeout(function () {
+      window.prototype.toast('Đã tạo phiên giao ban');
+      window.setTimeout(function () { window.location.href = 'meeting.html' + (type() === 'unit' ? '?type=unit' : ''); }, 600);
+    }, 600);
+  });
+  refresh();
+})();
+</script>
+</body>
+</html>

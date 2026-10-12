@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Theo dõi chỉ đạo · Trung tâm điều hành số Bệnh viện Anh Quất</title>
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body data-screen="directives" data-role="board" data-unread="3">
+<div class="app">
+  <div data-shell="topbar"></div>
+  <div class="shell">
+    <div data-shell="sidebar"></div>
+    <main class="main">
+      <div class="page">
+
+        <div class="page__head">
+          <div class="page__head-text">
+            <h1 class="page-title">Theo dõi chỉ đạo</h1>
+            <p class="text-meta">Kết luận chỉ đạo qua các kỳ giao ban. Trạng thái lấy trực tiếp từ nhiệm vụ đã tạo.</p>
+          </div>
+          <div class="page__actions"><a class="btn btn--secondary" href="meetings.html">Danh sách phiên giao ban</a></div>
+        </div>
+
+        <div class="toolbar">
+          <label class="checkbox"><input type="checkbox" id="f-open" checked> Chỉ hiện chưa hoàn thành</label>
+          <span class="toolbar__count" id="count" aria-live="polite"></span>
+        </div>
+
+        <div class="table-wrap">
+          <table class="table table-as-cards">
+            <thead><tr><th>Nội dung chỉ đạo</th><th>Phiên giao ban</th><th>Đơn vị</th><th>Hạn</th><th>Nhiệm vụ</th><th>Quá hạn</th></tr></thead>
+            <tbody id="rows"></tbody>
+          </table>
+        </div>
+
+      </div>
+    </main>
+  </div>
+</div>
+<script src="assets/app.js"></script>
+<script src="assets/meeting-data.js"></script>
+<script>
+(function () {
+  'use strict';
+  var M = window.MEETING, esc = M.escapeHtml;
+  function $(id) { return document.getElementById(id); }
+
+  // st: trạng thái nhiệm vụ liên kết; NONE = chưa tạo nhiệm vụ; od = số ngày quá hạn
+  var D = [
+    { t: 'Rà soát danh mục thuốc hết hạn sử dụng',            src: 'GB-TV-BV-20260805', unit: 'Khoa Dược',                       due: '12/08/2026', code: 'DUOC-0027', st: 'IN_PROGRESS', od: 14 },
+    { t: 'Cập nhật danh sách người bệnh nặng lên bảng trắng', src: 'GB-KP-NOI-20260805', unit: 'Khoa Nội – Nhi – Da liễu – HSCC', due: '12/08/2026', code: 'NOI-0084',  st: 'REJECTED',    od: 14 },
+    { t: 'Báo cáo tình hình sử dụng giường tháng 8',          src: 'GB-TV-BV-20260819', unit: 'Phòng Kế hoạch tổng hợp',          due: '24/08/2026', code: 'KHTH-0021', st: 'REJECTED',    od: 2 },
+    { t: 'Rà soát lại quy trình bàn giao ca Khoa Nội',        src: 'GB-TV-BV-20260812', unit: 'Khoa Nội – Nhi – Da liễu – HSCC', due: '25/08/2026', code: 'NOI-0099',  st: 'IN_PROGRESS', od: 1 },
+    { t: 'Bổ sung cơ số thuốc cấp cứu tủ trực',               src: 'GB-TV-BV-20260819', unit: 'Khoa Dược',                       due: '28/08/2026', code: 'DUOC-0030', st: 'IN_PROGRESS', od: 0 },
+    { t: 'Cập nhật nội quy khu vực chờ khám',                 src: 'GB-TV-BV-20260819', unit: 'Phòng Tổ chức – Hành chính',      due: '26/08/2026', code: null,        st: 'NONE',        od: 0 },
+    { t: 'Nâng cấp mạng nội bộ khu khám bệnh',                src: 'GB-TV-BV-20260812', unit: 'Phòng Công nghệ thông tin',       due: '14/08/2026', code: 'CNTT-0015', st: 'DONE',        od: 0 }
+  ];
+
+  function render() {
+    var open = $('f-open').checked, n = 0, html = '';
+    D.forEach(function (r) {
+      if (open && r.st === 'DONE') return;
+      n++;
+      var task = r.st === 'NONE'
+        ? '<span class="badge badge--not-accepted">Chưa tạo nhiệm vụ</span>'
+        : '<a href="task-detail.html?from=meeting" target="_blank" rel="noopener">' + esc(r.code) + '</a> <span class="badge badge--' + M.TASK_STATUS[r.st].cls + '">' + M.TASK_STATUS[r.st].label + '</span>';
+      html += '<tr><td data-label="Nội dung" class="mt-cell-main">' + esc(r.t) + '</td>' +
+        '<td data-label="Phiên giao ban"><a href="meeting.html">' + esc(r.src) + '</a></td>' +
+        '<td data-label="Đơn vị">' + esc(r.unit) + '</td><td data-label="Hạn">' + r.due + '</td>' +
+        '<td data-label="Nhiệm vụ">' + task + '</td>' +
+        '<td data-label="Quá hạn">' + (r.od ? '<span class="badge badge--overdue">' + r.od + ' ngày</span>' : '—') + '</td></tr>';
+    });
+    $('rows').innerHTML = html;
+    $('count').textContent = 'Hiển thị ' + n + ' chỉ đạo';
+  }
+  $('f-open').addEventListener('change', render);
+  render();
+})();
+</script>
+</body>
+</html>

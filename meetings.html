@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Danh sách phiên giao ban · Trung tâm điều hành số Bệnh viện Anh Quất</title>
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body data-screen="meetings" data-role="board" data-unread="3">
+<div class="app">
+  <div data-shell="topbar"></div>
+  <div class="shell">
+    <div data-shell="sidebar"></div>
+    <main class="main">
+      <div class="page">
+
+        <div class="page__head">
+          <div class="page__head-text">
+            <h1 class="page-title">Giao ban</h1>
+            <p class="text-meta">Các phiên giao ban trong phạm vi của anh/chị.</p>
+          </div>
+          <div class="page__actions">
+            <a class="btn btn--secondary" href="directives.html">Theo dõi chỉ đạo</a>
+            <a class="btn btn--primary" href="meeting-create.html">+ Tạo phiên</a>
+          </div>
+        </div>
+
+        <div class="toolbar" role="search">
+          <div class="toolbar__search">
+            <label class="sr-only" for="q">Tìm phiên giao ban</label>
+            <input class="input" id="q" type="search" placeholder="Tìm theo số biên bản, nội dung, kết luận… (gõ không dấu cũng được)" autocomplete="off">
+          </div>
+          <label class="sr-only" for="f-type">Loại giao ban</label>
+          <select class="select" id="f-type" style="width:auto">
+            <option value="">Mọi loại</option>
+            <option value="hospital">Toàn viện</option>
+            <option value="unit">Khoa/phòng</option>
+          </select>
+          <span class="toolbar__count" id="count" aria-live="polite"></span>
+        </div>
+
+        <div class="table-wrap">
+          <table class="table table-as-cards">
+            <thead>
+              <tr><th>Số biên bản</th><th>Loại</th><th>Đơn vị</th><th>Thời gian</th><th>Chủ trì</th><th>Trạng thái</th></tr>
+            </thead>
+            <tbody id="rows"></tbody>
+          </table>
+        </div>
+
+        <div class="state" id="no-match" hidden>
+          <div class="state__icon">🔍</div>
+          <div class="state__title">Không tìm thấy phiên giao ban phù hợp</div>
+          <p class="state__text">Thử gõ ít từ hơn hoặc đổi loại giao ban.</p>
+          <button class="btn btn--secondary" type="button" id="clear">Xoá bộ lọc</button>
+        </div>
+
+      </div>
+    </main>
+  </div>
+</div>
+<script src="assets/app.js"></script>
+<script src="assets/meeting-data.js"></script>
+<script>
+(function () {
+  'use strict';
+  var M = window.MEETING, esc = M.escapeHtml, norm = M.normalize;
+  function $(id) { return document.getElementById(id); }
+
+  var SESSIONS = [
+    { no: 'GB-TV-BV-20260826',  type: 'hospital', unit: '—',                                at: '26/08/2026 07:15', chair: 'PGĐ Nguyễn Anh Tuấn',      status: 'Đang diễn ra', cls: 'badge--in-progress', href: 'meeting.html',
+      text: 'Khoa Khám bệnh rà soát và xử lý dứt điểm 5 việc quá hạn; Khoa Dược bổ sung cơ số thuốc cấp cứu tủ trực' },
+    { no: 'GB-KP-NOI-20260826', type: 'unit',     unit: 'Khoa Nội – Nhi – Da liễu – HSCC', at: '26/08/2026 07:30', chair: 'ĐD trưởng Bùi Thị Tố Hoa', status: 'Đang diễn ra', cls: 'badge--in-progress', href: 'meeting.html?type=unit',
+      text: 'Rà soát lại quy trình bàn giao ca; kiểm tra hạn dùng thuốc xe đẩy cấp cứu' },
+    { no: 'GB-KP-NOI-20260825', type: 'unit',     unit: 'Khoa Nội – Nhi – Da liễu – HSCC', at: '25/08/2026 07:15', chair: 'ĐD trưởng Bùi Thị Tố Hoa', status: 'Đã kết thúc', cls: 'badge--done', href: 'meeting.html?type=unit',
+      text: 'Cập nhật bảng theo dõi người bệnh nặng' },
+    { no: 'GB-TV-BV-20260819',  type: 'hospital', unit: '—',                                at: '19/08/2026 07:15', chair: 'GĐ Vũ Đức Thành',          status: 'Đã kết thúc', cls: 'badge--done', href: 'meeting.html',
+      text: 'Rà soát danh mục thuốc hết hạn sử dụng; báo cáo tình hình sử dụng giường tháng 8' },
+    { no: 'GB-TV-BV-20260812',  type: 'hospital', unit: '—',                                at: '12/08/2026 07:15', chair: 'PGĐ Nguyễn Anh Tuấn',      status: 'Đã kết thúc', cls: 'badge--done', href: 'meeting.html',
+      text: 'Nâng cấp mạng nội bộ khu khám bệnh; huấn luyện phòng cháy chữa cháy' }
+  ];
+
+  function render() {
+    var q = norm($('q').value.trim()), t = $('f-type').value, html = '', n = 0;
+    SESSIONS.forEach(function (s) {
+      if (t && s.type !== t) return;
+      if (q && norm(s.no + ' ' + s.text).indexOf(q) < 0) return;
+      n++;
+      html += '<tr><td data-label="Số biên bản"><a href="' + s.href + '"><strong>' + esc(s.no) + '</strong></a></td>' +
+        '<td data-label="Loại">' + (s.type === 'hospital' ? 'Toàn viện' : 'Khoa/phòng') + '</td>' +
+        '<td data-label="Đơn vị">' + esc(s.unit) + '</td><td data-label="Thời gian">' + s.at + '</td>' +
+        '<td data-label="Chủ trì">' + esc(s.chair) + '</td>' +
+        '<td data-label="Trạng thái"><span class="badge ' + s.cls + '">' + s.status + '</span></td></tr>';
+    });
+    $('rows').innerHTML = html;
+    $('count').textContent = 'Hiển thị ' + n + ' phiên';
+    $('no-match').hidden = n !== 0;
+    document.querySelector('.table-wrap').hidden = n === 0;
+  }
+  $('q').addEventListener('input', render);
+  $('f-type').addEventListener('change', render);
+  $('clear').addEventListener('click', function () { $('q').value = ''; $('f-type').value = ''; render(); });
+  render();
+})();
+</script>
+</body>
+</html>

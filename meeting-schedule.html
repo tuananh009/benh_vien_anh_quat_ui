@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lịch giao ban · Trung tâm điều hành số Bệnh viện Anh Quất</title>
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body data-screen="meeting-schedule" data-role="admin" data-unread="3">
+<div class="app">
+  <div data-shell="topbar"></div>
+  <div class="shell">
+    <div data-shell="sidebar"></div>
+    <main class="main">
+      <div class="page">
+
+        <div class="page__head">
+          <div class="page__head-text">
+            <h1 class="page-title">Lịch giao ban</h1>
+            <p class="text-meta">Có lịch cố định thì hệ thống tự tạo phiên Nháp 30 phút trước giờ họp, điền sẵn thành phần và số liệu. Lịch cụ thể đang chờ Bệnh viện trả lời (Q22), các dòng dưới là minh hoạ.</p>
+          </div>
+          <div class="page__actions">
+            <button class="btn btn--primary" type="button" data-action="open-overlay" data-target="sched-form">+ Thêm lịch</button>
+          </div>
+        </div>
+
+        <div class="table-wrap">
+          <table class="table table-as-cards">
+            <thead><tr><th>Loại</th><th>Đơn vị</th><th>Các ngày</th><th>Giờ họp</th><th>Chủ trì</th><th>Ghi biên bản</th><th>Thao tác</th></tr></thead>
+            <tbody>
+              <tr>
+                <td data-label="Loại">Toàn viện</td><td data-label="Đơn vị">—</td>
+                <td data-label="Các ngày">Thứ 2 – Thứ 7</td><td data-label="Giờ họp">07:15</td>
+                <td data-label="Chủ trì">PGĐ Nguyễn Anh Tuấn</td><td data-label="Ghi biên bản">CV Trần Thị Mai</td>
+                <td data-label="Thao tác"><button class="btn btn--small btn--secondary" type="button" data-action="open-overlay" data-target="sched-form">Sửa</button></td>
+              </tr>
+              <tr>
+                <td data-label="Loại">Khoa/phòng</td><td data-label="Đơn vị">Khoa Nội – Nhi – Da liễu – HSCC</td>
+                <td data-label="Các ngày">Thứ 2 – Thứ 7</td><td data-label="Giờ họp">07:30</td>
+                <td data-label="Chủ trì">ĐD trưởng Bùi Thị Tố Hoa</td><td data-label="Ghi biên bản">ĐD Lý Thị Mỹ</td>
+                <td data-label="Thao tác"><button class="btn btn--small btn--secondary" type="button" data-action="open-overlay" data-target="sched-form">Sửa</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </main>
+  </div>
+</div>
+
+<div class="overlay" id="sched-form">
+  <div class="panel" role="dialog" aria-modal="true" aria-labelledby="sched-title">
+    <div class="panel__head">
+      <h2 class="dialog__title" id="sched-title">Lịch giao ban</h2>
+      <button class="icon-btn" type="button" data-action="close-overlay" aria-label="Đóng">✕</button>
+    </div>
+    <div class="panel__body">
+      <div class="field">
+        <label class="field__label" for="s-unit">Đơn vị</label>
+        <select class="select" id="s-unit"><option value="">Toàn viện</option><option>Khoa Nội – Nhi – Da liễu – HSCC</option><option>Khoa Khám bệnh</option></select>
+      </div>
+      <div class="field">
+        <span class="field__label">Các ngày trong tuần</span>
+        <div class="dow-chips" role="group" aria-label="Các ngày trong tuần">
+          <label><input type="checkbox" checked><span>T2</span></label><label><input type="checkbox" checked><span>T3</span></label>
+          <label><input type="checkbox" checked><span>T4</span></label><label><input type="checkbox" checked><span>T5</span></label>
+          <label><input type="checkbox" checked><span>T6</span></label><label><input type="checkbox" checked><span>T7</span></label>
+          <label><input type="checkbox"><span>CN</span></label>
+        </div>
+      </div>
+      <div class="field">
+        <label class="field__label" for="s-time">Giờ họp</label>
+        <input class="input" id="s-time" type="time" value="07:30">
+      </div>
+      <div class="field">
+        <label class="field__label" for="s-chair">Người chủ trì</label>
+        <select class="select" id="s-chair"><option>ĐD trưởng Bùi Thị Tố Hoa</option><option>PGĐ Nguyễn Anh Tuấn</option></select>
+      </div>
+      <div class="field">
+        <label class="field__label" for="s-rec">Người ghi biên bản</label>
+        <select class="select" id="s-rec"><option value="">Chủ trì tự ghi</option><option>ĐD Lý Thị Mỹ</option></select>
+      </div>
+    </div>
+    <div class="panel__foot">
+      <button class="btn btn--quiet" type="button" data-action="close-overlay">Huỷ</button>
+      <button class="btn btn--primary" type="button" data-action="demo-submit" data-busy-label="Đang lưu…" data-toast="Đã lưu lịch giao ban">Lưu lịch</button>
+    </div>
+  </div>
+</div>
+
+<script src="assets/app.js"></script>
+</body>
+</html>

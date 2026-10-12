@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Biên bản giao ban · Trung tâm điều hành số Bệnh viện Anh Quất</title>
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body data-screen="meetings" data-role="board" data-unread="3">
+<div class="app">
+  <div data-shell="topbar"></div>
+  <div class="shell">
+    <div data-shell="sidebar"></div>
+    <main class="main">
+      <div class="page">
+
+        <div class="no-print">
+          <a class="text-meta" id="back" href="meeting.html">← Quay lại phiên giao ban</a>
+          <div class="page__head" style="margin-top:8px">
+            <div class="page__head-text">
+              <h1 class="page-title">Biên bản giao ban</h1>
+              <p class="text-meta">Mẫu tạm theo thể thức văn bản hành chính, chờ file Word gốc của Bệnh viện (Q21).</p>
+            </div>
+            <div class="page__actions">
+              <button class="btn btn--secondary" type="button" data-action="toast" data-toast="Đã xuất biên bản Word (.docx)">Xuất Word</button>
+              <button class="btn btn--primary" type="button" data-action="toast" data-toast="Đã xuất biên bản PDF">Xuất PDF</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="paper-wrap" style="padding-top:0">
+          <article class="paper" id="paper" aria-label="Xem trước biên bản"></article>
+        </div>
+
+      </div>
+    </main>
+  </div>
+</div>
+<script src="assets/app.js"></script>
+<script src="assets/meeting-data.js"></script>
+<script>
+(function () {
+  'use strict';
+  var M = window.MEETING, esc = M.escapeHtml;
+  var type = new URLSearchParams(window.location.search).get('type') === 'unit' ? 'unit' : 'hospital';
+  var sess = M.SESSIONS[type], seed = sess.seeds.live;
+  document.getElementById('back').href = 'meeting.html' + (type === 'unit' ? '?type=unit' : '');
+
+  function text(v) { return v && v.trim() ? '<p class="paper__text">' + esc(v) + '</p>' : '<p class="paper__ph">(Không có nội dung)</p>'; }
+
+  var absent = sess.people.filter(function (p) { return sess.absentSeed[p.id]; });
+  var present = sess.people.filter(function (p) { return !sess.absentSeed[p.id]; });
+  var concl = seed.concl.filter(function (c) { return c.text.trim(); });
+
+  // Đơn vị không có ý kiến thì không in
+  var ops = type === 'hospital' ? M.UNITS.filter(function (u) { return seed.opinions[u.code] && seed.opinions[u.code].text.trim(); }) : [];
+  var n = 2;
+  function h(title) { return '<h2>' + ['I', 'II', 'III', 'IV', 'V', 'VI'][n++] + '. ' + title + '</h2>'; }
+
+  document.getElementById('paper').innerHTML =
+    '<div class="paper__head"><div><span class="paper__ph">[Tên công ty]</span><strong>BỆNH VIỆN ĐA KHOA ANH QUẤT</strong></div>' +
+      '<div><strong>Số: ' + esc(sess.code) + '</strong></div></div>' +
+    '<h1>BIÊN BẢN GIAO BAN ' + (type === 'hospital' ? 'TOÀN VIỆN' : 'KHOA/PHÒNG') + '</h1>' +
+    '<p class="paper__no">' + (sess.unit ? esc(sess.unitName) + ' · ' : '') + esc(sess.dateLabel) + ', 07:15</p>' +
+    '<h2>I. Chủ trì và ghi biên bản</h2><p>Chủ trì: <strong>' + esc(sess.chair) + '</strong><br>Người ghi biên bản: <strong>' + esc(sess.recorder) + '</strong></p>' +
+    '<h2>II. Thành phần tham dự</h2><p>Có mặt (' + present.length + '/' + sess.people.length + '): ' + present.map(function (p) { return esc(p.name); }).join('; ') + '.</p>' +
+    (absent.length ? '<p>Vắng: ' + absent.map(function (p) { return esc(p.name) + ' (' + esc(sess.absentSeed[p.id].reason) + ')'; }).join('; ') + '.</p>' : '') +
+    h('Nội dung') + text(seed.content) +
+    h('Tồn tại') + text(seed.backlog) +
+    (ops.length ? h('Ý kiến các đơn vị') + ops.map(function (u) {
+      var op = seed.opinions[u.code];
+      return '<p><strong>' + esc(u.name) + '</strong>' + (op.who ? ' (' + esc(op.who) + ')' : '') + ': ' + esc(op.text) + '</p>';
+    }).join('') : '') +
+    h('Kết luận chỉ đạo') +
+    '<table><thead><tr><th style="width:48px">STT</th><th>Nội dung chỉ đạo</th><th>Đơn vị</th><th>Người thực hiện</th><th>Hạn</th></tr></thead><tbody>' +
+      concl.map(function (c, i) {
+        return '<tr><td>' + (i + 1) + '</td><td>' + esc(c.text) + '</td><td>' + esc((M.UNIT_BY_CODE[c.unit] || {}).name || '—') + '</td><td>' +
+          esc(c.who || 'Đầu mối đơn vị') + '</td><td>' + (c.due ? c.due.split('-').reverse().join('/') : '—') + '</td></tr>';
+      }).join('') + '</tbody></table>' +
+    '<div class="paper__sign"><div><strong>Người ghi biên bản</strong><br><em>(ký, ghi rõ họ tên)</em></div><div><strong>Người chủ trì</strong><br><em>(ký, ghi rõ họ tên)</em></div></div>';
+})();
+</script>
+</body>
+</html>

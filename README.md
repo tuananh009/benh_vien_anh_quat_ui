@@ -1,6 +1,6 @@
 # Bản mẫu giao diện
 
-41 màn hình HTML tĩnh của **Trung tâm điều hành số Bệnh viện Đa khoa Anh Quất**,
+37 màn hình HTML tĩnh của **Trung tâm điều hành số Bệnh viện Đa khoa Anh Quất**,
 dựng để bệnh viện xem và góp ý trước khi lập trình phần mềm thật.
 
 Repo này **chỉ chứa bản mẫu giao diện** — không có mã nguồn máy chủ, không có lược đồ cơ sở
@@ -37,7 +37,9 @@ hoặc bật chế độ thiết bị di động trong công cụ nhà phát tri
 ├── screens.html          mục lục toàn bộ màn hình
 ├── assets/
 │   ├── app.css           toàn bộ token màu, chữ, và thư viện component
-│   └── app.js            khung ứng dụng dùng chung + tương tác
+│   ├── app.js            khung ứng dụng dùng chung + tương tác
+│   ├── meeting-data.js   dữ liệu giao ban dùng chung (Phần C)
+│   └── meeting.js        màn hình chủ trì phiên giao ban MH-C03
 │
 ├── login.html            MH-A01  Đăng nhập
 ├── two-factor.html       MH-A01  Xác thực hai lớp
@@ -56,6 +58,12 @@ hoặc bật chế độ thiết bị di động trong công cụ nhà phát tri
 ├── unit-dashboard.html   MH-B02  Bảng điều khiển đơn vị
 ├── exec-dashboard.html   MH-B01  Bảng điều khiển Ban Giám đốc
 ├── task-report.html      MH-B08  Báo cáo nhiệm vụ
+│
+├── meetings.html         MH-C01  Danh sách phiên giao ban — tìm không dấu
+├── meeting-create.html   MH-C02  Tạo phiên giao ban
+├── meeting.html          MH-C03  Chủ trì phiên giao ban ★ — màn hình chiếu lên TV
+├── meeting-minutes.html  MH-C04  Biên bản giao ban — xem trước
+├── directives.html       MH-C05  Theo dõi chỉ đạo qua các kỳ
 │
 ├── duty-roster.html      MH-E01  Lịch trực đơn vị — theo ngày, theo người, lịch sử đổi trực
 ├── duty-schedule.html    MH-E02  Xếp lịch trực ★ — gõ phím, hoàn tác, cảnh báo tức thì
@@ -80,8 +88,7 @@ hoặc bật chế độ thiết bị di động trong công cụ nhà phát tri
 ├── org-units.html        MH-A10  Cơ cấu tổ chức
 ├── task-templates.html   MH-B06  Danh mục công việc chuẩn
 ├── shift-types.html      MH-E08  Cấu hình ca trực
-├── evaluation-periods.html MH-D09 Kỳ đánh giá thi đua
-├── evaluation-forms.html MH-D10  Cấu hình mẫu phiếu
+├── meeting-schedule.html MH-C06  Lịch giao ban
 └── audit-log.html        MH-A11  Nhật ký hệ thống
 ```
 
@@ -135,18 +142,18 @@ người nhận thay khớp nhau giữa các màn. `assets/roster-ui.js` gắn c
 
 ---
 
-## Thi đua (Phần D) dựng từ cấu hình mẫu phiếu
+## Giao ban (Phần C) — bản đầu tiên, đơn giản
 
-`assets/evaluation.js` giữ câu chữ các mẫu phiếu (01A, 01B, 02A, 02B, 02K lấy nguyên từ tài liệu Phần D),
-bảng quy đổi xếp loại và dữ liệu kỳ **08/2026 của Khoa Nội** (17 phiếu cá nhân + 1 phiếu tập thể).
-Màn chấm `evaluation-form.html` là **một màn duy nhất** dựng từ cấu hình đó; chọn phiếu và bước bằng tham số:
+Sáu màn hình `meetings`, `meeting-create`, `meeting` (chủ trì, chiếu TV), `meeting-minutes`, `directives`,
+`meeting-schedule` đọc chung `assets/meeting-data.js` (phiên toàn viện và phiên Khoa Nội, cùng ngày 26/08/2026).
+`meeting.html?type=unit` mở phiên khoa/phòng. `assets/meeting.js` chỉ phục vụ màn chủ trì.
 
-```
-evaluation-form.html?nguoi=lan|em|giang|duy|xuan|khoa&vai=self|manager|council|locked
-```
+**Đã có:** 6 khối số liệu chụp sẵn (khối rỗng ẩn, thu gọn được, toàn viện nhóm theo đơn vị) · Ghi vào tồn tại ·
+Đưa vào kết luận kỳ này · biên bản 4 phần, tự lưu 10 giây · Enter thêm kết luận · Tạo nhiệm vụ Cấp 1/Cấp 2 ·
+điểm danh mặc định đủ · xem trước biên bản · danh sách phiên, theo dõi chỉ đạo, lịch giao ban.
 
-Mỗi màn Phần D đứng ở bước tương ứng của cùng một kỳ: tự chấm (01/09) · trưởng khoa chấm (03/09) ·
-đối chiếu (04/09) · Hội đồng duyệt (05/09). Điểm, cảnh báo chênh lệch và phân bố xếp loại khớp nhau giữa các màn.
+**Chưa có (bổ sung dần):** nháp / kết thúc / khoá 24 giờ và mở khoá · tạo nhiệm vụ hàng loạt ·
+lý do vắng · mất mạng · phân quyền xem và 404 · bộ lọc đầy đủ · xuất Word/PDF thật · số liệu lúc họp trên biên bản.
 
 ---
 
@@ -200,9 +207,7 @@ Mỗi màn Phần D đứng ở bước tương ứng của cùng một kỳ: t�
 - Nút bấm chạy hiệu ứng chờ rồi hiện thông báo — không thay đổi dữ liệu.
 - Cây đơn vị chưa kéo thả được; bảng chưa sắp xếp được khi bấm tiêu đề cột.
 - Ở màn Chia việc, chọn mẫu chưa thực sự tự điền lại các trường bên dưới.
-- Chưa có màn hình Phần B2, C, G — xem mục *Chưa dựng* ở `screens.html`.
-- Phần D: chỉ Khoa Nội có dữ liệu chi tiết; các khoa khác chỉ có số tổng. Câu chữ Mẫu 01C và các mẫu
-  chưa có trong tài liệu tạm hiện tiêu chí của khung chung. Ngưỡng xếp loại tập thể chưa có — tạm dùng như cá nhân.
+- Chưa có màn hình Phần B2, D, G — xem mục *Chưa dựng* ở `screens.html`.
 - Logo là hình vẽ tạm bằng SVG. Cần bản logo gốc của bệnh viện để thay.
 
 ---
