@@ -42,6 +42,17 @@
     { id: 'duty-print',     code: 'E-XUAT-01', file: 'duty-print.html',  title: 'In lịch dán bảng',         group: 'duty', device: '💻' },
     { id: 'shift-types',    code: 'MH-E08', file: 'shift-types.html',    title: 'Cấu hình ca trực',         group: 'admin', device: '💻' },
 
+    { id: 'my-evaluations',       code: 'MH-D01', file: 'my-evaluations.html',       title: 'Phiếu thi đua của tôi',     group: 'emulation', device: '📱' },
+    { id: 'evaluation-form',      code: 'MH-D02', file: 'evaluation-form.html',      title: 'Chấm phiếu thi đua',        group: 'emulation', device: '💻 📱' },
+    { id: 'evaluation-unit',      code: 'MH-D03', file: 'evaluation-unit.html',      title: 'Chấm phiếu đơn vị',         group: 'emulation', device: '💻 📱' },
+    { id: 'evaluation-crosscheck',code: 'MH-D04', file: 'evaluation-crosscheck.html',title: 'Đối chiếu liên phòng',      group: 'emulation', device: '💻' },
+    { id: 'evaluation-council',   code: 'MH-D05', file: 'evaluation-council.html',   title: 'Xét duyệt thi đua toàn viện', group: 'emulation', device: '💻 📱' },
+    { id: 'evaluation-report',    code: 'MH-D06', file: 'evaluation-report.html',    title: 'Báo cáo tổng hợp (Mẫu 03)', group: 'emulation', device: '💻' },
+    { id: 'survey',               code: 'MH-D07', file: 'survey.html',               title: 'Góp ý và đánh giá lãnh đạo', group: 'emulation', device: '📱' },
+    { id: 'survey-results',       code: 'MH-D08', file: 'survey-results.html',       title: 'Kết quả lấy ý kiến (Mẫu 04)', group: 'emulation', device: '💻' },
+    { id: 'evaluation-periods',   code: 'MH-D09', file: 'evaluation-periods.html',   title: 'Kỳ đánh giá',               group: 'emulation', device: '💻' },
+    { id: 'evaluation-forms',     code: 'MH-D10', file: 'evaluation-forms.html',     title: 'Cấu hình mẫu phiếu',        group: 'emulation', device: '💻' },
+
     { id: 'users',          code: 'MH-A08', file: 'index.html',          title: 'Quản lý người dùng',       group: 'admin', device: '💻' },
     { id: 'user-import',    code: 'MH-A09', file: 'user-import.html',    title: 'Nhập tài khoản từ Excel',  group: 'admin', device: '💻' },
     { id: 'org-units',      code: 'MH-A10', file: 'org-units.html',      title: 'Cơ cấu tổ chức',           group: 'admin', device: '💻' },
@@ -57,7 +68,7 @@
     cbnv: [
       { icon: '📋', label: 'Việc của tôi',          screen: 'my-tasks' },
       { icon: '📅', label: 'Lịch trực của tôi',     screen: 'my-duty' },
-      { icon: '⭐', label: 'Phiếu thi đua của tôi', screen: null },
+      { icon: '⭐', label: 'Phiếu thi đua của tôi', screen: 'my-evaluations' },
       { icon: '🔔', label: 'Thông báo',             screen: 'notifications' },
       { icon: '⚙️', label: 'Cài đặt',               screen: 'devices' }
     ],
@@ -69,7 +80,9 @@
       { icon: '🌙', label: 'Việc tồn cuối ca',       screen: 'shift-handover' },
       { icon: '📝', label: 'Việc của tôi',           screen: 'my-tasks' },
       { icon: '🗣', label: 'Giao ban',               screen: null },
-      { icon: '⭐', label: 'Thi đua',                screen: null },
+      { icon: '⭐', label: 'Thi đua',                screen: 'evaluation-unit' },
+      { label: 'Đối chiếu liên phòng', screen: 'evaluation-crosscheck', sub: true },
+      { label: 'Phiếu của tôi',        screen: 'my-evaluations',        sub: true },
       { icon: '📅', label: 'Lịch trực',              screen: 'duty-roster' },
       { label: 'Lập lịch',         screen: 'duty-schedule',  sub: true },
       { label: 'Duyệt nghỉ',       screen: 'leave-approval', sub: true },
@@ -84,7 +97,8 @@
       { icon: '🏠', label: 'Bảng điều khiển',    screen: 'exec-dashboard' },
       { icon: '📋', label: 'Nhiệm vụ toàn viện', screen: 'tasks' },
       { icon: '🗣', label: 'Giao ban',           screen: null },
-      { icon: '⭐', label: 'Thi đua',            screen: null },
+      { icon: '⭐', label: 'Thi đua',            screen: 'evaluation-council' },
+      { label: 'Báo cáo Mẫu 03',  screen: 'evaluation-report', sub: true },
       { icon: '📉', label: 'Chỉ tiêu',           screen: null },
       { icon: '📊', label: 'Báo cáo nhiệm vụ',   screen: 'task-report' },
       { icon: '🔔', label: 'Thông báo',          screen: 'notifications' }
@@ -94,6 +108,9 @@
       { icon: '🏢', label: 'Cơ cấu tổ chức',           screen: 'org-units' },
       { icon: '📚', label: 'Danh mục công việc chuẩn', screen: 'task-templates' },
       { icon: '🕒', label: 'Ca trực',                  screen: 'shift-types' },
+      { icon: '⭐', label: 'Kỳ thi đua',               screen: 'evaluation-periods' },
+      { label: 'Mẫu phiếu',        screen: 'evaluation-forms', sub: true },
+      { label: 'Lấy ý kiến',       screen: 'survey-results',   sub: true },
       { icon: '📜', label: 'Nhật ký',                  screen: 'audit-log' },
       { icon: '🔔', label: 'Thông báo',                screen: 'notifications' }
     ]
@@ -108,7 +125,7 @@
   var BOTTOM_NAV = [
     { icon: '📋', label: 'Việc',    screen: 'my-tasks' },
     { icon: '📅', label: 'Trực',    screen: 'my-duty' },
-    { icon: '⭐', label: 'Thi đua', screen: null }
+    { icon: '⭐', label: 'Thi đua', screen: 'my-evaluations' }
   ];
 
   var NOTIFICATIONS = [

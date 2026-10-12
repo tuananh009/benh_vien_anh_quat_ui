@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Báo cáo Mẫu 03 · Trung tâm điều hành số Bệnh viện Anh Quất</title>
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body data-screen="evaluation-report" data-role="board" data-unread="5">
+<div class="app">
+  <div data-shell="topbar"></div>
+  <div class="shell">
+    <div data-shell="sidebar"></div>
+    <main class="main">
+      <div class="page">
+
+        <div class="page__head">
+          <div class="page__head-text">
+            <h1 class="page-title">Mẫu 03 · Báo cáo tổng hợp kết quả thi đua tháng</h1>
+            <p class="text-meta">Ô có nhãn <span class="auto-tag">từ phần mềm</span> tự điền và cập nhật đến khi chốt kỳ. Các ô còn lại người lập báo cáo tự gõ.</p>
+          </div>
+          <div class="page__actions">
+            <button class="btn btn--secondary" type="button" data-action="toast" data-toast="Đã lưu bản nháp báo cáo">Lưu nháp</button>
+            <button class="btn btn--secondary" type="button" onclick="window.print()">In</button>
+            <button class="btn btn--primary" type="button" data-action="toast" data-toast="Đã xuất BaoCaoThiDua_T08-2026.docx" data-toast-kind="info">Xuất Word</button>
+          </div>
+        </div>
+
+        <div class="strip strip--pending no-print">
+          <span class="strip__text">Kỳ 08/2026 <strong>đang duyệt</strong> — 112/186 phiếu cá nhân chưa duyệt, số liệu dưới đây là <strong>xếp loại đề xuất</strong>. Sau khi chốt kỳ, số liệu khoá theo kết quả Hội đồng.</span>
+        </div>
+
+        <div class="doc-sheet">
+          <table class="doc-table">
+            <tbody>
+              <tr><th>Tháng</th><td>08</td><th>Quý</th><td>III</td></tr>
+              <tr><th>Năm</th><td>2026</td><th>Người lập báo cáo</th><td>Nguyễn Hoàng Nam</td></tr>
+              <tr><th>Đơn vị tổng hợp</th><td>Phòng Kế hoạch tổng hợp</td><th>Ngày lập</th><td>05/09/2026</td></tr>
+            </tbody>
+          </table>
+
+          <h2>1. Tình hình chung</h2>
+          <table class="doc-table">
+            <thead><tr><th style="width:45%">Nội dung</th><th>Kết quả / nhận xét</th></tr></thead>
+            <tbody>
+              <tr><td>Tổng số cá nhân được đánh giá</td><td><strong data-eval-num="people">—</strong> cán bộ <span class="auto-tag">từ phần mềm</span>
+                <textarea class="textarea" style="margin-top:8px;min-height:60px" aria-label="Nhận xét" placeholder="Nhận xét"></textarea></td></tr>
+              <tr><td>Tổng số khoa/phòng/bộ phận được đánh giá</td><td><strong data-eval-num="units">—</strong> khoa/phòng <span class="auto-tag">từ phần mềm</span>
+                <textarea class="textarea" style="margin-top:8px;min-height:60px" aria-label="Nhận xét" placeholder="Nhận xét"></textarea></td></tr>
+              <tr><td>Tổng số cá nhân/khoa phòng có đủ minh chứng đúng hạn</td><td><strong>176</strong> cá nhân · <strong>14</strong> khoa/phòng <span class="auto-tag">từ phần mềm</span></td></tr>
+              <tr><td>Số trường hợp cần bổ sung minh chứng hoặc giải trình</td><td><strong>4</strong> cá nhân · <strong>1</strong> phòng chưa nộp minh chứng liên phòng (CNTT) <span class="auto-tag">từ phần mềm</span></td></tr>
+              <tr><td>Nhận xét khái quát tình hình thực hiện thi đua trong tháng</td><td><textarea class="textarea" aria-label="Nhận xét khái quát">Tỷ lệ tự chấm đúng hạn 97%. 9 trường hợp tự chấm lệch trên 15 điểm so với quản lý chấm, tập trung ở Khoa Ngoại và Khoa Khám bệnh.</textarea></td></tr>
+            </tbody>
+          </table>
+
+          <h2>2. Kết quả xếp loại cá nhân</h2>
+          <table class="doc-table">
+            <thead><tr><th>Xếp loại cá nhân</th><th>Số lượng</th><th>Tỷ lệ (%)</th><th>Ghi chú</th></tr></thead>
+            <tbody data-eval="report-person"></tbody>
+          </table>
+
+          <h2>3. Kết quả xếp loại khoa/phòng/bộ phận</h2>
+          <table class="doc-table">
+            <thead><tr><th>Xếp loại khoa/phòng</th><th>Số lượng</th><th>Tỷ lệ (%)</th><th>Ghi chú</th></tr></thead>
+            <tbody data-eval="report-unit"></tbody>
+          </table>
+
+          <h2>4. Nội dung báo cáo trọng tâm</h2>
+          <table class="doc-table">
+            <thead><tr><th style="width:38%">Nội dung</th><th>Chi tiết đề xuất / nhận xét</th></tr></thead>
+            <tbody>
+              <tr><td>Danh sách cá nhân tiêu biểu <span class="auto-tag">từ phần mềm</span></td>
+                <td><div class="text-meta" style="margin-bottom:6px">21 cá nhân xếp loại A — chọn người đưa vào báo cáo:</div>
+                  <div class="badge-row"><span class="chip chip--brand">BS Trần Văn Xuân ✕</span><span class="chip chip--brand">ĐD trưởng Bùi Thị Tố Hoa ✕</span><span class="chip chip--brand">DS Lương Văn Khải ✕</span><button class="btn btn--small btn--quiet" type="button">+ Thêm từ danh sách A</button></div></td></tr>
+              <tr><td>Danh sách khoa/phòng tiêu biểu <span class="auto-tag">từ phần mềm</span></td>
+                <td><div class="badge-row"><span class="chip chip--brand">Phòng/Đơn nguyên Thận nhân tạo ✕</span><span class="chip chip--brand">Phòng Tài chính kế toán ✕</span></div></td></tr>
+              <tr><td>Cá nhân/khoa phòng có điểm thưởng nổi bật <span class="auto-tag">từ phần mềm</span></td>
+                <td>BS Nguyễn Văn An (Khoa Nội) +2 — sáng kiến bảng bàn giao SBAR cho người bệnh nặng<textarea class="textarea" style="margin-top:8px;min-height:60px" aria-label="Bổ sung"></textarea></td></tr>
+              <tr><td>Tồn tại, hạn chế cần chấn chỉnh</td><td><textarea class="textarea" aria-label="Tồn tại, hạn chế"></textarea></td></tr>
+              <tr><td>Các trường hợp bị điểm trừ, hạ mức, không xét thưởng hoặc không xét thi đua <span class="auto-tag">từ phần mềm</span></td>
+                <td><ul class="bullets"><li>KTV Đặng Quốc Huy (Khoa Ngoại) — loại trừ, xếp E: vi phạm quy trình vô khuẩn 21/08</li><li>5 cá nhân xếp loại D — theo dõi tháng sau</li><li>Khoa Liên chuyên khoa — tập thể Không hoàn thành (64 điểm)</li></ul></td></tr>
+              <tr><td>Đề xuất thưởng và hình thức biểu dương <span class="auto-tag">từ phần mềm</span></td>
+                <td>Thưởng A: 21 · B: 105 · C khuyến khích: 54 <textarea class="textarea" style="margin-top:8px;min-height:60px" aria-label="Hình thức biểu dương" placeholder="Hình thức biểu dương"></textarea></td></tr>
+              <tr><td>Kiến nghị chỉ đạo tháng sau</td><td><textarea class="textarea" aria-label="Kiến nghị chỉ đạo"></textarea></td></tr>
+              <tr><td>Ý kiến, kiến nghị của cán bộ nhân viên được tổng hợp trong tháng</td>
+                <td><textarea class="textarea" aria-label="Ý kiến cán bộ">142/186 cán bộ gửi phiếu Mẫu 04. 57% đề nghị bổ sung tiêu chí hoặc điều chỉnh trọng số; 32% thấy cách chấm chưa rõ.</textarea>
+                  <a class="text-meta" href="survey-results.html">Xem tổng hợp Mẫu 04 →</a></td></tr>
+            </tbody>
+          </table>
+
+          <h2>Ký xác nhận</h2>
+          <div class="sig-grid">
+            <div class="sig"><div class="sig__role">Người lập báo cáo</div><div>Nguyễn Hoàng Nam</div><div class="sig__mark is-pending">Chưa ký</div></div>
+            <div class="sig"><div class="sig__role">Trưởng phòng Tổ chức – Hành chính</div><div>Nguyễn Thị Hạnh</div><div class="sig__mark is-pending">Chưa ký</div></div>
+            <div class="sig"><div class="sig__role">Lãnh đạo bệnh viện / Hội đồng thi đua</div><div>Nguyễn Anh Tuấn</div><div class="sig__mark is-pending">Chưa ký</div></div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+  <div data-shell="bottomnav"></div>
+</div>
+<script src="assets/app.js"></script>
+<script src="assets/evaluation.js"></script>
+</body>
+</html>

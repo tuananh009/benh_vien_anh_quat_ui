@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Đối chiếu liên phòng · Trung tâm điều hành số Bệnh viện Anh Quất</title>
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body data-screen="evaluation-crosscheck" data-role="manager" data-unread="2">
+<div class="app">
+  <div data-shell="topbar"></div>
+  <div class="shell">
+    <div data-shell="sidebar"></div>
+    <main class="main">
+      <div class="page">
+
+        <div class="desktop-required">
+          <div class="state">
+            <div class="state__icon">💻</div>
+            <div class="state__title">Màn hình này cần máy tính</div>
+            <p class="state__text">Bảng đối chiếu có nhiều cột chấm công, nghỉ phép, kỷ luật. Vui lòng mở trên máy tính.</p>
+            <a class="btn btn--secondary" href="my-evaluations.html">Về phiếu thi đua của tôi</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="page__head">
+            <div class="page__head-text">
+              <h1 class="page-title">Đối chiếu liên phòng</h1>
+              <p class="text-meta">Kỳ tháng 08/2026 · Thứ Sáu 04/09/2026 · bước 3–4, hạn hôm nay. Đối chiếu <strong>không sửa điểm</strong> — chỉ gắn kết quả để Hội đồng xem khi duyệt.</p>
+            </div>
+            <div class="page__actions">
+              <button class="btn btn--secondary" type="button" data-action="toast" data-toast="Đã xuất BangDoiChieuHC_08-2026.xlsx" data-toast-kind="info">Xuất bảng đối chiếu</button>
+            </div>
+          </div>
+
+          <div class="tabs" data-tabs="cross" role="tablist">
+            <button class="tab is-active" type="button" role="tab" data-action="tab" data-tab="hc">Đối chiếu hành chính · Phòng TCHC</button>
+            <button class="tab" type="button" role="tab" data-action="tab" data-tab="evidence">Minh chứng liên phòng</button>
+          </div>
+
+          <!-- Step 3: TCHC -->
+          <div class="tab-panel" data-tab-panel="cross" data-tab-name="hc">
+            <div class="grid grid--main-aside" style="align-items:start">
+              <div>
+                <div class="toolbar">
+                  <label class="sr-only" for="cross-unit">Đơn vị</label>
+                  <select class="select" id="cross-unit" style="width:auto;min-width:300px">
+                    <option>Khoa Nội – Nhi – Da liễu – HSCC · 17 phiếu</option>
+                    <option>Khoa Khám bệnh · 18 phiếu</option>
+                    <option>Khoa Ngoại – Sản – Phẫu thuật – GMHS · 26 phiếu</option>
+                  </select>
+                  <span class="toolbar__count">Số liệu chấm công tự lấy từ máy chấm công và đơn nghỉ đã duyệt (Phần E)</span>
+                </div>
+                <div class="table-wrap">
+                  <table class="table table-as-cards">
+                    <thead>
+                      <tr>
+                        <th>Họ tên</th><th class="table__num">Ngày công</th><th class="table__num">Đi muộn / về sớm</th>
+                        <th>Nghỉ đã duyệt</th><th class="table__num">Nghỉ không phép</th><th class="table__num">Kỷ luật / biên bản</th>
+                        <th class="table__num">Phản ánh HC</th><th>Kết quả</th>
+                      </tr>
+                    </thead>
+                    <tbody data-eval="cross-table"></tbody>
+                  </table>
+                </div>
+              </div>
+
+              <aside class="stack">
+                <div class="card">
+                  <h2 class="card__title" style="margin-bottom:8px">Khoa Nội · 17 phiếu</h2>
+                  <table class="compare"><tbody>
+                    <tr><td>Khớp</td><td>15</td></tr>
+                    <tr><td>Cần giải trình</td><td><strong style="color:#B91C1C">2</strong></td></tr>
+                  </tbody></table>
+                  <p class="text-meta" style="margin:12px 0">Phiếu “cần giải trình” vẫn chuyển Hội đồng, kèm ghi chú đối chiếu. Khoa có thể gửi giải trình đến 05/09.</p>
+                  <button class="btn btn--primary btn--block" type="button" data-action="demo-submit" data-busy-label="Đang xác nhận…"
+                          data-toast="Đã xác nhận đối chiếu Khoa Nội · 17 phiếu chuyển “Đã đối chiếu”">Xác nhận đã đối chiếu</button>
+                </div>
+                <div class="card">
+                  <div class="text-label" style="margin-bottom:8px">Tiến độ toàn viện</div>
+                  <div class="row row--between"><span class="text-meta">Đã đối chiếu</span><span class="text-meta">11/15 đơn vị</span></div>
+                  <div class="track" style="margin-top:6px"><span style="width:73%"></span></div>
+                </div>
+              </aside>
+            </div>
+          </div>
+
+          <!-- Step 4: other departments -->
+          <div class="tab-panel" data-tab-panel="cross" data-tab-name="evidence" hidden>
+            <p class="text-meta" style="max-width:760px">Mỗi phòng chức năng nộp bảng minh chứng cho từng đơn vị. Hội đồng thấy các dòng này ngay trên phiếu khi xét duyệt.</p>
+            <div class="grid grid--2">
+              <article class="card">
+                <div class="row row--between"><h2 class="card__title">Phòng Kế hoạch tổng hợp</h2><span class="badge badge--done">✓ Đã nộp 04/09 09:10</span></div>
+                <ul class="impact" style="margin-top:8px">
+                  <li><span class="impact__what">Hồ sơ bệnh án nộp muộn &gt; 24 giờ</span><span class="impact__left">BS Cường 2 · BS Đức 1</span></li>
+                  <li><span class="impact__what">Tỷ lệ bệnh án đạt kiểm tra chất lượng</span><span class="impact__left">96%</span></li>
+                </ul>
+                <div class="text-meta">📎 KHTH_KiemTraHSBA_T8.pdf</div>
+              </article>
+              <article class="card">
+                <div class="row row--between"><h2 class="card__title">Phòng Tài chính kế toán</h2><span class="badge badge--done">✓ Đã nộp 03/09 16:45</span></div>
+                <ul class="impact" style="margin-top:8px">
+                  <li><span class="impact__what">Hồ sơ BHYT bị xuất toán</span><span class="impact__left">2 hồ sơ · 1,8 triệu đồng</span></li>
+                  <li><span class="impact__what">Công nợ viện phí quá 30 ngày</span><span class="impact__left">0</span></li>
+                </ul>
+                <div class="text-meta">📎 TCKT_XuatToan_T8.xlsx</div>
+              </article>
+              <article class="card">
+                <div class="row row--between"><h2 class="card__title">Điều dưỡng / KSNK</h2><span class="badge badge--done">✓ Đã nộp 04/09 08:30</span></div>
+                <ul class="impact" style="margin-top:8px">
+                  <li><span class="impact__what">Tuân thủ vệ sinh tay (giám sát 120 cơ hội)</span><span class="impact__left">91%</span></li>
+                  <li><span class="impact__what">Sự cố té ngã / loét ép</span><span class="impact__left">0</span></li>
+                </ul>
+                <div class="text-meta">📎 KSNK_GiamSat_T8.pdf</div>
+              </article>
+              <article class="card">
+                <div class="row row--between"><h2 class="card__title">Phòng Công nghệ thông tin</h2><span class="badge badge--pending-review">Chưa nộp · hạn 17:00</span></div>
+                <ul class="impact" style="margin-top:8px">
+                  <li><span class="impact__what">Hồ sơ EMR chưa ký số quá 48 giờ</span><span class="impact__left text-muted">—</span></li>
+                </ul>
+                <button class="btn btn--small btn--secondary" type="button" data-action="toast" data-toast="Đã nhắc Phòng CNTT nộp minh chứng" data-toast-kind="info">Nhắc nộp</button>
+              </article>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+  <div data-shell="bottomnav"></div>
+</div>
+<script src="assets/app.js"></script>
+<script src="assets/evaluation.js"></script>
+</body>
+</html>

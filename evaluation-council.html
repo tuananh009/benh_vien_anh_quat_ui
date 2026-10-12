@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Xét duyệt thi đua · Trung tâm điều hành số Bệnh viện Anh Quất</title>
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body data-screen="evaluation-council" data-role="board" data-unread="5">
+<div class="app">
+  <div data-shell="topbar"></div>
+  <div class="shell">
+    <div data-shell="sidebar"></div>
+    <main class="main">
+      <div class="page">
+
+        <div class="page__head">
+          <div class="page__head-text">
+            <h1 class="page-title">Xét duyệt thi đua · Kỳ tháng 08/2026</h1>
+            <p class="text-meta">Hội đồng thi đua · Thứ Bảy 05/09/2026 · hạn duyệt hôm nay. Điểm chính thức là cột quản lý / Hội đồng chấm; cột tự chấm để đối chiếu.</p>
+          </div>
+          <div class="page__actions">
+            <a class="btn btn--secondary" href="evaluation-report.html">Báo cáo Mẫu 03</a>
+            <button class="btn btn--primary" type="button" data-action="open-overlay" data-target="lock-dialog">Chốt kỳ…</button>
+          </div>
+        </div>
+
+        <div class="grid grid--4" style="margin-bottom:24px">
+          <div class="metric"><div class="metric__value">74 / 186</div><div class="metric__label">phiếu cá nhân đã duyệt</div>
+            <div class="track" style="margin-top:8px"><span style="width:40%"></span></div></div>
+          <div class="metric metric--warning"><div class="metric__value">9</div><div class="metric__label">tự chấm và QL lệch &gt; 15 điểm</div></div>
+          <div class="metric metric--danger"><div class="metric__value">4</div><div class="metric__label">cần giải trình sau đối chiếu</div></div>
+          <div class="metric"><div class="metric__value">6</div><div class="metric__label">không tự chấm đúng hạn</div></div>
+        </div>
+
+        <div class="tabs" data-tabs="council" role="tablist">
+          <button class="tab is-active" type="button" role="tab" data-action="tab" data-tab="units">Theo khoa/phòng (15)</button>
+          <button class="tab" type="button" role="tab" data-action="tab" data-tab="watch">Cần xem kỹ (19)</button>
+          <button class="tab" type="button" role="tab" data-action="tab" data-tab="collective">Phiếu tập thể (15)</button>
+          <button class="tab" type="button" role="tab" data-action="tab" data-tab="heads">Phiếu trưởng khoa/phòng</button>
+        </div>
+
+        <!-- By unit -->
+        <div class="tab-panel" data-tab-panel="council" data-tab-name="units">
+          <div class="table-wrap">
+            <table class="table table-as-cards">
+              <thead><tr><th>Đơn vị</th><th>Trạng thái</th><th>Phân bố xếp loại đề xuất</th><th>Tập thể</th><th>Cần xem</th><th></th></tr></thead>
+              <tbody data-eval="council-units"></tbody>
+            </table>
+          </div>
+          <p class="text-meta" style="margin-top:8px">Phân bố đếm theo xếp loại đề xuất của cột chính thức. Không có bảng xếp hạng cá nhân theo điểm hay theo số liệu công việc.</p>
+
+          <section id="unit-review" style="margin-top:32px">
+            <div class="row row--between" style="margin-bottom:12px">
+              <div>
+                <h2 class="section-title">Khoa Nội – Nhi – Da liễu – HSCC · 17 phiếu</h2>
+                <div class="text-meta">TCHC đã đối chiếu 04/09 · sắp theo tên</div>
+              </div>
+              <div class="row">
+                <button class="btn btn--small btn--secondary" type="button" data-pick-clean>Chọn các phiếu không có cảnh báo</button>
+                <button class="btn btn--small btn--primary" type="button" data-approve-picked data-action="demo-submit" data-busy-label="Đang duyệt…" disabled>
+                  Duyệt <span data-picked-count>0</span> phiếu đã chọn</button>
+              </div>
+            </div>
+            <div class="table-wrap">
+              <table class="table table-as-cards">
+                <thead><tr><th></th><th>Họ tên</th><th class="table__num">Tự chấm</th><th class="table__num">Chính thức ★</th><th>Đề xuất</th><th>Hội đồng duyệt</th><th>Cần xem</th></tr></thead>
+                <tbody data-eval="council-people"></tbody>
+              </table>
+            </div>
+            <p class="text-meta" style="margin-top:8px">Phiếu có viền cam bên trái nên mở ra xem trước khi duyệt — cảnh báo không chặn duyệt. Chọn xếp loại khác đề xuất cần ghi lý do vào biên bản.</p>
+          </section>
+        </div>
+
+        <!-- Exceptions -->
+        <div class="tab-panel stack" data-tab-panel="council" data-tab-name="watch" hidden>
+          <p class="text-meta" style="margin:0">Chỉ hiện những phiếu có điều cần Hội đồng cân nhắc. Phiếu không có cảnh báo duyệt theo đơn vị ở tab đầu.</p>
+
+          <article class="card">
+            <div class="row row--between">
+              <div><h2 class="card__title">ĐD Hoàng Văn Em</h2><div class="text-meta">Khoa Nội · Mẫu 01B</div></div>
+              <a class="btn btn--small btn--secondary" href="evaluation-form.html?nguoi=em&vai=council">Mở phiếu</a>
+            </div>
+            <div class="row" style="margin-top:12px;gap:24px">
+              <span>Tự chấm <strong>93</strong> <span class="grade grade--A">A</span></span>
+              <span>QL chấm <strong>75</strong> <span class="grade grade--C">C</span></span>
+            </div>
+            <div class="flag-list">
+              <span class="badge badge--pending-review">⚠ Lệch 18 điểm</span>
+              <span class="badge badge--rejected">TCHC: đi muộn 4 lần · 1 phản ánh của người nhà 18/08</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="row row--between">
+              <div><h2 class="card__title">ĐD Vũ Thị Giang</h2><div class="text-meta">Khoa Nội · Mẫu 01B</div></div>
+              <a class="btn btn--small btn--secondary" href="evaluation-form.html?nguoi=giang&vai=council">Mở phiếu</a>
+            </div>
+            <div class="row" style="margin-top:12px;gap:24px">
+              <span>Tự chấm <span class="text-muted">— không tự chấm đúng hạn</span></span>
+              <span>QL chấm <strong>78</strong> <span class="grade grade--C">C</span></span>
+            </div>
+            <div class="flag-list">
+              <span class="badge badge--late">Không tự chấm đúng hạn</span>
+              <span class="badge badge--rejected">TCHC: nghỉ không phép 14/08, chưa có đơn bổ sung</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="row row--between">
+              <div><h2 class="card__title">KTV Đặng Quốc Huy</h2><div class="text-meta">Khoa Ngoại – Sản – PT – GMHS · Mẫu 01F</div></div>
+              <a class="btn btn--small btn--secondary" href="#" data-action="toast" data-toast="Bản mẫu chỉ dựng chi tiết Khoa Nội" data-toast-kind="info">Mở phiếu</a>
+            </div>
+            <div class="row" style="margin-top:12px;gap:24px">
+              <span>QL chấm <strong>84</strong></span>
+              <span>Xếp loại đề xuất <span class="grade grade--E">E</span> vì thuộc diện loại trừ</span>
+            </div>
+            <div class="flag-list">
+              <span class="badge badge--rejected">Loại trừ: biên bản vi phạm quy trình vô khuẩn 21/08</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="row row--between">
+              <div><h2 class="card__title">Khoa Liên chuyên khoa · tập thể</h2><div class="text-meta">Mẫu 02P</div></div>
+              <a class="btn btn--small btn--secondary" href="#" data-action="toast" data-toast="Bản mẫu chỉ dựng chi tiết Khoa Nội" data-toast-kind="info">Mở phiếu</a>
+            </div>
+            <div class="row" style="margin-top:12px;gap:24px">
+              <span>Khoa tự chấm <strong>72</strong></span>
+              <span>Lãnh đạo chấm <strong>64</strong> <span class="grade grade--KHT">KHT</span> Không hoàn thành</span>
+            </div>
+          </article>
+
+          <p class="text-meta">… và 15 phiếu khác (lệch điểm, không tự chấm, xếp loại D/E) ở Khoa Khám bệnh, Khoa Ngoại, Khoa YHCT, Khoa CLS.</p>
+        </div>
+
+        <!-- Unit forms -->
+        <div class="tab-panel" data-tab-panel="council" data-tab-name="collective" hidden>
+          <div class="table-wrap">
+            <table class="table table-as-cards">
+              <thead><tr><th>Mẫu</th><th>Đơn vị</th><th class="table__num">Đơn vị tự chấm</th><th class="table__num">Lãnh đạo chấm ★</th><th>Trạng thái</th><th></th></tr></thead>
+              <tbody data-eval="unit-forms"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Heads' personal forms: scored by the board, never by themselves -->
+        <div class="tab-panel" data-tab-panel="council" data-tab-name="heads" hidden>
+          <p class="text-meta">Trưởng khoa/phòng tự chấm, lãnh đạo bệnh viện chấm cột chính thức. Không ai tự duyệt phiếu của mình.</p>
+          <div class="table-wrap">
+            <table class="table table-as-cards">
+              <thead><tr><th>Họ tên</th><th>Đơn vị</th><th class="table__num">Tự chấm</th><th class="table__num">BGĐ chấm ★</th><th>Trạng thái</th><th></th></tr></thead>
+              <tbody>
+                <tr><td data-label="Họ tên">BS Trần Văn Xuân</td><td data-label="Đơn vị">Khoa Nội – Nhi – Da liễu – HSCC</td>
+                  <td data-label="Tự chấm" class="table__num">92</td><td data-label="BGĐ chấm" class="table__num"><strong>90</strong> <span class="grade grade--A">A</span></td>
+                  <td data-label="Trạng thái"><span class="badge badge--checked">Chờ duyệt</span></td>
+                  <td><a class="btn btn--small btn--secondary" href="evaluation-form.html?nguoi=xuan&vai=council">Mở phiếu</a></td></tr>
+                <tr><td data-label="Họ tên">BS Phan Thị Hồng</td><td data-label="Đơn vị">Khoa Khám bệnh</td>
+                  <td data-label="Tự chấm" class="table__num">90</td><td data-label="BGĐ chấm" class="table__num"><span class="text-faint">Chưa chấm</span></td>
+                  <td data-label="Trạng thái"><span class="badge badge--accepted">Đã tự chấm</span></td>
+                  <td><a class="btn btn--small btn--primary" href="#" data-action="toast" data-toast="Bản mẫu chỉ dựng chi tiết Khoa Nội" data-toast-kind="info">Chấm</a></td></tr>
+                <tr><td data-label="Họ tên">CN Nguyễn Thị Hạnh</td><td data-label="Đơn vị">Phòng Tổ chức – Hành chính</td>
+                  <td data-label="Tự chấm" class="table__num">88</td><td data-label="BGĐ chấm" class="table__num"><strong>88</strong> <span class="grade grade--B">B</span></td>
+                  <td data-label="Trạng thái"><span class="badge badge--done">✓ Đã duyệt</span></td><td></td></tr>
+                <tr><td data-label="Họ tên">DS Lương Văn Khải</td><td data-label="Đơn vị">Khoa Dược – Vật tư – TTBYT</td>
+                  <td data-label="Tự chấm" class="table__num">87</td><td data-label="BGĐ chấm" class="table__num"><strong>86</strong> <span class="grade grade--B">B</span></td>
+                  <td data-label="Trạng thái"><span class="badge badge--done">✓ Đã duyệt</span></td><td></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+  <div data-shell="bottomnav"></div>
+</div>
+
+<div class="overlay" id="decide-dialog">
+  <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="decide-title">
+    <div class="dialog__head">
+      <h2 class="dialog__title" id="decide-title">Xếp loại khác đề xuất</h2>
+      <button class="icon-btn" type="button" data-action="close-overlay" aria-label="Đóng">✕</button>
+    </div>
+    <div class="dialog__body" id="decide-scope">
+      <p data-decide-text></p>
+      <div class="field" style="margin:0">
+        <label class="field__label" for="decide-reason">Lý do <span class="field__required">*</span></label>
+        <textarea class="textarea" id="decide-reason" required placeholder="Ví dụ: đã xác minh phản ánh không có cơ sở"></textarea>
+        <div class="field__hint">Ghi vào biên bản xét duyệt và hiện trên phiếu của người được chấm</div>
+      </div>
+    </div>
+    <div class="dialog__foot">
+      <button class="btn btn--quiet" type="button" data-action="close-overlay">Huỷ</button>
+      <button class="btn btn--primary" type="button" data-require-scope="decide-scope" data-action="demo-submit"
+              data-busy-label="Đang lưu…" data-toast="Đã ghi xếp loại của Hội đồng kèm lý do">Lưu xếp loại</button>
+    </div>
+  </div>
+</div>
+
+<div class="overlay" id="lock-dialog">
+  <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="lock-title">
+    <div class="dialog__head">
+      <h2 class="dialog__title" id="lock-title">Chốt kỳ tháng 08/2026?</h2>
+      <button class="icon-btn" type="button" data-action="close-overlay" aria-label="Đóng">✕</button>
+    </div>
+    <div class="dialog__body">
+      <div class="section-box section-box--warn" style="margin-bottom:16px">
+        Còn <strong>112 phiếu cá nhân</strong> và <strong>6 phiếu tập thể</strong> chưa duyệt. Chỉ chốt được khi mọi phiếu đã duyệt.
+      </div>
+      <p>Khi chốt: khoá toàn bộ phiếu, chỉ còn xem và xuất biểu mẫu. Các đơn vị nhận thông báo kết quả để công bố, tiếp nhận kiến nghị.</p>
+    </div>
+    <div class="dialog__foot">
+      <button class="btn btn--quiet" type="button" data-action="close-overlay">Đóng</button>
+      <button class="btn btn--primary" type="button" disabled>Chốt kỳ</button>
+    </div>
+  </div>
+</div>
+
+<script src="assets/app.js"></script>
+<script src="assets/evaluation.js"></script>
+</body>
+</html>

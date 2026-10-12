@@ -1,6 +1,6 @@
 # Bản mẫu giao diện
 
-31 màn hình HTML tĩnh của **Trung tâm điều hành số Bệnh viện Đa khoa Anh Quất**,
+41 màn hình HTML tĩnh của **Trung tâm điều hành số Bệnh viện Đa khoa Anh Quất**,
 dựng để bệnh viện xem và góp ý trước khi lập trình phần mềm thật.
 
 Repo này **chỉ chứa bản mẫu giao diện** — không có mã nguồn máy chủ, không có lược đồ cơ sở
@@ -67,10 +67,21 @@ hoặc bật chế độ thiết bị di động trong công cụ nhà phát tri
 ├── duty-stats.html       MH-E07  Thống kê ca trực
 ├── duty-print.html       E-XUAT  In lịch dán bảng A3
 │
+├── my-evaluations.html   MH-D01  Phiếu thi đua của tôi
+├── evaluation-form.html  MH-D02  Chấm phiếu ★ — một màn duy nhất, dựng theo cấu hình mẫu phiếu
+├── evaluation-unit.html  MH-D03  Chấm phiếu đơn vị — trưởng khoa
+├── evaluation-crosscheck.html MH-D04 Đối chiếu liên phòng — TCHC, KHTH, TC-KT, KSNK, CNTT
+├── evaluation-council.html MH-D05 Xét duyệt toàn viện — Hội đồng thi đua
+├── evaluation-report.html MH-D06 Báo cáo tổng hợp Mẫu 03
+├── survey.html           MH-D07  Góp ý Mẫu 04 · đánh giá lãnh đạo ẩn danh
+├── survey-results.html   MH-D08  Kết quả lấy ý kiến · sửa nội dung phiếu
+│
 ├── user-import.html      MH-A09  Nhập tài khoản từ Excel
 ├── org-units.html        MH-A10  Cơ cấu tổ chức
 ├── task-templates.html   MH-B06  Danh mục công việc chuẩn
 ├── shift-types.html      MH-E08  Cấu hình ca trực
+├── evaluation-periods.html MH-D09 Kỳ đánh giá thi đua
+├── evaluation-forms.html MH-D10  Cấu hình mẫu phiếu
 └── audit-log.html        MH-A11  Nhật ký hệ thống
 ```
 
@@ -124,6 +135,21 @@ người nhận thay khớp nhau giữa các màn. `assets/roster-ui.js` gắn c
 
 ---
 
+## Thi đua (Phần D) dựng từ cấu hình mẫu phiếu
+
+`assets/evaluation.js` giữ câu chữ các mẫu phiếu (01A, 01B, 02A, 02B, 02K lấy nguyên từ tài liệu Phần D),
+bảng quy đổi xếp loại và dữ liệu kỳ **08/2026 của Khoa Nội** (17 phiếu cá nhân + 1 phiếu tập thể).
+Màn chấm `evaluation-form.html` là **một màn duy nhất** dựng từ cấu hình đó; chọn phiếu và bước bằng tham số:
+
+```
+evaluation-form.html?nguoi=lan|em|giang|duy|xuan|khoa&vai=self|manager|council|locked
+```
+
+Mỗi màn Phần D đứng ở bước tương ứng của cùng một kỳ: tự chấm (01/09) · trưởng khoa chấm (03/09) ·
+đối chiếu (04/09) · Hội đồng duyệt (05/09). Điểm, cảnh báo chênh lệch và phân bố xếp loại khớp nhau giữa các màn.
+
+---
+
 ## Đã theo đúng những gì trong tài liệu thiết kế
 
 | Ràng buộc | Nguồn |
@@ -155,6 +181,15 @@ người nhận thay khớp nhau giữa các màn. `assets/roster-ui.js` gắn c
 | Người nhận thay không hợp lệ không hiện trong danh sách | `09-Lich-truc-ca-nhan` mục 9 |
 | Thống kê chỉ đếm ca và quy đổi hệ số, không tính tiền | `E-TK-01` |
 | Bản in dán bảng theo ngày × ca, A3 ngang, có người lập / người duyệt | `E-XUAT-01` |
+| Thi đua: một màn chấm cho mọi mẫu phiếu; thêm mẫu là thêm cấu hình, kiểm tra tổng nhóm = 100 khi lưu | Phần D §1–2 |
+| Không điền sẵn điểm, không gợi ý điểm, không tự trừ điểm theo số liệu; số liệu là thẻ xám có nút “Xem” | Phần D §5 |
+| Số liệu chụp lại lúc chấm, mở lại phiếu cũ vẫn thấy đúng con số lúc đó | Phần D §5 |
+| Điểm chính thức là cột QL/HĐ; tự chấm chỉ để đối chiếu; bước 0,5; tổng cuối có thể > 100, không âm | Phần D §6 |
+| Lệch tự chấm / QL quá 15 điểm thì cảnh báo cho Hội đồng, không chặn | Phần D §6 |
+| Quá hạn tự chấm: phiếu không tự chuyển bước, quản lý vẫn chấm, cột tự chấm trống kèm ghi chú | Phần D §4 |
+| Phiếu trưởng khoa và phiếu tập thể do lãnh đạo bệnh viện chấm — không ai tự duyệt phiếu của mình | Phần D §4, mục Câu hỏi |
+| Không xếp hạng công khai cá nhân; danh sách sắp theo tên | Phần D, Giới hạn |
+| Ẩn danh chỉ cho phiếu cấp dưới đánh giá lãnh đạo và ngược lại | Phần D §9 |
 | Tôn trọng `prefers-reduced-motion` | `00-Quy-uoc-va-Component.md` mục 5 |
 
 ---
@@ -165,7 +200,9 @@ người nhận thay khớp nhau giữa các màn. `assets/roster-ui.js` gắn c
 - Nút bấm chạy hiệu ứng chờ rồi hiện thông báo — không thay đổi dữ liệu.
 - Cây đơn vị chưa kéo thả được; bảng chưa sắp xếp được khi bấm tiêu đề cột.
 - Ở màn Chia việc, chọn mẫu chưa thực sự tự điền lại các trường bên dưới.
-- Chưa có màn hình Phần B2, C, D, G — xem mục *Chưa dựng* ở `screens.html`.
+- Chưa có màn hình Phần B2, C, G — xem mục *Chưa dựng* ở `screens.html`.
+- Phần D: chỉ Khoa Nội có dữ liệu chi tiết; các khoa khác chỉ có số tổng. Câu chữ Mẫu 01C và các mẫu
+  chưa có trong tài liệu tạm hiện tiêu chí của khung chung. Ngưỡng xếp loại tập thể chưa có — tạm dùng như cá nhân.
 - Logo là hình vẽ tạm bằng SVG. Cần bản logo gốc của bệnh viện để thay.
 
 ---

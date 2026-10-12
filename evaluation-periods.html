@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kỳ đánh giá thi đua · Trung tâm điều hành số Bệnh viện Anh Quất</title>
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body data-screen="evaluation-periods" data-role="admin" data-unread="3">
+<div class="app">
+  <div data-shell="topbar"></div>
+  <div class="shell">
+    <div data-shell="sidebar"></div>
+    <main class="main">
+      <div class="page">
+
+        <div class="desktop-required">
+          <div class="state">
+            <div class="state__icon">💻</div>
+            <div class="state__title">Màn hình này cần máy tính</div>
+            <p class="state__text">Cấu hình kỳ đánh giá chỉ dùng trên máy tính.</p>
+          </div>
+        </div>
+
+        <div>
+          <div class="page__head">
+            <div class="page__head-text">
+              <h1 class="page-title">Kỳ đánh giá thi đua</h1>
+              <p class="text-meta">Mỗi tháng một kỳ. Vòng đời: <strong>Mở → Đang chấm → Đang duyệt → Đã chốt</strong>. Hạn từng bước do bệnh viện chỉnh riêng cho từng kỳ.</p>
+            </div>
+            <div class="page__actions">
+              <a class="btn btn--secondary" href="evaluation-forms.html">Mẫu phiếu</a>
+              <button class="btn btn--primary" type="button" data-action="open-overlay" data-target="new-period">+ Tạo kỳ mới</button>
+            </div>
+          </div>
+
+          <div class="table-wrap" style="margin-bottom:24px">
+            <table class="table table-as-cards">
+              <thead><tr><th>Kỳ</th><th>Trạng thái</th><th class="table__num">Phiếu cá nhân</th><th class="table__num">Phiếu tập thể</th><th>Hạn tự chấm → duyệt</th><th>Tiến độ</th><th></th></tr></thead>
+              <tbody>
+                <tr style="background:var(--brand-blue-light)">
+                  <td data-label="Kỳ"><strong>09/2026</strong></td><td data-label="Trạng thái"><span class="badge badge--not-accepted">Mở</span></td>
+                  <td data-label="Phiếu cá nhân" class="table__num">188</td><td data-label="Phiếu tập thể" class="table__num">15</td>
+                  <td data-label="Hạn">02/10 → 05/10</td><td data-label="Tiến độ"><span class="text-muted">Phiếu đã sinh, chờ đến hạn</span></td>
+                  <td><a class="btn btn--small btn--secondary" href="#period-detail">Đang xem</a></td></tr>
+                <tr>
+                  <td data-label="Kỳ"><strong>08/2026</strong></td><td data-label="Trạng thái"><span class="badge badge--checked">Đang duyệt</span></td>
+                  <td data-label="Phiếu cá nhân" class="table__num">186</td><td data-label="Phiếu tập thể" class="table__num">15</td>
+                  <td data-label="Hạn">02/09 → 05/09</td>
+                  <td data-label="Tiến độ" style="min-width:160px"><div class="track"><span style="width:40%"></span></div><div class="text-meta">74/186 đã duyệt</div></td>
+                  <td><a class="btn btn--small btn--quiet" href="evaluation-council.html">Xét duyệt</a></td></tr>
+                <tr>
+                  <td data-label="Kỳ"><strong>07/2026</strong></td><td data-label="Trạng thái"><span class="badge badge--done">🔒 Đã chốt 06/08</span></td>
+                  <td data-label="Phiếu cá nhân" class="table__num">184</td><td data-label="Phiếu tập thể" class="table__num">15</td>
+                  <td data-label="Hạn">02/08 → 05/08</td><td data-label="Tiến độ"><span class="text-muted">Chỉ xem và xuất</span></td>
+                  <td><button class="btn btn--small btn--quiet" type="button" data-action="toast" data-toast="Đã xuất trọn bộ phiếu kỳ 07/2026 (PDF)" data-toast-kind="info">Xuất bộ phiếu</button></td></tr>
+                <tr>
+                  <td data-label="Kỳ"><strong>06/2026</strong></td><td data-label="Trạng thái"><span class="badge badge--done">🔒 Đã chốt 05/07</span></td>
+                  <td data-label="Phiếu cá nhân" class="table__num">183</td><td data-label="Phiếu tập thể" class="table__num">15</td>
+                  <td data-label="Hạn">02/07 → 05/07</td><td data-label="Tiến độ"><span class="text-muted">Chỉ xem và xuất</span></td>
+                  <td><button class="btn btn--small btn--quiet" type="button" data-action="toast" data-toast="Đã xuất trọn bộ phiếu kỳ 06/2026 (PDF)" data-toast-kind="info">Xuất bộ phiếu</button></td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <section id="period-detail" class="grid grid--main-aside" style="align-items:start">
+            <div class="stack stack--lg">
+              <div class="card">
+                <div class="row row--between" style="margin-bottom:16px">
+                  <h2 class="card__title">Kỳ 09/2026</h2>
+                  <div class="stepper" style="margin:0">
+                    <span class="stepper__step is-active"><span class="stepper__num">1</span>Mở</span>
+                    <span class="stepper__step"><span class="stepper__num">2</span>Đang chấm</span>
+                    <span class="stepper__step"><span class="stepper__num">3</span>Đang duyệt</span>
+                    <span class="stepper__step"><span class="stepper__num">4</span>Đã chốt</span>
+                  </div>
+                </div>
+
+                <h3 class="text-label" style="margin-bottom:8px">Mốc thời gian</h3>
+                <div class="table-wrap">
+                  <table class="table">
+                    <thead><tr><th>Bước</th><th>Đầu mối</th><th>Hạn</th><th>Đầu ra</th></tr></thead>
+                    <tbody>
+                      <tr><td>1</td><td>Cá nhân / khoa phòng tự chấm</td><td><input class="input" type="date" value="2026-10-02" style="min-height:40px;padding:6px 10px" aria-label="Hạn bước 1"></td><td>Phiếu tự chấm</td></tr>
+                      <tr><td>2</td><td>Trưởng khoa/phòng chấm</td><td><input class="input" type="date" value="2026-10-03" style="min-height:40px;padding:6px 10px" aria-label="Hạn bước 2"></td><td>Phiếu đã xác nhận</td></tr>
+                      <tr><td>3</td><td>Phòng TCHC đối chiếu</td><td><input class="input" type="date" value="2026-10-04" style="min-height:40px;padding:6px 10px" aria-label="Hạn bước 3"></td><td>Bảng đối chiếu HC</td></tr>
+                      <tr><td>4</td><td>KHTH, Tài chính, ĐD/KSNK, CNTT</td><td><input class="input" type="date" value="2026-10-04" style="min-height:40px;padding:6px 10px" aria-label="Hạn bước 4"></td><td>Bảng minh chứng liên phòng</td></tr>
+                      <tr><td>5</td><td>Hội đồng thi đua / Lãnh đạo</td><td><input class="input" type="date" value="2026-10-05" style="min-height:40px;padding:6px 10px" aria-label="Hạn bước 5"></td><td>Biên bản xét duyệt</td></tr>
+                      <tr><td>6</td><td>Các đơn vị công bố</td><td class="text-muted">Sau phê duyệt</td><td>Thông báo kết quả</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p class="text-meta" style="margin:8px 0 0">Nhắc việc gửi 24 giờ trước mỗi hạn. Quá hạn, phiếu <strong>không tự chuyển bước</strong> — người ở bước sau vẫn làm được, phần còn thiếu ghi chú “không đúng hạn”.</p>
+              </div>
+
+              <div class="card">
+                <div class="row row--between" style="margin-bottom:8px">
+                  <h3 class="card__title">Danh sách phiếu đã sinh</h3>
+                  <span class="text-meta">Còn sửa được khi kỳ đang “Mở”</span>
+                </div>
+                <ul class="impact">
+                  <li><span class="impact__what">Khoa Nội – Nhi – Da liễu – HSCC</span><span class="impact__left">17 cá nhân · 1 tập thể</span>
+                    <button class="btn btn--small btn--quiet" type="button" data-action="toast" data-toast="Bản mẫu: chưa dựng danh sách chi tiết" data-toast-kind="info">Sửa</button></li>
+                  <li><span class="impact__what">Khoa Ngoại – Sản – Phẫu thuật – GMHS</span><span class="impact__left">27 cá nhân · 1 tập thể</span>
+                    <span class="badge badge--accepted">+1 nhân viên mới 15/09</span></li>
+                  <li><span class="impact__what">Khoa Khám bệnh</span><span class="impact__left">19 cá nhân · 1 tập thể</span>
+                    <span class="badge badge--accepted">+1 nhân viên mới</span></li>
+                  <li><span class="impact__what text-muted">12 đơn vị khác</span><span class="impact__left">125 cá nhân · 12 tập thể</span></li>
+                </ul>
+                <div class="section-box section-box--info" style="margin-top:12px">
+                  Phiếu cá nhân sinh theo <strong>chức danh</strong> (bác sĩ → 01A, điều dưỡng → 01B…), phiếu tập thể theo <strong>đơn vị</strong>.
+                  Người làm ở hai khoa có một phiếu, chấm tại đơn vị chính.
+                </div>
+              </div>
+            </div>
+
+            <aside class="stack">
+              <div class="card">
+                <div class="text-label">Bước tiếp theo</div>
+                <p style="margin:8px 0 12px">Chuyển kỳ 09/2026 sang <strong>Đang chấm</strong> vào 00:00 ngày 01/10 — hoặc chuyển ngay.</p>
+                <button class="btn btn--primary btn--block" type="button" data-action="open-overlay" data-target="start-dialog">Chuyển sang Đang chấm</button>
+              </div>
+              <div class="card">
+                <div class="text-label" style="margin-bottom:8px">Quy tắc áp dụng cho kỳ</div>
+                <table class="compare"><tbody>
+                  <tr><td>Bước điểm</td><td>0,5</td></tr>
+                  <tr><td>Cảnh báo chênh lệch tự chấm / QL</td><td>&gt; 15 điểm</td></tr>
+                  <tr><td>Bảng quy đổi</td><td>A ≥ 90 · B ≥ 80 · C ≥ 65 · D ≥ 50</td></tr>
+                </tbody></table>
+                <a class="text-meta" href="evaluation-forms.html#rules" style="display:inline-block;margin-top:8px">Sửa ở Cấu hình mẫu phiếu →</a>
+              </div>
+            </aside>
+          </section>
+        </div>
+
+      </div>
+    </main>
+  </div>
+  <div data-shell="bottomnav"></div>
+</div>
+
+<div class="overlay" id="start-dialog">
+  <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="start-title">
+    <div class="dialog__head">
+      <h2 class="dialog__title" id="start-title">Mở chấm kỳ 09/2026?</h2>
+      <button class="icon-btn" type="button" data-action="close-overlay" aria-label="Đóng">✕</button>
+    </div>
+    <div class="dialog__body">
+      <ul class="bullets">
+        <li>188 cán bộ và 15 đơn vị nhận thông báo tự chấm, hạn 02/10.</li>
+        <li>Danh sách phiếu bị khoá — thêm người sau thời điểm này phải qua Phòng TCHC.</li>
+        <li>Số liệu tháng 09 (nhiệm vụ, ca trực, giao ban) được chụp lại khi từng người mở phiếu chấm.</li>
+      </ul>
+    </div>
+    <div class="dialog__foot">
+      <button class="btn btn--quiet" type="button" data-action="close-overlay">Huỷ</button>
+      <button class="btn btn--primary" type="button" data-action="demo-submit" data-busy-label="Đang mở…"
+              data-toast="Kỳ 09/2026 đã chuyển sang Đang chấm · đã gửi 203 thông báo">Mở chấm</button>
+    </div>
+  </div>
+</div>
+
+<div class="overlay" id="new-period">
+  <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="np-title">
+    <div class="dialog__head">
+      <h2 class="dialog__title" id="np-title">Tạo kỳ mới</h2>
+      <button class="icon-btn" type="button" data-action="close-overlay" aria-label="Đóng">✕</button>
+    </div>
+    <div class="dialog__body">
+      <div class="field"><label class="field__label" for="np-month">Tháng</label>
+        <select class="select" id="np-month"><option>10/2026</option></select></div>
+      <label class="checkbox"><input type="checkbox" checked> Sinh phiếu theo danh sách nhân sự hiện tại</label>
+      <label class="checkbox"><input type="checkbox" checked> Dùng lại mốc thời gian của kỳ 09/2026 (dời sang tháng sau)</label>
+    </div>
+    <div class="dialog__foot">
+      <button class="btn btn--quiet" type="button" data-action="close-overlay">Huỷ</button>
+      <button class="btn btn--primary" type="button" data-action="demo-submit" data-busy-label="Đang tạo…" data-toast="Đã tạo kỳ 10/2026 · 188 phiếu cá nhân, 15 phiếu tập thể">Tạo kỳ</button>
+    </div>
+  </div>
+</div>
+
+<script src="assets/app.js"></script>
+</body>
+</html>

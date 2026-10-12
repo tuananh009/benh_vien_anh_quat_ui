@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chấm phiếu đơn vị · Trung tâm điều hành số Bệnh viện Anh Quất</title>
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body data-screen="evaluation-unit" data-role="manager" data-unread="4">
+<div class="app">
+  <div data-shell="topbar"></div>
+  <div class="shell">
+    <div data-shell="sidebar"></div>
+    <main class="main">
+      <div class="page">
+
+        <div class="page__head">
+          <div class="page__head-text">
+            <h1 class="page-title">Thi đua · Khoa Nội – Nhi – Da liễu – HSCC</h1>
+            <p class="text-meta">Kỳ tháng 08/2026 · Thứ Năm 03/09/2026 10:00 · TK Trần Văn Xuân chấm phiếu nhân viên trong khoa</p>
+          </div>
+        </div>
+
+        <div class="strip strip--pending">
+          <span class="strip__text">⏳ <strong>Bước 2 · Trưởng khoa chấm</strong> — hạn hôm nay 03/09. Còn <strong>10 phiếu</strong> chờ bạn chấm.
+            Quá hạn phiếu không tự chuyển bước; Phòng TCHC đối chiếu từ 04/09.</span>
+          <span class="badge badge--in-progress">Đang chấm</span>
+        </div>
+
+        <div class="stepper" aria-label="Các bước của kỳ">
+          <span class="stepper__step is-done"><span class="stepper__num">✓</span>Tự chấm · 02/09</span>
+          <span class="stepper__step is-active"><span class="stepper__num">2</span>Trưởng khoa chấm · 03/09</span>
+          <span class="stepper__step"><span class="stepper__num">3</span>TCHC đối chiếu · 04/09</span>
+          <span class="stepper__step"><span class="stepper__num">4</span>Minh chứng liên phòng · 04/09</span>
+          <span class="stepper__step"><span class="stepper__num">5</span>Hội đồng duyệt · 05/09</span>
+          <span class="stepper__step"><span class="stepper__num">6</span>Công bố</span>
+        </div>
+
+        <div class="grid grid--4" style="margin-bottom:24px">
+          <div class="metric"><div class="metric__value">17</div><div class="metric__label">phiếu cá nhân trong khoa</div></div>
+          <div class="metric metric--success"><div class="metric__value">15</div><div class="metric__label">đã tự chấm đúng hạn</div></div>
+          <div class="metric metric--warning"><div class="metric__value">2</div><div class="metric__label">không tự chấm đúng hạn — vẫn chấm được</div></div>
+          <div class="metric"><div class="metric__value">6/16</div><div class="metric__label">bạn đã chấm (phiếu của bạn do BGĐ chấm)</div></div>
+        </div>
+
+        <div class="tabs" data-tabs="unit" role="tablist">
+          <button class="tab is-active" type="button" role="tab" data-action="tab" data-tab="people">Phiếu cá nhân (17)</button>
+          <button class="tab" type="button" role="tab" data-action="tab" data-tab="collective">Phiếu tập thể khoa · 02K</button>
+          <button class="tab" type="button" role="tab" data-action="tab" data-tab="mine">Phiếu của tôi</button>
+        </div>
+
+        <!-- Personal forms -->
+        <div class="tab-panel" data-tab-panel="unit" data-tab-name="people">
+          <div class="toolbar" data-filter-group>
+            <button class="btn btn--small is-active" type="button" data-eval-filter="all" data-target="#unit-rows">Tất cả · 17</button>
+            <button class="btn btn--small" type="button" data-eval-filter="todo" data-target="#unit-rows">Chờ tôi chấm · 10</button>
+            <button class="btn btn--small" type="button" data-eval-filter="late" data-target="#unit-rows">Không tự chấm đúng hạn · 2</button>
+            <button class="btn btn--small" type="button" data-eval-filter="done" data-target="#unit-rows">Đã chấm · 6</button>
+            <span class="toolbar__count">Sắp theo tên — không xếp hạng theo điểm hay số liệu</span>
+          </div>
+
+          <div class="table-wrap">
+            <table class="table table-as-cards">
+              <thead>
+                <tr>
+                  <th>Họ tên</th><th>Mẫu</th><th>Người chấm</th><th>Trạng thái</th>
+                  <th class="table__num">Tự chấm</th><th class="table__num">QL chấm ★</th>
+                  <th class="table__num" title="Chênh lệch tổng điểm cuối giữa tự chấm và quản lý chấm">Chênh lệch</th><th></th>
+                </tr>
+              </thead>
+              <tbody id="unit-rows" data-eval="unit-table"></tbody>
+            </table>
+          </div>
+
+          <div class="grid grid--2" style="margin-top:16px">
+            <p class="text-meta" style="margin:0">
+              <strong>Phó khoa, điều dưỡng trưởng</strong> do trưởng khoa chấm. <strong>Phiếu của trưởng khoa</strong> do lãnh đạo bệnh viện chấm —
+              không ai tự duyệt phiếu của mình. Chênh lệch trên <strong>15 điểm</strong> được đánh dấu ⚠ để Hội đồng xem kỹ, không chặn gửi.
+            </p>
+            <div class="figure-card">
+              📎 Trên màn chấm, mỗi tiêu chí có thẻ số liệu xám (nhiệm vụ, ca trực, giao ban) và nút <strong>Xem</strong> để kiểm chứng.
+              Hệ thống không điền sẵn điểm, không gợi ý điểm, không tự trừ điểm khi có việc quá hạn.
+            </div>
+          </div>
+        </div>
+
+        <!-- Unit form -->
+        <div class="tab-panel" data-tab-panel="unit" data-tab-name="collective" hidden>
+          <div class="card" style="max-width:760px">
+            <div class="row row--between">
+              <div>
+                <h2 class="card__title">Mẫu 02K · Tập thể Khoa Nội – Nhi – Da liễu – HSCC</h2>
+                <div class="text-meta">Khoa tự chấm, căn cứ đầu việc lãnh đạo giao và công việc hằng ngày của khoa. Nếu thấy chưa đúng, lãnh đạo bệnh viện chấm lại.</div>
+              </div>
+              <span class="badge badge--accepted">Khoa đã tự chấm 02/09</span>
+            </div>
+            <dl class="dl grid grid--2" style="margin:16px 0;gap:0 24px">
+              <div><dt>Khoa tự chấm</dt><dd>90 điểm · <span class="grade grade--XS">XS</span> Xuất sắc</dd></div>
+              <div><dt>Lãnh đạo bệnh viện chấm</dt><dd><span class="text-muted">PGĐ Nguyễn Anh Tuấn · hạn 05/09</span></dd></div>
+            </dl>
+            <div class="figure-card" style="margin-bottom:16px">
+              Số liệu căn cứ: khoa hoàn thành 412 nhiệm vụ, đúng hạn 389/412 — 94,4% · 14/16 nhiệm vụ do BGĐ giao · vắng 3/22 lượt giao ban viện · đạt 92% chỉ tiêu doanh thu
+            </div>
+            <div class="row" style="justify-content:flex-end">
+              <a class="btn btn--secondary" href="evaluation-form.html?nguoi=khoa&vai=self">Xem / sửa phần khoa tự chấm</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Head's own form -->
+        <div class="tab-panel" data-tab-panel="unit" data-tab-name="mine" hidden>
+          <div class="card" style="max-width:760px">
+            <div class="row row--between">
+              <div>
+                <h2 class="card__title">BS Trần Văn Xuân · Mẫu 01A</h2>
+                <div class="text-meta">Trưởng khoa tự chấm; lãnh đạo bệnh viện chấm cột chính thức nếu thấy chưa đúng điểm</div>
+              </div>
+              <span class="badge badge--accepted">Đã tự chấm 01/09</span>
+            </div>
+            <dl class="dl grid grid--2" style="margin:16px 0;gap:0 24px">
+              <div><dt>Tự chấm</dt><dd>92 điểm · <span class="grade grade--A">A</span></dd></div>
+              <div><dt>Người chấm chính thức</dt><dd>PGĐ Nguyễn Anh Tuấn</dd></div>
+            </dl>
+            <a class="btn btn--secondary" href="evaluation-form.html?nguoi=xuan&vai=self">Mở phiếu của tôi</a>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+  <div data-shell="bottomnav"></div>
+</div>
+<script src="assets/app.js"></script>
+<script src="assets/evaluation.js"></script>
+</body>
+</html>

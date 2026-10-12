@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cấu hình mẫu phiếu thi đua · Trung tâm điều hành số Bệnh viện Anh Quất</title>
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body data-screen="evaluation-forms" data-role="admin" data-unread="3">
+<div class="app">
+  <div data-shell="topbar"></div>
+  <div class="shell">
+    <div data-shell="sidebar"></div>
+    <main class="main">
+      <div class="page">
+
+        <div class="desktop-required">
+          <div class="state">
+            <div class="state__icon">💻</div>
+            <div class="state__title">Màn hình này cần máy tính</div>
+            <p class="state__text">Sửa mẫu phiếu cần màn hình rộng. Vui lòng mở trên máy tính.</p>
+          </div>
+        </div>
+
+        <div>
+          <div class="page__head">
+            <div class="page__head-text">
+              <h1 class="page-title">Cấu hình mẫu phiếu</h1>
+              <p class="text-meta">Mẫu phiếu là <strong>dữ liệu</strong>: thêm mẫu, sửa câu chữ tiêu chí không cần sửa phần mềm, không cần triển khai lại. Mẫu → nhóm tiêu chí → tiêu chí, mỗi tầng có điểm tối đa.</p>
+            </div>
+            <div class="page__actions">
+              <button class="btn btn--secondary" type="button" data-action="open-overlay" data-target="new-form">+ Tạo mẫu phiếu</button>
+            </div>
+          </div>
+
+          <div class="tabs" data-tabs="cfg" role="tablist">
+            <button class="tab is-active" type="button" role="tab" data-action="tab" data-tab="forms">Mẫu phiếu (34 + 2)</button>
+            <button class="tab" type="button" role="tab" data-action="tab" data-tab="rules" id="rules">Bảng quy đổi và quy tắc</button>
+          </div>
+
+          <div class="tab-panel" data-tab-panel="cfg" data-tab-name="forms">
+            <div style="display:grid;grid-template-columns:300px minmax(0,1fr);gap:24px;align-items:start">
+              <nav class="card form-list" style="padding:8px;max-height:calc(100vh - 220px);overflow-y:auto;position:sticky;top:80px" data-eval="form-list" aria-label="Danh sách mẫu phiếu"></nav>
+              <div>
+                <div data-eval="cfg-editor"></div>
+                <div class="row" style="position:sticky;bottom:0;padding:12px 0;background:var(--bg-alt);gap:12px">
+                  <div data-eval="cfg-status" style="flex:1;min-width:260px"></div>
+                  <button class="btn btn--quiet" type="button" data-action="toast" data-toast="Đã mở xem trước màn chấm" data-toast-kind="info">Xem trước</button>
+                  <button class="btn btn--primary" type="button" data-eval="cfg-save" data-action="open-overlay" data-target="save-version">Lưu phiên bản mới</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-panel" data-tab-panel="cfg" data-tab-name="rules" hidden>
+            <div class="grid grid--2" style="align-items:start">
+              <section class="card">
+                <h2 class="card__title" style="margin-bottom:12px">Bảng quy đổi cá nhân</h2>
+                <table class="table">
+                  <thead><tr><th>Xếp loại</th><th>Từ điểm</th><th>Liên hệ mức thưởng</th></tr></thead>
+                  <tbody>
+                    <tr><td><span class="grade grade--A">A</span> Hoàn thành xuất sắc</td><td><input class="input" value="90" style="width:80px;min-height:40px;padding:6px 10px" aria-label="A từ điểm"></td><td>Thưởng cao nhất, ưu tiên xét danh hiệu · <strong>và không thuộc diện loại trừ</strong></td></tr>
+                    <tr><td><span class="grade grade--B">B</span> Hoàn thành tốt</td><td><input class="input" value="80" style="width:80px;min-height:40px;padding:6px 10px" aria-label="B từ điểm"></td><td>Được xét thưởng</td></tr>
+                    <tr><td><span class="grade grade--C">C</span> Hoàn thành</td><td><input class="input" value="65" style="width:80px;min-height:40px;padding:6px 10px" aria-label="C từ điểm"></td><td>Thưởng khuyến khích, cần cải thiện</td></tr>
+                    <tr><td><span class="grade grade--D">D</span> Không hoàn thành – cảnh báo</td><td><input class="input" value="50" style="width:80px;min-height:40px;padding:6px 10px" aria-label="D từ điểm"></td><td>Không thưởng · chấn chỉnh, theo dõi tháng sau</td></tr>
+                    <tr><td><span class="grade grade--E">E</span> Không xét thi đua</td><td class="text-muted">Dưới 50 hoặc loại trừ</td><td>Không thưởng · xem xét trách nhiệm/đào tạo lại</td></tr>
+                  </tbody>
+                </table>
+              </section>
+              <section class="card">
+                <h2 class="card__title" style="margin-bottom:12px">Bảng quy đổi tập thể</h2>
+                <div class="section-box section-box--warn" style="margin-bottom:12px">Tài liệu chưa có ngưỡng điểm cho tập thể — đang tạm dùng như cá nhân. Cần bệnh viện xác nhận.</div>
+                <table class="table">
+                  <thead><tr><th>Xếp loại</th><th>Từ điểm</th></tr></thead>
+                  <tbody>
+                    <tr><td><span class="grade grade--XS">XS</span> Xuất sắc</td><td><input class="input" value="90" style="width:80px;min-height:40px;padding:6px 10px" aria-label="Xuất sắc từ điểm"></td></tr>
+                    <tr><td><span class="grade grade--T">T</span> Tốt</td><td><input class="input" value="80" style="width:80px;min-height:40px;padding:6px 10px" aria-label="Tốt từ điểm"></td></tr>
+                    <tr><td><span class="grade grade--HT">HT</span> Hoàn thành</td><td><input class="input" value="65" style="width:80px;min-height:40px;padding:6px 10px" aria-label="Hoàn thành từ điểm"></td></tr>
+                    <tr><td><span class="grade grade--KHT">KHT</span> Không hoàn thành / cần chấn chỉnh</td><td class="text-muted">Dưới 65</td></tr>
+                  </tbody>
+                </table>
+              </section>
+              <section class="card">
+                <h2 class="card__title" style="margin-bottom:12px">Quy tắc chấm</h2>
+                <div class="field"><label class="field__label" for="gap">Cảnh báo khi tự chấm và quản lý chấm lệch quá</label>
+                  <div class="row"><input class="input" id="gap" value="15" style="width:96px"><span>điểm</span></div>
+                  <div class="field__hint">Chỉ cảnh báo cho Hội đồng xem kỹ, không chặn gửi (Q48)</div></div>
+                <div class="field"><label class="field__label" for="step">Bước điểm mỗi tiêu chí</label>
+                  <select class="select" id="step" style="width:auto"><option selected>0,5 điểm</option><option>1 điểm</option></select></div>
+                <ul class="bullets text-meta">
+                  <li>Tổng cuối = tổng 5 nhóm + thưởng − trừ; có thể vượt 100, không âm.</li>
+                  <li>Điểm chính thức là cột QL/HĐ; cột tự chấm không vào công thức.</li>
+                  <li>Không có tuỳ chọn tự điền điểm, gợi ý điểm hay tự trừ điểm theo số liệu — đây là nguyên tắc, không phải cấu hình.</li>
+                </ul>
+              </section>
+            </div>
+            <div class="row" style="margin-top:16px;justify-content:flex-end">
+              <button class="btn btn--primary" type="button" data-action="demo-submit" data-busy-label="Đang lưu…" data-toast="Đã lưu · áp dụng từ kỳ 09/2026">Lưu quy tắc</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+  <div data-shell="bottomnav"></div>
+</div>
+
+<div class="overlay" id="save-version">
+  <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="sv-title">
+    <div class="dialog__head">
+      <h2 class="dialog__title" id="sv-title">Lưu phiên bản mới</h2>
+      <button class="icon-btn" type="button" data-action="close-overlay" aria-label="Đóng">✕</button>
+    </div>
+    <div class="dialog__body">
+      <p>Mẫu đang dùng ở kỳ 08/2026 nên không sửa đè. Lưu sẽ tạo <strong>phiên bản 2</strong>:</p>
+      <label class="radio-card"><input type="radio" name="apply" checked><span><strong>Áp dụng từ kỳ 09/2026</strong><br><span class="text-meta">Kỳ đang “Mở” — phiếu đã sinh được cập nhật theo phiên bản mới</span></span></label>
+      <label class="radio-card"><input type="radio" name="apply"><span><strong>Áp dụng từ kỳ 10/2026</strong></span></label>
+      <p class="text-meta" style="margin:8px 0 0">Phiếu của các kỳ đã chấm giữ nguyên câu chữ và điểm tối đa lúc chấm.</p>
+    </div>
+    <div class="dialog__foot">
+      <button class="btn btn--quiet" type="button" data-action="close-overlay">Huỷ</button>
+      <button class="btn btn--primary" type="button" data-action="demo-submit" data-busy-label="Đang lưu…" data-toast="Đã lưu phiên bản 2 · áp dụng từ kỳ 09/2026">Lưu</button>
+    </div>
+  </div>
+</div>
+
+<div class="overlay" id="new-form">
+  <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="nf-title">
+    <div class="dialog__head">
+      <h2 class="dialog__title" id="nf-title">Tạo mẫu phiếu</h2>
+      <button class="icon-btn" type="button" data-action="close-overlay" aria-label="Đóng">✕</button>
+    </div>
+    <div class="dialog__body">
+      <span class="field__label">Loại phiếu</span>
+      <label class="radio-card"><input type="radio" name="nf" checked><span><strong>Phiếu chấm điểm cá nhân</strong><br><span class="text-meta">Khung 40 · 20 · 15 · 15 · 10 · gắn với chức danh</span></span></label>
+      <label class="radio-card"><input type="radio" name="nf"><span><strong>Phiếu chấm điểm tập thể</strong><br><span class="text-meta">Khung 30 · 20 · 15 · 15 · 20 · gắn với đơn vị</span></span></label>
+      <label class="radio-card"><input type="radio" name="nf"><span><strong>Phiếu lấy ý kiến</strong><br><span class="text-meta">Không chấm điểm · Đồng ý / Cần điều chỉnh + ý kiến · ghi danh</span></span></label>
+      <label class="radio-card"><input type="radio" name="nf"><span><strong>Phiếu đánh giá lãnh đạo</strong><br><span class="text-meta">Không chấm điểm · ẩn danh thật sự · cấp dưới ↔ lãnh đạo</span></span></label>
+      <div class="field" style="margin:12px 0 0"><label class="field__label" for="nf-copy">Bắt đầu từ</label>
+        <select class="select" id="nf-copy"><option>Khung trống</option><option>Nhân bản từ Mẫu 01A</option><option>Nhân bản từ Mẫu 01B</option></select></div>
+    </div>
+    <div class="dialog__foot">
+      <button class="btn btn--quiet" type="button" data-action="close-overlay">Huỷ</button>
+      <button class="btn btn--primary" type="button" data-action="demo-submit" data-busy-label="Đang tạo…" data-toast="Đã tạo mẫu nháp — nhập tiêu chí rồi lưu">Tạo mẫu</button>
+    </div>
+  </div>
+</div>
+
+<script src="assets/app.js"></script>
+<script src="assets/evaluation.js"></script>
+</body>
+</html>

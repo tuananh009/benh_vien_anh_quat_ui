@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chấm phiếu thi đua · Trung tâm điều hành số Bệnh viện Anh Quất</title>
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body data-screen="evaluation-form" data-role="manager" data-unread="3">
+<div class="app">
+  <div data-shell="topbar"></div>
+  <div class="shell">
+    <div data-shell="sidebar"></div>
+    <main class="main">
+      <div class="page">
+        <!-- Built from the form configuration in assets/evaluation.js.
+             ?nguoi=lan|em|giang|duy|xuan|khoa  ·  ?vai=self|manager|council|locked -->
+        <div data-eval="form"></div>
+      </div>
+    </main>
+  </div>
+  <div data-shell="bottomnav"></div>
+</div>
+
+<div class="overlay" id="return-dialog">
+  <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="return-title">
+    <div class="dialog__head">
+      <h2 class="dialog__title" id="return-title">Trả lại để quản lý chấm lại</h2>
+      <button class="icon-btn" type="button" data-action="close-overlay" aria-label="Đóng">✕</button>
+    </div>
+    <div class="dialog__body" id="return-scope">
+      <p>Phiếu quay về bước <strong>Quản lý chấm</strong>. Cột tự chấm giữ nguyên; điểm quản lý đã chấm vẫn hiện để sửa.</p>
+      <div class="field" style="margin:0">
+        <label class="field__label" for="return-reason">Lý do <span class="field__required">*</span></label>
+        <textarea class="textarea" id="return-reason" required placeholder="Ví dụ: chưa xét phản ánh của người nhà ngày 18/08"></textarea>
+        <div class="field__hint">Người chấm nhận thông báo kèm lý do này</div>
+      </div>
+    </div>
+    <div class="dialog__foot">
+      <button class="btn btn--quiet" type="button" data-action="close-overlay">Quay lại</button>
+      <button class="btn btn--primary" type="button" data-require-scope="return-scope" data-action="demo-submit"
+              data-busy-label="Đang gửi…" data-toast="Đã trả lại phiếu · đã báo người chấm">Trả lại</button>
+    </div>
+  </div>
+</div>
+
+<script src="assets/app.js"></script>
+<script src="assets/evaluation.js"></script>
+</body>
+</html>
